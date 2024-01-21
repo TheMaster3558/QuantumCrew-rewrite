@@ -27,4 +27,4 @@ lemlib::Chassis Robot::chassis {
     sensors
 };
 
-pros::Controller Robot::controller{pros::E_CONTROLLER_MASTER};
+pros::Controller Robot::controller(pros::E_CONTROLLER_MASTER);
