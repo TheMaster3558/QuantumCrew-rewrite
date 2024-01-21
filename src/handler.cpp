@@ -3,7 +3,7 @@
 
 
 void EventHandler::handleFlaps() {
-    if (Robot::controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+    if (Robot::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
         Robot::Actions::Flaps::reverseFlaps();
     }
 }
@@ -20,6 +20,13 @@ void EventHandler::handleCatapult() {
     else {
         Robot::Motors::catapult.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
         Robot::Actions::Catapult::brake();
+    }
+
+    if (Robot::controller::get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+        Robot::Tunables::catapultVelocity--;
+    }
+    if (Robot::controller::get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+        Robot::Tunables::catapultVelocity++;
     }
 }
 
