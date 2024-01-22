@@ -8,10 +8,9 @@ class Autons {
 public:
     static void doNothing();
     static void skills();
+    static void offensive();
     static void defensiveQual();
     static void defensiveElims();
-    static void offensiveQual();
-    static void offensiveElims();
 
     static void addAutons(AutonSelector autonSelector);
 };
