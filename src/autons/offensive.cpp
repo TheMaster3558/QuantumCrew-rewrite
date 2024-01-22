@@ -3,6 +3,7 @@
 
 ASSET(offensive_elims_take_triball_txt)
 ASSET(offensive_qual_move_to_center_txt)
+ASSET(offensive_qual_touch_bar_txt)
 
 
 void Autons::Autons::offensiveQual() {
@@ -42,8 +43,7 @@ void Autons::Autons::offensiveQual() {
     Robot::chassis.waitUntilDone();
     Robot::Actions::Intake::brake();
 
-
-    Robot::chassis.turnTo(-44, 3, 1000);
+    Robot::chassis.turnTo(-44, 3, 1000, false);
     Robot::chassis.waitUntilDone();
 
     Robot::Actions::Flaps::setFlaps(true, true);
@@ -68,6 +68,12 @@ void Autons::Autons::offensiveQual() {
     Robot::Actions::Intake::brake();
 
     Robot::chassis.moveToPoint(-40, 3, 1000);
+    Robot::chassis.waitUntilDone();
+
+    Robot::chassis.turnTo(-40, 50, 100);
+    Robot::chassis.waitUntilDone();
+
+    Robot::chassis.follow(offensive_qual_touch_bar_txt, 10, 5000);
     Robot::chassis.waitUntilDone();
 }
 
