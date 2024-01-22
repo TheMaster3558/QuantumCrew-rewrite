@@ -35,6 +35,8 @@ void Autons::Autons::skills() {
     Robot::chassis.follow(skills_prepare_for_second_ram_txt, 13, 5000);
     Robot::chassis.waitUntilDone();
 
+    Robot::Actions::Flaps::setFlaps(true, true);
+
     Robot::chassis.moveToPose(42, -7, 260, 2000, {
         .forwards = false,
         .minSpeed = 110
@@ -49,6 +51,17 @@ void Autons::Autons::skills() {
         .minSpeed = 110
     });
     Robot::chassis.waitUntilDone();
+
+    Robot::chassis.moveToPose(30, 10, 290, 2000);
+    Robot::chassis.waitUntilDone();
+
+    Robot::chassis.moveToPose(42, 9, 280, 2000, {
+            .forwards = false,
+            .minSpeed = 110
+    });
+    Robot::chassis.waitUntilDone();
+
+    Robot::Actions::Flaps::setFlaps(false, false);
 
     Robot::chassis.follow(skills_prepare_for_final_ram_txt, 13, 5000);
     Robot::chassis.waitUntilDone();
