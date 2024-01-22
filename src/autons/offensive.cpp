@@ -14,7 +14,7 @@ void Autons::Autons::offensiveQual() {
 
     Robot::Actions::Intake::outtake();
     pros::delay(1000);
-    Robot::Actins::Intake::brake();
+    Robot::Actions::Intake::brake();
 
     Robot::chassis.turnTo(-6, 23, 1000);
     Robot::chassis.waitUntilDone();
@@ -32,7 +32,7 @@ void Autons::Autons::offensiveQual() {
 
     Robot::Actions::Intake::outtake();
     pros::delay(1000);
-    Robot::Actins::Intake::brake();
+    Robot::Actions::Intake::brake();
 
     Robot::chassis.turnTo(-5, 0, 1000);
     Robot::chassis.waitUntilDone();
@@ -46,12 +46,12 @@ void Autons::Autons::offensiveQual() {
     Robot::chassis.turnTo(-44, 3, 1000);
     Robot::chassis.waitUntilDone();
 
-    setFlaps(true, true);
+    Robot::Actions::Flaps::setFlaps(true, true);
 
     Robot::chassis.moveToPose(-44, 3, 100, 3000, {
         .forwards = false,
         .minSpeed = 110
-    })
+    });
     Robot::chassis.waitUntilDone();
 
     Robot::chassis.moveToPoint(-40, 0, 1000);
@@ -92,13 +92,13 @@ void Autons::Autons::offensiveElims() {
     });
     Robot::chassis.waitUntilDone();
 
-    Robot::chassis.turnToPoint(-60, -30, 1000);
+    Robot::chassis.turnTo(-60, -30, 1000);
     Robot::chassis.waitUntilDone();
 
     Robot::chassis.moveToPose(-60, 30, 180, 1000, {
         .minSpeed = 110
     });
-    Robot::Actions::Intake::outake();
+    Robot::Actions::Intake::outtake();
     Robot::chassis.waitUntilDone();
     Robot::Actions::Intake::brake();
 
@@ -136,7 +136,7 @@ void Autons::Autons::offensiveElims() {
     Robot::chassis.moveToPoint(-40, 5, 1000, false);
     Robot::chassis.waitUntilDone();
 
-    Robot::chassis.turnToPoint(-44, 5, 1000);
+    Robot::chassis.turnTo(-44, 5, 1000);
     Robot::chassis.waitUntilDone();
 
     Robot::chassis.moveToPose(-44, 5, 270, 2000, {
