@@ -23,15 +23,15 @@ void Robot::Motors::setDriveBrake(pros::motor_brake_mode_e_t mode) {
 void printOverheatingMotor(std::string name, pros::Motor motor, int* line) {
     if (motor.is_over_temp()) {
         std::ostringstream formattedString;
-        formattedString << name << " motor (port " << motor.get_port() << ") overheating: " << motor.get_temperature()) << "C";
+        formattedString << name << " motor (port " << motor.get_port() << ") overheating: " << motor.get_temperature() << "C";
 
-        ez::print_to_screen(formattedString, (*line)++);
+        ez::print_to_screen(formattedString.str(), (*line)++);
     }
 }
 
 
 void Robot::Motors::printOverheatingMotors() {
-    pros::lcd::clear()
+    pros::lcd::clear();
     int line = 0;
 
     printOverheatingMotor("Intake", intake, &line);

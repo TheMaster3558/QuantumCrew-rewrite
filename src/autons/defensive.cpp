@@ -28,7 +28,7 @@ void Autons::Autons::defensiveQual() {
     Robot::chassis.turnTo(60, 28, 1000, false);
     Robot::chassis.waitUntilDone();
 
-    Robot::chassis.moveToPose(60, 28, 0, {
+    Robot::chassis.moveToPose(60, 28, 0, 3000, {
         .forwards = false,
         .minSpeed = 110
     });
@@ -48,7 +48,7 @@ void Autons::Autons::defensiveElims() {
     Robot::chassis.turnTo(45, 10, 1000);
     Robot::chassis.waitUntilDone();
 
-    Robot::Actions::setFlaps(true, true);
+    Robot::Actions::Flaps::setFlaps(true, true);
 
     Robot::chassis.moveToPose(5, 10, 90, 2000, {
         .forwards = false,
@@ -56,7 +56,7 @@ void Autons::Autons::defensiveElims() {
     });
     Robot::chassis.waitUntilDone();
 
-    Robot::Actions::setFlaps(false, false);
+    Robot::Actions::Flaps::setFlaps(false, false);
 
     Robot::chassis.moveToPose(45, 10, 90, 2000, {
             .minSpeed = 110
