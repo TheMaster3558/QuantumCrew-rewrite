@@ -44,10 +44,19 @@ void EventHandler::handleIntake() {
 }
 
 
+void EventHandler::updateDisplay() {
+    static int counter = 0;
+    if (counter++ % (50 / ez::util::DELAY_TIME) == 0) {
+        Robot::Motors::printOverheatingMotors();
+    }
+}
+
+
 void EventHandler::handleAll() {
     EventHandler::handleFlaps();
     EventHandler::handleCatapult();
     EventHandler::handleIntake();
+    EventHandler::updateDisplay();
 }
 
 

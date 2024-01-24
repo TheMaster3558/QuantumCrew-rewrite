@@ -1,11 +1,14 @@
 #pragma once
 
+#include <sstream>
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
 #include "pros/adi.hpp"
 #include "pros/rotation.hpp"
 #include "pros/imu.hpp"
+#include "pros/llemu.hpp"
 #include "lemlib/api.hpp"
+#include "EZ-Template/api.hpp"
 
 
 class Robot {
@@ -19,6 +22,8 @@ public:
 
         static pros::Motor intake;
         static pros::Motor catapult;
+
+        static void printOverheatingMotors();
     };
 
     class Pistons {

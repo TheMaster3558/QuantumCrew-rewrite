@@ -6,5 +6,6 @@ public:
     static void handleFlaps();
     static void handleCatapult();
     static void handleIntake();
+    static void updateDisplay();
     static void handleAll();
 };
