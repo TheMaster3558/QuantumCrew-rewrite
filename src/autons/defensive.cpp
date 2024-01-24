@@ -2,6 +2,7 @@
 
 
 ASSET(defensive_qual_move_from_goal_to_bar_txt)
+ASSET(defensive_elims_move_from_goal_to_bar_txt)
 
 
 void Autons::Autons::defensiveQual() {
@@ -62,9 +63,12 @@ void Autons::Autons::defensiveElims() {
     });
     Robot::chassis.waitUntilDone();
 
-    Robot::chassis.moveToPoint(40, 10, 2000, false);
+    Robot::chassis.moveToPoint(35, 10, 2000, false);
     Robot::chassis.waitUntilDone();
 
-    Robot::chassis.turnTo(40, 20, 1000);
+    Robot::chassis.turnTo(35, 20, 1000);
+    Robot::chassis.waitUntilDone();
+
+    Robot::chassis.follow(defensive_elims_move_from_goal_to_bar_txt, 10, 7000);
     Robot::chassis.waitUntilDone();
 }
