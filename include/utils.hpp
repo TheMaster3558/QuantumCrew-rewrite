@@ -21,3 +21,7 @@ public:
     ControllerAutonSelector(pros::Controller controller);
     void print_selected_auton();
 };
+
+
+void setAutonSelectorToController();
+void removeAutonSelectorButtons();

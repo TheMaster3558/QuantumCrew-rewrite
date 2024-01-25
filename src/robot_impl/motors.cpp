@@ -57,10 +57,13 @@ void Robot::Motors::printOverheatingMotors() {
     printOverheatingMotor("Right Middle Drive", rightMiddle, line, overheatingMotors);
     printOverheatingMotor("Right Back Drive", rightBack, line, overheatingMotors);
 
-    if (overheatingMotors.size() > 0) {
-        Robot::controller.print(0, 0, "Overheating Motors: %s", joinVector(overheatingMotors, ", "));
-    }
-    else {
-        Robot::controller.print(0, 0, "");
+    // auton selector is on controller when robot is disabled
+    if (!pros::competition::is_disabled()) {
+        if (overheatingMotors.size() > 0) {
+            Robot::controller.print(0, 0, "Overheating Motors: %s", joinVector(overheatingMotors, ", "));
+        }
+        else {
+            Robot::controller.print(0, 0, "");
+        }
     }
 }

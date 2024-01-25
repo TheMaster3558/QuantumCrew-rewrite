@@ -25,3 +25,18 @@ ControllerAutonSelector::ControllerAutonSelector(pros::Controller controller)
 void ControllerAutonSelector::print_selected_auton() {
     controller.print(0, 0, Autons[current_auton_page].Name.c_str());
 }
+
+
+void setAutonSelectorToController() {
+    ControllerDigitalIn leftButton(Robot::controller, pros::E_CONTROLLER_DIGITAL_LEFT);
+    ControllerDigitalIn rightButton(Robot::controller, pros::E_CONTROLLER_DIGITAL_RIGHT);
+    ez::as::limit_switch_lcd_initialize(
+            reinterpret_cast<pros::ADIDigitalIn*>(&leftButton),
+            reinterpret_cast<pros::ADIDigitalIn*>(&rightButton)
+    );
+}
+
+
+void removeAutonSelectorButtons() {
+    ez::as::limit_switch_lcd_initialize(nullptr, nullptr);
+}
