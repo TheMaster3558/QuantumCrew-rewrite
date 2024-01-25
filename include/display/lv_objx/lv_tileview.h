@@ -111,8 +111,7 @@ void lv_tileview_set_tile_act(lv_obj_t * tileview, lv_coord_t x, lv_coord_t y, b
  * @param tileview pointer to a Tileview
  * @param en true or false to enable/disable end flash
  */
-static inline void lv_tileview_set_edge_flash(lv_obj_t * tileview, bool en)
-{
+static inline void lv_tileview_set_edge_flash(lv_obj_t * tileview, bool en) {
     lv_page_set_edge_flash(tileview, en);
 }
 
@@ -133,8 +132,7 @@ void lv_tileview_set_style(lv_obj_t * tileview, lv_tileview_style_t type, lv_sty
  * @param tileview pointer to a Tileview
  * @return true or false
  */
-static inline bool lv_tileview_get_edge_flash(lv_obj_t * tileview)
-{
+static inline bool lv_tileview_get_edge_flash(lv_obj_t * tileview) {
     return lv_page_get_edge_flash(tileview);
 }
 

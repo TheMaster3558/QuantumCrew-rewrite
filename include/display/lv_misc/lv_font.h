@@ -34,20 +34,17 @@ extern "C" {
  *      TYPEDEFS
  **********************/
 
-typedef struct
-{
+typedef struct {
     uint32_t w_px         :8;
     uint32_t glyph_index  :24;
 } lv_font_glyph_dsc_t;
 
-typedef struct
-{
+typedef struct {
     uint32_t unicode         :21;
     uint32_t glyph_dsc_index :11;
 } lv_font_unicode_map_t;
 
-typedef struct _lv_font_struct
-{
+typedef struct _lv_font_struct {
     uint32_t unicode_first;
     uint32_t unicode_last;
     const uint8_t * glyph_bitmap;
@@ -123,8 +120,7 @@ uint8_t lv_font_get_real_width(const lv_font_t * font_p, uint32_t letter);
  * @param font_p pointer to a font
  * @return the height of a font
  */
-static inline uint8_t lv_font_get_height(const lv_font_t * font_p)
-{
+static inline uint8_t lv_font_get_height(const lv_font_t * font_p) {
     return font_p->h_px;
 }
 

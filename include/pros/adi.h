@@ -33,10 +33,10 @@ namespace pros {
  * Represents the port type for an ADI port.
  */
 typedef enum adi_port_config_e {
-	E_ADI_ANALOG_IN = 0,
-	E_ADI_ANALOG_OUT = 1,
-	E_ADI_DIGITAL_IN = 2,
-	E_ADI_DIGITAL_OUT = 3,
+    E_ADI_ANALOG_IN = 0,
+    E_ADI_ANALOG_OUT = 1,
+    E_ADI_DIGITAL_IN = 2,
+    E_ADI_DIGITAL_OUT = 3,
 
 #ifdef _INTELLISENSE
 #define _DEPRECATE_DIGITAL_IN = E_ADI_DIGITAL_IN
@@ -46,35 +46,35 @@ typedef enum adi_port_config_e {
 #define _DEPRECATE_ANALOG_IN __attribute__((deprecated("use E_ADI_ANALOG_IN instead"))) = E_ADI_ANALOG_IN
 #endif
 
-	E_ADI_SMART_BUTTON _DEPRECATE_DIGITAL_IN,
-	E_ADI_SMART_POT _DEPRECATE_ANALOG_IN,
+    E_ADI_SMART_BUTTON _DEPRECATE_DIGITAL_IN,
+    E_ADI_SMART_POT _DEPRECATE_ANALOG_IN,
 
-	E_ADI_LEGACY_BUTTON _DEPRECATE_DIGITAL_IN,
-	E_ADI_LEGACY_POT _DEPRECATE_ANALOG_IN,
-	E_ADI_LEGACY_LINE_SENSOR _DEPRECATE_ANALOG_IN,
-	E_ADI_LEGACY_LIGHT_SENSOR _DEPRECATE_ANALOG_IN,
-	E_ADI_LEGACY_GYRO = 10,
-	E_ADI_LEGACY_ACCELEROMETER _DEPRECATE_ANALOG_IN,
+    E_ADI_LEGACY_BUTTON _DEPRECATE_DIGITAL_IN,
+    E_ADI_LEGACY_POT _DEPRECATE_ANALOG_IN,
+    E_ADI_LEGACY_LINE_SENSOR _DEPRECATE_ANALOG_IN,
+    E_ADI_LEGACY_LIGHT_SENSOR _DEPRECATE_ANALOG_IN,
+    E_ADI_LEGACY_GYRO = 10,
+    E_ADI_LEGACY_ACCELEROMETER _DEPRECATE_ANALOG_IN,
 
 #undef _DEPRECATE_DIGITAL_IN
 #undef _DEPRECATE_ANALOG_IN
 
-	E_ADI_LEGACY_SERVO = 12,
-	E_ADI_LEGACY_PWM = 13,
+    E_ADI_LEGACY_SERVO = 12,
+    E_ADI_LEGACY_PWM = 13,
 
-	E_ADI_LEGACY_ENCODER = 14,
-	E_ADI_LEGACY_ULTRASONIC = 15,
+    E_ADI_LEGACY_ENCODER = 14,
+    E_ADI_LEGACY_ULTRASONIC = 15,
 
-	E_ADI_TYPE_UNDEFINED = 255,
-	E_ADI_ERR = PROS_ERR
+    E_ADI_TYPE_UNDEFINED = 255,
+    E_ADI_ERR = PROS_ERR
 } adi_port_config_e_t;
 
 /**
  * Represents the potentiometer version type.
  */
-typedef enum adi_potentiometer_type_e { 
-	E_ADI_POT_EDR = 0,
-	E_ADI_POT_V2
+typedef enum adi_potentiometer_type_e {
+    E_ADI_POT_EDR = 0,
+    E_ADI_POT_V2
 } adi_potentiometer_type_e_t;
 
 #ifdef PROS_USE_SIMPLE_NAMES
@@ -722,7 +722,7 @@ typedef int32_t adi_potentiometer_t;
 adi_potentiometer_t adi_potentiometer_init(uint8_t port);
 
 /**
- * Initializes a potentiometer on the given port. 
+ * Initializes a potentiometer on the given port.
  *
  * This function uses the following values of errno when an error state is
  * reached:

@@ -35,8 +35,7 @@ extern "C" {
  *      TYPEDEFS
  **********************/
 /*Data of image*/
-typedef struct
-{
+typedef struct {
     /*No inherited ext. because inherited from the base object*/ /*Ext. of ancestor*/
     /*New data for this type */
     const void * src;             /*Image source: Pointer to an array or a file or a symbol*/
@@ -89,8 +88,7 @@ void lv_img_set_src_id(lv_obj_t * img, uint32_t txt_id);
  * @param img -
  * @param fn -
  */
-static inline void lv_img_set_file(lv_obj_t * img, const char * fn)
-{
+static inline void lv_img_set_file(lv_obj_t * img, const char * fn) {
     (void) img;
     (void) fn;
 }
@@ -108,8 +106,7 @@ void lv_img_set_auto_size(lv_obj_t * img, bool autosize_en);
  * @param img pointer to an image object
  * @param style pointer to a style
  */
-static inline void lv_img_set_style(lv_obj_t *img, lv_style_t *style)
-{
+static inline void lv_img_set_style(lv_obj_t *img, lv_style_t *style) {
     lv_obj_set_style(img, style);
 }
 
@@ -118,8 +115,7 @@ static inline void lv_img_set_style(lv_obj_t *img, lv_style_t *style)
  * @param img -
  * @param upscale -
  */
-static inline void lv_img_set_upscale(lv_obj_t * img, bool upcale)
-{
+static inline void lv_img_set_upscale(lv_obj_t * img, bool upcale) {
     (void) img;
     (void) upcale;
 }
@@ -163,8 +159,7 @@ bool lv_img_get_auto_size(const lv_obj_t * img);
  * @param img pointer to an image object
  * @return pointer to the image's style
  */
-static inline lv_style_t* lv_img_get_style(const lv_obj_t *img)
-{
+static inline lv_style_t* lv_img_get_style(const lv_obj_t *img) {
     return lv_obj_get_style(img);
 }
 
@@ -173,8 +168,7 @@ static inline lv_style_t* lv_img_get_style(const lv_obj_t *img)
  * @param img -
  * @return false
  */
-static inline bool lv_img_get_upscale(const lv_obj_t * img)
-{
+static inline bool lv_img_get_upscale(const lv_obj_t * img) {
     (void)img;
     return false;
 }

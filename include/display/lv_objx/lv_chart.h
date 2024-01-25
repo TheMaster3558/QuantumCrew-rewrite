@@ -32,16 +32,14 @@ extern "C" {
 /**********************
  *      TYPEDEFS
  **********************/
-typedef struct
-{
+typedef struct {
     lv_coord_t * points;
     lv_color_t color;
     uint16_t start_point;
 } lv_chart_series_t;
 
 /*Data of chart */
-typedef struct
-{
+typedef struct {
     /*No inherited ext*/ /*Ext. of ancestor*/
     /*New data for this type */
     lv_ll_t series_ll;       /*Linked list for the data line pointers (stores lv_chart_dl_t)*/
@@ -60,8 +58,7 @@ typedef struct
 } lv_chart_ext_t;
 
 /*Chart types*/
-enum
-{
+enum {
     LV_CHART_TYPE_LINE = 0x01,              /*Connect the points with lines*/
     LV_CHART_TYPE_COLUMN = 0x02,            /*Draw columns*/
     LV_CHART_TYPE_POINT = 0x04,             /*Draw circles on the points*/
@@ -185,8 +182,7 @@ void lv_chart_set_next(lv_obj_t * chart, lv_chart_series_t * ser, lv_coord_t y);
  * @param chart pointer to a chart object
  * @param style pointer to a style
  */
-static inline void lv_chart_set_style(lv_obj_t *chart, lv_style_t *style)
-{
+static inline void lv_chart_set_style(lv_obj_t *chart, lv_style_t *style) {
     lv_obj_set_style(chart, style);
 }
 
@@ -234,8 +230,7 @@ lv_opa_t lv_chart_get_series_darking(const lv_obj_t * chart);
  * @param chart pointer to an chart object
  * @return pointer to the chart's style
  */
-static inline lv_style_t* lv_chart_get_style(const lv_obj_t *chart)
-{
+static inline lv_style_t* lv_chart_get_style(const lv_obj_t *chart) {
     return lv_obj_get_style(chart);
 }
 

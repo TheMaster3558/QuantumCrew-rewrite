@@ -2,10 +2,9 @@
 
 
 ControllerDigitalIn::ControllerDigitalIn(
-        pros::Controller controller,
-        pros::controller_digital_e_t button)
-        : controller(controller), button(button)
-{
+    pros::Controller controller,
+    pros::controller_digital_e_t button)
+    : controller(controller), button(button) {
 
 }
 
@@ -16,8 +15,8 @@ std::int32_t ControllerDigitalIn::get_new_press() {
 
 
 ControllerAutonSelector::ControllerAutonSelector(pros::Controller controller)
-                                                 : AutonSelector(),
-                                                 controller(controller){
+    : AutonSelector(),
+      controller(controller) {
 
 };
 
@@ -31,8 +30,8 @@ void setAutonSelectorToController() {
     ControllerDigitalIn leftButton(Robot::controller, pros::E_CONTROLLER_DIGITAL_LEFT);
     ControllerDigitalIn rightButton(Robot::controller, pros::E_CONTROLLER_DIGITAL_RIGHT);
     ez::as::limit_switch_lcd_initialize(
-            reinterpret_cast<pros::ADIDigitalIn*>(&leftButton),
-            reinterpret_cast<pros::ADIDigitalIn*>(&rightButton)
+        reinterpret_cast<pros::ADIDigitalIn*>(&leftButton),
+        reinterpret_cast<pros::ADIDigitalIn*>(&rightButton)
     );
 }
 

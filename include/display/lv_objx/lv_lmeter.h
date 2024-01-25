@@ -31,8 +31,7 @@ extern "C" {
  *      TYPEDEFS
  **********************/
 /*Data of line meter*/
-typedef struct
-{
+typedef struct {
     /*No inherited ext.*/            /*Ext. of ancestor*/
     /*New data for this type */
     uint16_t scale_angle;        /*Angle of the scale in deg. (0..360)*/
@@ -86,8 +85,7 @@ void lv_lmeter_set_scale(lv_obj_t * lmeter, uint16_t angle, uint8_t line_cnt);
  * @param lmeter pointer to a line meter object
  * @param bg set the style of the line meter
  */
-static inline void lv_lmeter_set_style(lv_obj_t *lmeter, lv_style_t *bg)
-{
+static inline void lv_lmeter_set_style(lv_obj_t *lmeter, lv_style_t *bg) {
     lv_obj_set_style(lmeter, bg);
 }
 
@@ -135,8 +133,7 @@ uint16_t lv_lmeter_get_scale_angle(const lv_obj_t * lmeter);
  * @param lmeter pointer to a line meter object
  * @return pointer to the line meter's style
  */
-static inline lv_style_t * lv_lmeter_get_style(const lv_obj_t * lmeter)
-{
+static inline lv_style_t * lv_lmeter_get_style(const lv_obj_t * lmeter) {
     return lv_obj_get_style(lmeter);
 }
 

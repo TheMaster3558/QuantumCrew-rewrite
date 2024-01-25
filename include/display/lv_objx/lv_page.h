@@ -38,8 +38,7 @@ extern "C" {
  **********************/
 
 /*Scrollbar modes: shows when should the scrollbars be visible*/
-enum
-{
+enum {
     LV_SB_MODE_OFF  = 0x0,      /*Never show scrollbars*/
     LV_SB_MODE_ON   = 0x1,      /*Always show scrollbars*/
     LV_SB_MODE_DRAG = 0x2,      /*Show scrollbars when page is being dragged*/
@@ -50,8 +49,7 @@ enum
 typedef uint8_t lv_sb_mode_t;
 
 /*Data of page*/
-typedef struct
-{
+typedef struct {
     lv_cont_ext_t bg; /*Ext. of ancestor*/
     /*New data for this type */
     lv_obj_t * scrl;            /*The scrollable object on the background*/
@@ -73,7 +71,7 @@ typedef struct
         uint8_t bottom_ip  :1;     /*Used internally to show that bottom most position is reached (flash is In Progress)*/
         uint8_t right_ip   :1;     /*Used internally to show that right most position is reached (flash is In Progress)*/
         uint8_t left_ip    :1;     /*Used internally to show that left most position is reached (flash is In Progress)*/
-    }edge_flash;
+    } edge_flash;
 
     uint8_t arrow_scroll   :1;        /*1: Enable scrolling with LV_GROUP_KEY_LEFT/RIGHT/UP/DOWN*/
     uint8_t scroll_prop    :1;        /*1: Propagate the scrolling the the parent if the edge is reached*/
@@ -181,8 +179,7 @@ void lv_page_set_edge_flash(lv_obj_t * page, bool en);
  * @param hor_en true: enable horizontal fit
  * @param ver_en true: enable vertical fit
  */
-static inline void lv_page_set_scrl_fit(lv_obj_t *page, bool hor_en, bool ver_en)
-{
+static inline void lv_page_set_scrl_fit(lv_obj_t *page, bool hor_en, bool ver_en) {
     lv_cont_set_fit(lv_page_get_scrl(page), hor_en, ver_en);
 }
 
@@ -191,8 +188,7 @@ static inline void lv_page_set_scrl_fit(lv_obj_t *page, bool hor_en, bool ver_en
  * @param page pointer to a page object
  * @param w the new width of the scrollable (it ha no effect is horizontal fit is enabled)
  */
-static inline void lv_page_set_scrl_width(lv_obj_t *page, lv_coord_t w)
-{
+static inline void lv_page_set_scrl_width(lv_obj_t *page, lv_coord_t w) {
     lv_obj_set_width(lv_page_get_scrl(page), w);
 }
 
@@ -201,8 +197,7 @@ static inline void lv_page_set_scrl_width(lv_obj_t *page, lv_coord_t w)
  * @param page pointer to a page object
  * @param h the new height of the scrollable (it ha no effect is vertical fit is enabled)
  */
-static inline void lv_page_set_scrl_height(lv_obj_t *page, lv_coord_t h)
-{
+static inline void lv_page_set_scrl_height(lv_obj_t *page, lv_coord_t h) {
     lv_obj_set_height(lv_page_get_scrl(page), h);
 
 }
@@ -212,8 +207,7 @@ static inline void lv_page_set_scrl_height(lv_obj_t *page, lv_coord_t h)
 * @param page pointer to a page object
 * @param layout a layout from 'lv_cont_layout_t'
 */
-static inline void lv_page_set_scrl_layout(lv_obj_t * page, lv_layout_t layout)
-{
+static inline void lv_page_set_scrl_layout(lv_obj_t * page, lv_layout_t layout) {
     lv_cont_set_layout(lv_page_get_scrl(page), layout);
 }
 
@@ -277,8 +271,7 @@ lv_coord_t lv_page_get_fit_height(lv_obj_t * page);
  * @param page pointer to a page object
  * @return the width of the scrollable
  */
-static inline lv_coord_t lv_page_get_scrl_width(const lv_obj_t *page)
-{
+static inline lv_coord_t lv_page_get_scrl_width(const lv_obj_t *page) {
     return lv_obj_get_width(lv_page_get_scrl(page));
 }
 
@@ -287,8 +280,7 @@ static inline lv_coord_t lv_page_get_scrl_width(const lv_obj_t *page)
  * @param page pointer to a page object
  * @return the height of the scrollable
  */
-static inline lv_coord_t lv_page_get_scrl_height(const lv_obj_t *page)
-{
+static inline lv_coord_t lv_page_get_scrl_height(const lv_obj_t *page) {
     return lv_obj_get_height(lv_page_get_scrl(page));
 }
 
@@ -297,8 +289,7 @@ static inline lv_coord_t lv_page_get_scrl_height(const lv_obj_t *page)
 * @param page pointer to page object
 * @return the layout from 'lv_cont_layout_t'
 */
-static inline lv_layout_t lv_page_get_scrl_layout(const lv_obj_t * page)
-{
+static inline lv_layout_t lv_page_get_scrl_layout(const lv_obj_t * page) {
     return lv_cont_get_layout(lv_page_get_scrl(page));
 }
 
@@ -307,8 +298,7 @@ static inline lv_layout_t lv_page_get_scrl_layout(const lv_obj_t * page)
 * @param page pointer to a page object
 * @return true: horizontal fit is enabled; false: disabled
 */
-static inline bool lv_page_get_scrl_hor_fit(const lv_obj_t * page)
-{
+static inline bool lv_page_get_scrl_hor_fit(const lv_obj_t * page) {
     return lv_cont_get_hor_fit(lv_page_get_scrl(page));
 }
 
@@ -317,8 +307,7 @@ static inline bool lv_page_get_scrl_hor_fit(const lv_obj_t * page)
 * @param page pointer to a page object
 * @return true: vertical fit is enabled; false: disabled
 */
-static inline bool lv_page_get_scrl_fit_ver(const lv_obj_t * page)
-{
+static inline bool lv_page_get_scrl_fit_ver(const lv_obj_t * page) {
     return lv_cont_get_ver_fit(lv_page_get_scrl(page));
 }
 

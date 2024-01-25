@@ -43,8 +43,7 @@ extern "C" {
  **********************/
 
 /*Data of check box*/
-typedef struct
-{
+typedef struct {
     lv_btn_ext_t bg_btn; /*Ext. of ancestor*/
     /*New data for this type */
     lv_obj_t * bullet;  /*Pointer to button*/
@@ -89,8 +88,7 @@ void lv_cb_set_text(lv_obj_t * cb, const char * txt);
  * @param cb pointer to a check box object
  * @param checked true: make the check box checked; false: make it unchecked
  */
-static inline void lv_cb_set_checked(lv_obj_t * cb, bool checked)
-{
+static inline void lv_cb_set_checked(lv_obj_t * cb, bool checked) {
     lv_btn_set_state(cb, checked ? LV_BTN_STATE_TGL_REL : LV_BTN_STATE_REL);
 }
 
@@ -98,8 +96,7 @@ static inline void lv_cb_set_checked(lv_obj_t * cb, bool checked)
  * Make the check box inactive (disabled)
  * @param cb pointer to a check box object
  */
-static inline void lv_cb_set_inactive(lv_obj_t * cb)
-{
+static inline void lv_cb_set_inactive(lv_obj_t * cb) {
     lv_btn_set_state(cb, LV_BTN_STATE_INA);
 }
 
@@ -107,8 +104,7 @@ static inline void lv_cb_set_inactive(lv_obj_t * cb)
  * Set a function to call when the check box is clicked
  * @param cb pointer to a check box object
  */
-static inline void lv_cb_set_action(lv_obj_t * cb, lv_action_t action)
-{
+static inline void lv_cb_set_action(lv_obj_t * cb, lv_action_t action) {
     lv_btn_set_action(cb, LV_BTN_ACTION_CLICK, action);
 }
 
@@ -137,8 +133,7 @@ const char * lv_cb_get_text(const lv_obj_t * cb);
  * @param cb pointer to a check box object
  * @return true: checked; false: not checked
  */
-static inline bool lv_cb_is_checked(const lv_obj_t * cb)
-{
+static inline bool lv_cb_is_checked(const lv_obj_t * cb) {
     return lv_btn_get_state(cb) == LV_BTN_STATE_REL ? false : true;
 }
 
@@ -147,8 +142,7 @@ static inline bool lv_cb_is_checked(const lv_obj_t * cb)
  * @param cb pointer to a button object
  * @return pointer to the action function
  */
-static inline lv_action_t lv_cb_get_action(const lv_obj_t * cb)
-{
+static inline lv_action_t lv_cb_get_action(const lv_obj_t * cb) {
     return lv_btn_get_action(cb, LV_BTN_ACTION_CLICK);
 }
 

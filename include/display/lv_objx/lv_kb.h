@@ -126,8 +126,7 @@ void lv_kb_set_hide_action(lv_obj_t * kb, lv_action_t action);
  * @param map pointer to a string array to describe the map.
  *            See 'lv_btnm_set_map()' for more info.
  */
-static inline void lv_kb_set_map(lv_obj_t *kb, const char ** map)
-{
+static inline void lv_kb_set_map(lv_obj_t *kb, const char ** map) {
     lv_btnm_set_map(kb, map);
 }
 

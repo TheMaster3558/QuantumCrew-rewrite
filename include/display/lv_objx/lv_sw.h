@@ -38,8 +38,7 @@ extern "C" {
  *      TYPEDEFS
  **********************/
 /*Data of switch*/
-typedef struct
-{
+typedef struct {
     lv_slider_ext_t slider;         /*Ext. of ancestor*/
     /*New data for this type */
     lv_style_t *style_knob_off;     /*Style of the knob when the switch is OFF*/
@@ -119,8 +118,7 @@ bool lv_sw_toggle_anim(lv_obj_t *sw);
  * @param sw pointer to switch object
  * @param action a callback function
  */
-static inline void lv_sw_set_action(lv_obj_t * sw, lv_action_t action)
-{
+static inline void lv_sw_set_action(lv_obj_t * sw, lv_action_t action) {
     lv_slider_set_action(sw, action);
 }
 
@@ -151,8 +149,7 @@ void lv_sw_set_anim_time(lv_obj_t *sw, uint16_t anim_time);
  * @param sw pointer to a switch object
  * @return false: OFF; true: ON
  */
-static inline bool lv_sw_get_state(const lv_obj_t *sw)
-{
+static inline bool lv_sw_get_state(const lv_obj_t *sw) {
     return lv_bar_get_value(sw) < LV_SWITCH_SLIDER_ANIM_MAX / 2 ? false : true;
 }
 
@@ -161,8 +158,7 @@ static inline bool lv_sw_get_state(const lv_obj_t *sw)
  * @param slider pointer to a switch object
  * @return the callback function
  */
-static inline lv_action_t lv_sw_get_action(const lv_obj_t * slider)
-{
+static inline lv_action_t lv_sw_get_action(const lv_obj_t * slider) {
     return lv_slider_get_action(slider);
 }
 

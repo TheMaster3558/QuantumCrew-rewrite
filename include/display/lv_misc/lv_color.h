@@ -92,18 +92,15 @@ enum {
  *      TYPEDEFS
  **********************/
 
-typedef union
-{
+typedef union {
     uint8_t blue  :1;
     uint8_t green :1;
     uint8_t red   :1;
     uint8_t full  :1;
 } lv_color1_t;
 
-typedef union
-{
-    struct
-    {
+typedef union {
+    struct {
         uint8_t blue  :2;
         uint8_t green :3;
         uint8_t red   :3;
@@ -111,10 +108,8 @@ typedef union
     uint8_t full;
 } lv_color8_t;
 
-typedef union
-{
-    struct
-    {
+typedef union {
+    struct {
 #if LV_COLOR_16_SWAP == 0
         uint16_t blue  :5;
         uint16_t green :6;
@@ -129,10 +124,8 @@ typedef union
     uint16_t full;
 } lv_color16_t;
 
-typedef union
-{
-    struct
-    {
+typedef union {
+    struct {
         uint8_t blue;
         uint8_t green;
         uint8_t red;
@@ -159,8 +152,7 @@ typedef lv_color32_t lv_color_t;
 
 typedef uint8_t lv_opa_t;
 
-typedef struct
-{
+typedef struct {
     uint16_t h;
     uint8_t s;
     uint8_t v;
@@ -184,8 +176,7 @@ typedef struct
  *         Shift right with 5 - 3 = 2
  */
 
-static inline uint8_t lv_color_to1(lv_color_t color)
-{
+static inline uint8_t lv_color_to1(lv_color_t color) {
 #if LV_COLOR_DEPTH == 1
     return color.full;
 #elif LV_COLOR_DEPTH == 8
@@ -222,8 +213,7 @@ static inline uint8_t lv_color_to1(lv_color_t color)
 #endif
 }
 
-static inline uint8_t lv_color_to8(lv_color_t color)
-{
+static inline uint8_t lv_color_to8(lv_color_t color) {
 #if LV_COLOR_DEPTH == 1
     if(color.full == 0) return 0;
     else return 0xFF;
@@ -253,8 +243,7 @@ static inline uint8_t lv_color_to8(lv_color_t color)
 #endif
 }
 
-static inline uint16_t lv_color_to16(lv_color_t color)
-{
+static inline uint16_t lv_color_to16(lv_color_t color) {
 #if LV_COLOR_DEPTH == 1
     if(color.full == 0) return 0;
     else return 0xFFFF;
@@ -290,8 +279,7 @@ static inline uint16_t lv_color_to16(lv_color_t color)
 #endif
 }
 
-static inline uint32_t lv_color_to32(lv_color_t color)
-{
+static inline uint32_t lv_color_to32(lv_color_t color) {
 #if LV_COLOR_DEPTH == 1
     if(color.full == 0) return 0;
     else return 0xFFFFFFFF;
@@ -323,8 +311,7 @@ static inline uint32_t lv_color_to32(lv_color_t color)
 #endif
 }
 
-static inline lv_color_t lv_color_mix(lv_color_t c1, lv_color_t c2, uint8_t mix)
-{
+static inline lv_color_t lv_color_mix(lv_color_t c1, lv_color_t c2, uint8_t mix) {
     lv_color_t ret;
 #if LV_COLOR_DEPTH != 1
     /*LV_COLOR_DEPTH == 8, 16 or 32*/
@@ -356,8 +343,7 @@ static inline lv_color_t lv_color_mix(lv_color_t c1, lv_color_t c2, uint8_t mix)
  * @param color a color
  * @return the brightness [0..255]
  */
-static inline uint8_t lv_color_brightness(lv_color_t color)
-{
+static inline uint8_t lv_color_brightness(lv_color_t color) {
     lv_color32_t c32;
     c32.full = lv_color_to32(color);
     uint16_t bright = 3 * c32.red + c32.blue + 4 * c32.green;
@@ -380,7 +366,7 @@ static inline uint8_t lv_color_brightness(lv_color_t color)
 #elif LV_COLOR_DEPTH == 32
 #ifdef __cplusplus
 #  define LV_COLOR_MAKE(r8, g8, b8) lv_color_t{b8, g8, r8, 0xff}
-#else 
+#else
 #  define LV_COLOR_MAKE(r8, g8, b8) ((lv_color_t){{b8, g8, r8, 0xff}})            /*Fix 0xff alpha*/
 #endif
 #endif
@@ -406,11 +392,11 @@ static inline uint8_t lv_color_brightness(lv_color_t color)
                                 (uint8_t) ((uint32_t)(c & 0xF0)     | ((c & 0xF0) >> 4)), \
                                 (uint8_t) ((uint32_t)(c & 0xF)      | ((c & 0xF) << 4)))
 
-static inline lv_color_t lv_color_hex(uint32_t c){
+static inline lv_color_t lv_color_hex(uint32_t c) {
     return LV_COLOR_HEX(c);
 }
 
-static inline lv_color_t lv_color_hex3(uint32_t c){
+static inline lv_color_t lv_color_hex3(uint32_t c) {
     return LV_COLOR_HEX3(c);
 }
 

@@ -37,8 +37,7 @@ extern "C" {
  **********************/
 
 /*Long mode behaviors. Used in 'lv_label_ext_t' */
-enum
-{
+enum {
     LV_LABEL_LONG_EXPAND,   /*Expand the object size to the text size*/
     LV_LABEL_LONG_BREAK,    /*Keep the object width, break the too long lines and expand the object height*/
     LV_LABEL_LONG_SCROLL,   /*Expand the object size and scroll the text on the parent (move the label object)*/
@@ -57,8 +56,7 @@ enum {
 typedef uint8_t lv_label_align_t;
 
 /*Data of label*/
-typedef struct
-{
+typedef struct {
     /*Inherited from 'base_obj' so no inherited ext.*/  /*Ext. of ancestor*/
     /*New data for this type */
     char * text;                            /*Text of the label*/
@@ -173,8 +171,7 @@ void lv_label_set_anim_speed(lv_obj_t *label, uint16_t anim_speed);
  * @param label pointer to an label object
  * @param style pointer to a style
  */
-static inline void lv_label_set_style(lv_obj_t *label, lv_style_t *style)
-{
+static inline void lv_label_set_style(lv_obj_t *label, lv_style_t *style) {
     lv_obj_set_style(label, style);
 }
 /*=====================
@@ -254,8 +251,7 @@ uint16_t lv_label_get_letter_on(const lv_obj_t * label, lv_point_t * pos);
  * @param label pointer to an label object
  * @return pointer to the label's style
  */
-static inline lv_style_t* lv_label_get_style(const lv_obj_t *label)
-{
+static inline lv_style_t* lv_label_get_style(const lv_obj_t *label) {
     return lv_obj_get_style(label);
 }
 

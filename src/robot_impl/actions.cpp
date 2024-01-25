@@ -44,10 +44,10 @@ void Robot::Actions::Catapult::lower() {
 
 void Robot::Actions::Catapult::stepToHoldAngle() {
     Robot::Motors::catapult.move(
-            Robot::Actions::Catapult::catapultPID.update(
-                    Robot::Sensors::getCatapultAngle() - Robot::Tunables::catapultHoldAngle
-            )
-    );
+                               Robot::Actions::Catapult::catapultPID.update(
+                                   Robot::Sensors::getCatapultAngle() - Robot::Tunables::catapultHoldAngle
+                               )
+                           );
 }
 
 

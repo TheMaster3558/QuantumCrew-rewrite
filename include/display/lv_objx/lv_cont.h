@@ -32,8 +32,7 @@ extern "C" {
  **********************/
 
 /*Layout options*/
-enum
-{
+enum {
     LV_LAYOUT_OFF = 0,
     LV_LAYOUT_CENTER,
     LV_LAYOUT_COL_L,    /*Column left align*/
@@ -47,8 +46,7 @@ enum
 };
 typedef uint8_t lv_layout_t;
 
-typedef struct
-{
+typedef struct {
     /*Inherited from 'base_obj' so no inherited ext. */ /*Ext. of ancestor*/
     /*New data for this type */
     uint8_t layout  :4;     /*A layout from 'lv_cont_layout_t' enum*/
@@ -95,8 +93,7 @@ void lv_cont_set_fit(lv_obj_t * cont, bool hor_en, bool ver_en);
  * @param cont pointer to a container object
  * @param style pointer to the new style
  */
-static inline void lv_cont_set_style(lv_obj_t *cont, lv_style_t * style)
-{
+static inline void lv_cont_set_style(lv_obj_t *cont, lv_style_t * style) {
     lv_obj_set_style(cont, style);
 }
 
@@ -145,8 +142,7 @@ lv_coord_t lv_cont_get_fit_height(lv_obj_t * cont);
  * @param cont pointer to a container object
  * @return pointer to the container's style
  */
-static inline lv_style_t * lv_cont_get_style(const lv_obj_t *cont)
-{
+static inline lv_style_t * lv_cont_get_style(const lv_obj_t *cont) {
     return lv_obj_get_style(cont);
 }
 

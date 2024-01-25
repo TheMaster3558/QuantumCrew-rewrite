@@ -29,14 +29,12 @@ extern "C" {
  **********************/
 typedef int16_t lv_coord_t;
 
-typedef struct
-{
+typedef struct {
     lv_coord_t x;
     lv_coord_t y;
 } lv_point_t;
 
-typedef struct
-{
+typedef struct {
     lv_coord_t x1;
     lv_coord_t y1;
     lv_coord_t x2;
@@ -62,8 +60,7 @@ void lv_area_set(lv_area_t * area_p, lv_coord_t x1, lv_coord_t y1, lv_coord_t x2
  * @param dest pointer to the destination area
  * @param src pointer to the source area
  */
-inline static void lv_area_copy(lv_area_t * dest, const lv_area_t * src)
-{
+inline static void lv_area_copy(lv_area_t * dest, const lv_area_t * src) {
     memcpy(dest, src, sizeof(lv_area_t));
 }
 
@@ -72,8 +69,7 @@ inline static void lv_area_copy(lv_area_t * dest, const lv_area_t * src)
  * @param area_p pointer to an area
  * @return the width of the area (if x1 == x2 -> width = 1)
  */
-static inline lv_coord_t lv_area_get_width(const lv_area_t * area_p)
-{
+static inline lv_coord_t lv_area_get_width(const lv_area_t * area_p) {
     return area_p->x2 - area_p->x1 + 1;
 }
 
@@ -82,8 +78,7 @@ static inline lv_coord_t lv_area_get_width(const lv_area_t * area_p)
  * @param area_p pointer to an area
  * @return the height of the area (if y1 == y2 -> height = 1)
  */
-static inline lv_coord_t lv_area_get_height(const lv_area_t * area_p)
-{
+static inline lv_coord_t lv_area_get_height(const lv_area_t * area_p) {
     return area_p->y2 - area_p->y1 + 1;
 }
 

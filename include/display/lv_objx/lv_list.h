@@ -49,8 +49,7 @@ extern "C" {
  *      TYPEDEFS
  **********************/
 /*Data of list*/
-typedef struct
-{
+typedef struct {
     lv_page_ext_t page; /*Ext. of ancestor*/
     /*New data for this type */
     uint16_t anim_time;                          /*Scroll animation time*/
@@ -121,14 +120,14 @@ bool lv_list_remove(const lv_obj_t * list, uint32_t index);
 /*=====================
  * Setter functions
  *====================*/
- 
+
 /**
  * Set single button selected mode, only one button will be selected if enabled.
  * @param list pointer to the currently pressed list object
  * @param mode, enable(true)/disable(false) single selected mode.
  */
 void lv_list_set_single_mode(lv_obj_t *list, bool mode);
-    
+
 #if USE_LV_GROUP
 
 /**
@@ -151,8 +150,7 @@ void lv_list_set_anim_time(lv_obj_t *list, uint16_t anim_time);
  * @param list pointer to a list object
  * @param sb_mode the new mode from 'lv_page_sb_mode_t' enum
  */
-static inline void lv_list_set_sb_mode(lv_obj_t * list, lv_sb_mode_t mode)
-{
+static inline void lv_list_set_sb_mode(lv_obj_t * list, lv_sb_mode_t mode) {
     lv_page_set_sb_mode(list, mode);
 }
 
@@ -161,8 +159,7 @@ static inline void lv_list_set_sb_mode(lv_obj_t * list, lv_sb_mode_t mode)
  * @param list pointer to a List
  * @param en true or false to enable/disable scroll propagation
  */
-static inline void lv_list_set_scroll_propagation(lv_obj_t * list, bool en)
-{
+static inline void lv_list_set_scroll_propagation(lv_obj_t * list, bool en) {
     lv_page_set_scroll_propagation(list, en);
 }
 
@@ -171,8 +168,7 @@ static inline void lv_list_set_scroll_propagation(lv_obj_t * list, bool en)
  * @param list pointer to a List
  * @param en true or false to enable/disable end flash
  */
-static inline void lv_list_set_edge_flash(lv_obj_t * list, bool en)
-{
+static inline void lv_list_set_edge_flash(lv_obj_t * list, bool en) {
     lv_page_set_edge_flash(list, en);
 }
 
@@ -193,7 +189,7 @@ void lv_list_set_style(lv_obj_t *list, lv_list_style_t type, lv_style_t *style);
  * @param list pointer to the currently pressed list object.
  */
 bool lv_list_get_single_mode(lv_obj_t *list);
-    
+
 /**
  * Get the text of a list element
  * @param btn pointer to list element
@@ -268,8 +264,7 @@ uint16_t lv_list_get_anim_time(const lv_obj_t *list);
  * @param list pointer to a list object
  * @return scrollbar mode from 'lv_page_sb_mode_t' enum
  */
-static inline lv_sb_mode_t lv_list_get_sb_mode(const lv_obj_t * list)
-{
+static inline lv_sb_mode_t lv_list_get_sb_mode(const lv_obj_t * list) {
     return lv_page_get_sb_mode(list);
 }
 
@@ -278,8 +273,7 @@ static inline lv_sb_mode_t lv_list_get_sb_mode(const lv_obj_t * list)
  * @param list pointer to a List
  * @return true or false
  */
-static inline bool lv_list_get_scroll_propagation(lv_obj_t * list)
-{
+static inline bool lv_list_get_scroll_propagation(lv_obj_t * list) {
     return lv_page_get_scroll_propagation(list);
 }
 
@@ -288,8 +282,7 @@ static inline bool lv_list_get_scroll_propagation(lv_obj_t * list)
  * @param list pointer to a List
  * @return true or false
  */
-static inline bool lv_list_get_edge_flash(lv_obj_t * list)
-{
+static inline bool lv_list_get_edge_flash(lv_obj_t * list) {
     return lv_page_get_edge_flash(list);
 }
 

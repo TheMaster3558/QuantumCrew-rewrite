@@ -32,8 +32,7 @@ extern "C" {
  **********************/
 
 /*Data of line*/
-typedef struct
-{
+typedef struct {
     /*Inherited from 'base_obj' so no inherited ext.*/  /*Ext. of ancestor*/
     const lv_point_t * point_array;    /*Pointer to an array with the points of the line*/
     uint16_t  point_num;            /*Number of points in 'point_array' */
@@ -90,8 +89,7 @@ void lv_line_set_y_invert(lv_obj_t * line, bool en);
  * @param line pointer to a line object
  * @param style pointer to a style
  */
-static inline void lv_line_set_style(lv_obj_t *line, lv_style_t *style)
-{
+static inline void lv_line_set_style(lv_obj_t *line, lv_style_t *style) {
     lv_obj_set_style(line, style);
 }
 
@@ -100,8 +98,7 @@ static inline void lv_line_set_style(lv_obj_t *line, lv_style_t *style)
  * @param line -
  * @param upscale -
  */
-static inline void lv_line_set_upscale(lv_obj_t * line, bool upcale)
-{
+static inline void lv_line_set_upscale(lv_obj_t * line, bool upcale) {
     (void) line;
     (void) upcale;
 }
@@ -128,8 +125,7 @@ bool lv_line_get_y_invert(const lv_obj_t * line);
  * @param line pointer to an line object
  * @return pointer to the line's style
  */
-static inline lv_style_t* lv_line_get_style(const lv_obj_t *line)
-{
+static inline lv_style_t* lv_line_get_style(const lv_obj_t *line) {
     return lv_obj_get_style(line);
 }
 
@@ -138,8 +134,7 @@ static inline lv_style_t* lv_line_get_style(const lv_obj_t *line)
  * @param line -
  * @return false
  */
-static inline bool lv_line_get_upscale(const lv_obj_t * line)
-{
+static inline bool lv_line_get_upscale(const lv_obj_t * line) {
     (void) line;
     return false;
 }

@@ -110,8 +110,7 @@ void lv_imgbtn_set_src(lv_obj_t * imgbtn, lv_btn_state_t state, const void * src
  * @param imgbtn pointer to an image button object
  * @param tgl true: enable toggled states, false: disable
  */
-static inline void lv_imgbtn_set_toggle(lv_obj_t * imgbtn, bool tgl)
-{
+static inline void lv_imgbtn_set_toggle(lv_obj_t * imgbtn, bool tgl) {
     lv_btn_set_toggle(imgbtn, tgl);
 }
 
@@ -120,8 +119,7 @@ static inline void lv_imgbtn_set_toggle(lv_obj_t * imgbtn, bool tgl)
  * @param imgbtn pointer to an image button object
  * @param state the new state of the button (from lv_btn_state_t enum)
  */
-static inline void lv_imgbtn_set_state(lv_obj_t * imgbtn, lv_btn_state_t state)
-{
+static inline void lv_imgbtn_set_state(lv_obj_t * imgbtn, lv_btn_state_t state) {
     lv_btn_set_state(imgbtn, state);
 }
 
@@ -129,8 +127,7 @@ static inline void lv_imgbtn_set_state(lv_obj_t * imgbtn, lv_btn_state_t state)
  * Toggle the state of the image button (ON->OFF, OFF->ON)
  * @param imgbtn pointer to a image button object
  */
-static inline void lv_imgbtn_toggle(lv_obj_t * imgbtn)
-{
+static inline void lv_imgbtn_toggle(lv_obj_t * imgbtn) {
     lv_btn_toggle(imgbtn);
 }
 
@@ -139,8 +136,7 @@ static inline void lv_imgbtn_toggle(lv_obj_t * imgbtn)
  * @param imgbtn pointer to an image button object
  * @param action type of event form 'lv_action_t' (press, release, long press, long press repeat)
  */
-static inline void lv_imgbtn_set_action(lv_obj_t * imgbtn, lv_btn_action_t type, lv_action_t action)
-{
+static inline void lv_imgbtn_set_action(lv_obj_t * imgbtn, lv_btn_action_t type, lv_action_t action) {
     lv_btn_set_action(imgbtn, type, action);
 }
 
@@ -198,8 +194,7 @@ const void * lv_imgbtn_get_src_right(lv_obj_t * imgbtn, lv_btn_state_t state);
  * @param imgbtn pointer to a image button object
  * @return the state of the button (from lv_btn_state_t enum)
  */
-static inline lv_btn_state_t lv_imgbtn_get_state(const lv_obj_t * imgbtn)
-{
+static inline lv_btn_state_t lv_imgbtn_get_state(const lv_obj_t * imgbtn) {
     return lv_btn_get_state(imgbtn);
 }
 
@@ -208,8 +203,7 @@ static inline lv_btn_state_t lv_imgbtn_get_state(const lv_obj_t * imgbtn)
  * @param imgbtn pointer to a image button object
  * @return ture: toggle enabled, false: disabled
  */
-static inline bool lv_imgbtn_get_toggle(const lv_obj_t * imgbtn)
-{
+static inline bool lv_imgbtn_get_toggle(const lv_obj_t * imgbtn) {
     return lv_btn_get_toggle(imgbtn);
 }
 
@@ -218,8 +212,7 @@ static inline bool lv_imgbtn_get_toggle(const lv_obj_t * imgbtn)
  * @param imgbtn pointer to a image button object
  * @return pointer to the release action function
  */
-static inline lv_action_t lv_imgbtn_get_action(const lv_obj_t * imgbtn, lv_btn_action_t type)
-{
+static inline lv_action_t lv_imgbtn_get_action(const lv_obj_t * imgbtn, lv_btn_action_t type) {
     return lv_btn_get_action(imgbtn, type);
 }
 

@@ -40,8 +40,7 @@ extern "C" {
  **********************/
 
 /*Data of gauge*/
-typedef struct
-{
+typedef struct {
     lv_lmeter_ext_t lmeter;     /*Ext. of ancestor*/
     /*New data for this type */
     int16_t * values;               /*Array of the set values (for needles) */
@@ -88,8 +87,7 @@ void lv_gauge_set_value(lv_obj_t * gauge, uint8_t needle_id, int16_t value);
  * @param min minimum value
  * @param max maximum value
  */
-static inline void lv_gauge_set_range(lv_obj_t *gauge, int16_t min, int16_t max)
-{
+static inline void lv_gauge_set_range(lv_obj_t *gauge, int16_t min, int16_t max) {
     lv_lmeter_set_range(gauge, min, max);
 }
 
@@ -98,8 +96,7 @@ static inline void lv_gauge_set_range(lv_obj_t *gauge, int16_t min, int16_t max)
  * @param gauge pointer to a gauge object
  * @param value the critical value
  */
-static inline void lv_gauge_set_critical_value(lv_obj_t * gauge, int16_t value)
-{
+static inline void lv_gauge_set_critical_value(lv_obj_t * gauge, int16_t value) {
     lv_lmeter_set_value(gauge, value);
 }
 
@@ -118,8 +115,7 @@ void lv_gauge_set_scale(lv_obj_t * gauge, uint16_t angle, uint8_t line_cnt, uint
  * @param gauge pointer to a gauge object
  * @param bg set the style of the gauge
  *  */
-static inline void lv_gauge_set_style(lv_obj_t *gauge, lv_style_t *bg)
-{
+static inline void lv_gauge_set_style(lv_obj_t *gauge, lv_style_t *bg) {
     lv_obj_set_style(gauge, bg);
 }
 
@@ -147,8 +143,7 @@ uint8_t lv_gauge_get_needle_count(const lv_obj_t * gauge);
  * @param gauge pointer to a gauge object
  * @return the minimum value of the gauge
  */
-static inline int16_t lv_gauge_get_min_value(const lv_obj_t * lmeter)
-{
+static inline int16_t lv_gauge_get_min_value(const lv_obj_t * lmeter) {
     return lv_lmeter_get_min_value(lmeter);
 }
 
@@ -157,8 +152,7 @@ static inline int16_t lv_gauge_get_min_value(const lv_obj_t * lmeter)
  * @param gauge pointer to a gauge object
  * @return the maximum value of the gauge
  */
-static inline int16_t lv_gauge_get_max_value(const lv_obj_t * lmeter)
-{
+static inline int16_t lv_gauge_get_max_value(const lv_obj_t * lmeter) {
     return lv_lmeter_get_max_value(lmeter);
 }
 
@@ -167,8 +161,7 @@ static inline int16_t lv_gauge_get_max_value(const lv_obj_t * lmeter)
  * @param gauge pointer to a gauge object
  * @return the critical value
  */
-static inline int16_t lv_gauge_get_critical_value(const lv_obj_t * gauge)
-{
+static inline int16_t lv_gauge_get_critical_value(const lv_obj_t * gauge) {
     return lv_lmeter_get_value(gauge);
 }
 
@@ -184,8 +177,7 @@ uint8_t lv_gauge_get_label_count(const lv_obj_t * gauge);
  * @param gauge pointer to a gauge object
  * @return number of the scale units
  */
-static inline uint8_t lv_gauge_get_line_count(const lv_obj_t * gauge)
-{
+static inline uint8_t lv_gauge_get_line_count(const lv_obj_t * gauge) {
     return lv_lmeter_get_line_count(gauge);
 }
 
@@ -194,8 +186,7 @@ static inline uint8_t lv_gauge_get_line_count(const lv_obj_t * gauge)
  * @param gauge pointer to a gauge object
  * @return angle of the scale
  */
-static inline uint16_t lv_gauge_get_scale_angle(const lv_obj_t * gauge)
-{
+static inline uint16_t lv_gauge_get_scale_angle(const lv_obj_t * gauge) {
     return lv_lmeter_get_scale_angle(gauge);
 }
 
@@ -204,8 +195,7 @@ static inline uint16_t lv_gauge_get_scale_angle(const lv_obj_t * gauge)
  * @param gauge pointer to a gauge object
  * @return pointer to the gauge's style
  */
-static inline lv_style_t * lv_gauge_get_style(const lv_obj_t *gauge)
-{
+static inline lv_style_t * lv_gauge_get_style(const lv_obj_t *gauge) {
     return lv_obj_get_style(gauge);
 }
 

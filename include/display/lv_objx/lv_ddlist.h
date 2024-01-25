@@ -42,8 +42,7 @@ extern "C" {
  *      TYPEDEFS
  **********************/
 /*Data of drop down list*/
-typedef struct
-{
+typedef struct {
     lv_page_ext_t page; /*Ext. of ancestor*/
     /*New data for this type */
     lv_obj_t *label;                     /*Label for the options*/
@@ -129,8 +128,7 @@ void lv_ddlist_set_hor_fit(lv_obj_t * ddlist, bool en);
  * @param ddlist pointer to a drop down list object
  * @param sb_mode the new mode from 'lv_page_sb_mode_t' enum
  */
-static inline void lv_ddlist_set_sb_mode(lv_obj_t * ddlist, lv_sb_mode_t mode)
-{
+static inline void lv_ddlist_set_sb_mode(lv_obj_t * ddlist, lv_sb_mode_t mode) {
     lv_page_set_sb_mode(ddlist, mode);
 }
 
@@ -207,8 +205,7 @@ lv_coord_t lv_ddlist_get_fix_height(const lv_obj_t * ddlist);
  * @param ddlist pointer to a  drop down list object
  * @return scrollbar mode from 'lv_page_sb_mode_t' enum
  */
-static inline lv_sb_mode_t lv_ddlist_get_sb_mode(const lv_obj_t * ddlist)
-{
+static inline lv_sb_mode_t lv_ddlist_get_sb_mode(const lv_obj_t * ddlist) {
     return lv_page_get_sb_mode(ddlist);
 }
 

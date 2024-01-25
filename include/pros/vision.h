@@ -36,9 +36,9 @@ namespace pros {
  * that can be detected by the Vision Sensor
  */
 typedef enum vision_object_type {
-	E_VISION_OBJECT_NORMAL = 0,
-	E_VISION_OBJECT_COLOR_CODE = 1,
-	E_VISION_OBJECT_LINE = 2
+    E_VISION_OBJECT_NORMAL = 0,
+    E_VISION_OBJECT_COLOR_CODE = 1,
+    E_VISION_OBJECT_LINE = 2
 } vision_object_type_e_t;
 
 /**
@@ -46,17 +46,17 @@ typedef enum vision_object_type {
  * to detect objects.
  */
 typedef struct __attribute__((__packed__)) vision_signature {
-	uint8_t id;
-	uint8_t _pad[3];
-	float range;
-	int32_t u_min;
-	int32_t u_max;
-	int32_t u_mean;
-	int32_t v_min;
-	int32_t v_max;
-	int32_t v_mean;
-	uint32_t rgb;
-	uint32_t type;
+    uint8_t id;
+    uint8_t _pad[3];
+    float range;
+    int32_t u_min;
+    int32_t u_max;
+    int32_t u_mean;
+    int32_t v_min;
+    int32_t v_max;
+    int32_t v_mean;
+    uint32_t rgb;
+    uint32_t type;
 } vision_signature_s_t;
 
 /**
@@ -69,30 +69,30 @@ typedef uint16_t vision_color_code_t;
  * by the Vision Sensor
  */
 typedef struct __attribute__((__packed__)) vision_object {
-	// Object signature
-	uint16_t signature;
-	// Object type, e.g. normal, color code, or line detection
-	vision_object_type_e_t type;
-	// left boundary coordinate of the object
-	int16_t left_coord;
-	// top boundary coordinate of the object
-	int16_t top_coord;
-	// width of the object
-	int16_t width;
-	// height of the object
-	int16_t height;
-	// Angle of a color code object in 0.1 degree units (e.g. 10 -> 1 degree, 155
-	// -> 15.5 degrees)
-	uint16_t angle;
+    // Object signature
+    uint16_t signature;
+    // Object type, e.g. normal, color code, or line detection
+    vision_object_type_e_t type;
+    // left boundary coordinate of the object
+    int16_t left_coord;
+    // top boundary coordinate of the object
+    int16_t top_coord;
+    // width of the object
+    int16_t width;
+    // height of the object
+    int16_t height;
+    // Angle of a color code object in 0.1 degree units (e.g. 10 -> 1 degree, 155
+    // -> 15.5 degrees)
+    uint16_t angle;
 
-	// coordinates of the middle of the object (computed from the values above)
-	int16_t x_middle_coord;
-	int16_t y_middle_coord;
+    // coordinates of the middle of the object (computed from the values above)
+    int16_t x_middle_coord;
+    int16_t y_middle_coord;
 } vision_object_s_t;
 
 typedef enum vision_zero {
-	E_VISION_ZERO_TOPLEFT = 0,  // (0,0) coordinate is the top left of the FOV
-	E_VISION_ZERO_CENTER = 1    // (0,0) coordinate is the center of the FOV
+    E_VISION_ZERO_TOPLEFT = 0,  // (0,0) coordinate is the top left of the FOV
+    E_VISION_ZERO_CENTER = 1    // (0,0) coordinate is the center of the FOV
 } vision_zero_e_t;
 
 #ifdef PROS_USE_SIMPLE_NAMES
@@ -157,8 +157,8 @@ int32_t vision_clear_led(uint8_t port);
  * \return A vision_signature_s_t that can be set using vision_set_signature
  */
 vision_signature_s_t vision_signature_from_utility(const int32_t id, const int32_t u_min, const int32_t u_max,
-                                                   const int32_t u_mean, const int32_t v_min, const int32_t v_max,
-                                                   const int32_t v_mean, const float range, const int32_t type);
+        const int32_t u_mean, const int32_t v_min, const int32_t v_max,
+        const int32_t v_mean, const float range, const int32_t type);
 
 /**
  * Creates a color code that represents a combination of the given signature
@@ -186,7 +186,7 @@ vision_signature_s_t vision_signature_from_utility(const int32_t id, const int32
  * \return A vision_color_code_t object containing the color code information.
  */
 vision_color_code_t vision_create_color_code(uint8_t port, const uint32_t sig_id1, const uint32_t sig_id2,
-                                             const uint32_t sig_id3, const uint32_t sig_id4, const uint32_t sig_id5);
+        const uint32_t sig_id3, const uint32_t sig_id4, const uint32_t sig_id5);
 
 /**
  * Gets the nth largest object according to size_id.

@@ -56,8 +56,8 @@ void Autons::Autons::skills() {
     Robot::chassis.waitUntilDone();
 
     Robot::chassis.moveToPose(42, 9, 280, 2000, {
-            .forwards = false,
-            .minSpeed = 110
+        .forwards = false,
+        .minSpeed = 110
     });
     Robot::chassis.waitUntilDone();
 

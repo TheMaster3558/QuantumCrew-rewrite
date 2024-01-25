@@ -54,8 +54,7 @@ enum {
 typedef uint8_t lv_cursor_type_t;
 
 /*Data of text area*/
-typedef struct
-{
+typedef struct {
     lv_page_ext_t page; /*Ext. of ancestor*/
     /*New data for this type */
     lv_obj_t * label;           /*Label of the text area*/
@@ -191,8 +190,7 @@ void lv_ta_set_max_length(lv_obj_t * ta, uint16_t num);
  * @param ta pointer to a Text area
  * @param action a function pointer
  */
-static inline void lv_ta_set_action(lv_obj_t * ta, lv_action_t action)
-{
+static inline void lv_ta_set_action(lv_obj_t * ta, lv_action_t action) {
     lv_page_set_rel_action(ta, action);
 }
 
@@ -201,8 +199,7 @@ static inline void lv_ta_set_action(lv_obj_t * ta, lv_action_t action)
  * @param ta pointer to a text area object
  * @param sb_mode the new mode from 'lv_page_sb_mode_t' enum
  */
-static inline void lv_ta_set_sb_mode(lv_obj_t * ta, lv_sb_mode_t mode)
-{
+static inline void lv_ta_set_sb_mode(lv_obj_t * ta, lv_sb_mode_t mode) {
     lv_page_set_sb_mode(ta, mode);
 }
 
@@ -211,8 +208,7 @@ static inline void lv_ta_set_sb_mode(lv_obj_t * ta, lv_sb_mode_t mode)
  * @param ta pointer to a Text area
  * @param en true or false to enable/disable scroll propagation
  */
-static inline void lv_ta_set_scroll_propagation(lv_obj_t * ta, bool en)
-{
+static inline void lv_ta_set_scroll_propagation(lv_obj_t * ta, bool en) {
     lv_page_set_scroll_propagation(ta, en);
 }
 
@@ -221,8 +217,7 @@ static inline void lv_ta_set_scroll_propagation(lv_obj_t * ta, bool en)
  * @param page pointer to a Text Area
  * @param en true or false to enable/disable end flash
  */
-static inline void lv_ta_set_edge_flash(lv_obj_t * ta, bool en)
-{
+static inline void lv_ta_set_edge_flash(lv_obj_t * ta, bool en) {
     lv_page_set_edge_flash(ta, en);
 }
 
@@ -306,8 +301,7 @@ uint16_t lv_ta_get_max_length(lv_obj_t * ta);
  * @param ta pointer to a Text area
  * @param action a function pointer
  */
-static inline lv_action_t lv_ta_get_action(lv_obj_t * ta)
-{
+static inline lv_action_t lv_ta_get_action(lv_obj_t * ta) {
     return lv_page_get_rel_action(ta);
 }
 
@@ -316,8 +310,7 @@ static inline lv_action_t lv_ta_get_action(lv_obj_t * ta)
  * @param ta pointer to a text area object
  * @return scrollbar mode from 'lv_page_sb_mode_t' enum
  */
-static inline lv_sb_mode_t lv_ta_get_sb_mode(const lv_obj_t * ta)
-{
+static inline lv_sb_mode_t lv_ta_get_sb_mode(const lv_obj_t * ta) {
     return lv_page_get_sb_mode(ta);
 }
 
@@ -326,8 +319,7 @@ static inline lv_sb_mode_t lv_ta_get_sb_mode(const lv_obj_t * ta)
  * @param ta pointer to a Text area
  * @return true or false
  */
-static inline bool lv_ta_get_scroll_propagation(lv_obj_t * ta)
-{
+static inline bool lv_ta_get_scroll_propagation(lv_obj_t * ta) {
     return lv_page_get_scroll_propagation(ta);
 }
 
@@ -336,8 +328,7 @@ static inline bool lv_ta_get_scroll_propagation(lv_obj_t * ta)
  * @param ta pointer to a Text area
  * @return true or false
  */
-static inline bool lv_ta_get_edge_flash(lv_obj_t * ta)
-{
+static inline bool lv_ta_get_edge_flash(lv_obj_t * ta) {
     return lv_page_get_edge_flash(ta);
 }
 

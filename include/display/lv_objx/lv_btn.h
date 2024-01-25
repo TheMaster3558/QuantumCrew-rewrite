@@ -39,8 +39,7 @@ extern "C" {
 
 /* Button states
  * It can be used not only by buttons but other button-like objects too*/
-enum
-{
+enum {
     LV_BTN_STATE_REL,
     LV_BTN_STATE_PR,
     LV_BTN_STATE_TGL_REL,
@@ -50,8 +49,7 @@ enum
 };
 typedef uint8_t lv_btn_state_t;
 
-enum
-{
+enum {
     LV_BTN_ACTION_CLICK,
     LV_BTN_ACTION_PR,
     LV_BTN_ACTION_LONG_PR,
@@ -62,8 +60,7 @@ typedef uint8_t lv_btn_action_t;
 
 
 /*Data of button*/
-typedef struct
-{
+typedef struct {
     lv_cont_ext_t cont; /*Ext. of ancestor*/
     /*New data for this type */
     lv_action_t actions[LV_BTN_ACTION_NUM];
@@ -136,8 +133,7 @@ void lv_btn_set_action(lv_obj_t * btn, lv_btn_action_t type, lv_action_t action)
  * @param btn pointer to a button object
  * @param layout a layout from 'lv_cont_layout_t'
  */
-static inline void lv_btn_set_layout(lv_obj_t * btn, lv_layout_t layout)
-{
+static inline void lv_btn_set_layout(lv_obj_t * btn, lv_layout_t layout) {
     lv_cont_set_layout(btn, layout);
 }
 
@@ -148,8 +144,7 @@ static inline void lv_btn_set_layout(lv_obj_t * btn, lv_layout_t layout)
  * @param hor_en true: enable the horizontal fit
  * @param ver_en true: enable the vertical fit
  */
-static inline void lv_btn_set_fit(lv_obj_t * btn, bool hor_en, bool ver_en)
-{
+static inline void lv_btn_set_fit(lv_obj_t * btn, bool hor_en, bool ver_en) {
     lv_cont_set_fit(btn, hor_en, ver_en);
 }
 
@@ -212,8 +207,7 @@ lv_action_t lv_btn_get_action(const lv_obj_t * btn, lv_btn_action_t type);
  * @param btn pointer to button object
  * @return the layout from 'lv_cont_layout_t'
  */
-static inline lv_layout_t lv_btn_get_layout(const lv_obj_t * btn)
-{
+static inline lv_layout_t lv_btn_get_layout(const lv_obj_t * btn) {
     return lv_cont_get_layout(btn);
 }
 
@@ -222,8 +216,7 @@ static inline lv_layout_t lv_btn_get_layout(const lv_obj_t * btn)
  * @param btn pointer to a button object
  * @return true: horizontal fit is enabled; false: disabled
  */
-static inline bool lv_btn_get_hor_fit(const lv_obj_t * btn)
-{
+static inline bool lv_btn_get_hor_fit(const lv_obj_t * btn) {
     return lv_cont_get_hor_fit(btn);
 }
 
@@ -232,8 +225,7 @@ static inline bool lv_btn_get_hor_fit(const lv_obj_t * btn)
  * @param btn pointer to a button object
  * @return true: vertical fit is enabled; false: disabled
  */
-static inline bool lv_btn_get_ver_fit(const lv_obj_t * btn)
-{
+static inline bool lv_btn_get_ver_fit(const lv_obj_t * btn) {
     return lv_cont_get_ver_fit(btn);
 }
 

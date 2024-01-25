@@ -61,8 +61,7 @@ void Robot::Motors::printOverheatingMotors() {
     if (!pros::competition::is_disabled()) {
         if (overheatingMotors.size() > 0) {
             Robot::controller.print(0, 0, "Overheating Motors: %s", joinVector(overheatingMotors, ", "));
-        }
-        else {
+        } else {
             Robot::controller.print(0, 0, "");
         }
     }

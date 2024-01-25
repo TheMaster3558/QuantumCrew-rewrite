@@ -78,13 +78,13 @@ void opcontrol() {
     Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
     Robot::Actions::Flaps::setFlaps(false, false);
 
-	while (true) {
-		int leftY = Robot::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-		int rightX = Robot::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+    while (true) {
+        int leftY = Robot::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightX = Robot::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
         Robot::chassis.arcade(leftY, rightX, 10.0);
 
         EventHandler::handleAll();
 
-		pros::delay(ez::util::DELAY_TIME);
-	}
+        pros::delay(ez::util::DELAY_TIME);
+    }
 }

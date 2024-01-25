@@ -59,7 +59,7 @@ void Autons::Autons::defensiveElims() {
     Robot::Actions::Flaps::setFlaps(false, false);
 
     Robot::chassis.moveToPose(45, 10, 90, 2000, {
-            .minSpeed = 110
+        .minSpeed = 110
     });
     Robot::chassis.waitUntilDone();
 
