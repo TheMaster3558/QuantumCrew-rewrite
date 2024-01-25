@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sstream>
+#include <vector>
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
 #include "pros/adi.hpp"
