@@ -29,6 +29,7 @@
 #include "robot.hpp"
 #include "handler.hpp"
 #include "autons.hpp"
+#include "utils.hpp"
 //#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 #include "lemlib/api.hpp"

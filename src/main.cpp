@@ -8,13 +8,22 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+    Robot::chassis.calibrate();
+
     Robot::Motors::intake.tare_position();
     Robot::Motors::catapult.tare_position();
     Robot::Sensors::catapultRotationSensor.reset_position();
 
+    ControllerAutonSelector autonSelector((Robot::controller));
+    ez::as::auton_selector = autonSelector;
     Autons::addAutons(ez::as::auton_selector);
 
-    Robot::chassis.calibrate();
+    ControllerDigitalIn leftButton(Robot::controller, pros::E_CONTROLLER_DIGITAL_LEFT);
+    ControllerDigitalIn rightButton(Robot::controller, pros::E_CONTROLLER_DIGITAL_RIGHT);
+    ez::as::limit_switch_lcd_initialize(
+            reinterpret_cast<pros::ADIDigitalIn*>(&leftButton),
+            reinterpret_cast<pros::ADIDigitalIn*>(&rightButton)
+    );
     ez::as::initialize();
 }
 
