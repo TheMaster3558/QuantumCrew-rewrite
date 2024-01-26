@@ -591,7 +591,7 @@ class ADIGyro : private ADIPort {
 	 * calibration period.
 	 *
 	 * It is highly recommended that an ADIGyro object be created in initialize()
-	 * when the robot_impl is stationary to ensure proper calibration. If an ADIGyro
+	 * when the robot is stationary to ensure proper calibration. If an ADIGyro
 	 * object is declared at the global scope, a hardcoded 1300ms delay at the
 	 * beginning of initialize will be necessary to ensure that the gyro's
 	 * returned values are correct at the beginning of autonomous/opcontrol.
@@ -615,7 +615,7 @@ class ADIGyro : private ADIPort {
 	 * a 1300ms calibration period.
 	 *
 	 * It is highly recommended that an ADIGyro object be created in initialize()
-	 * when the robot_impl is stationary to ensure proper calibration. If an ADIGyro
+	 * when the robot is stationary to ensure proper calibration. If an ADIGyro
 	 * object is declared at the global scope, a hardcoded 1300ms delay at the
 	 * beginning of initialize will be necessary to ensure that the gyro's
 	 * returned values are correct at the beginning of autonomous/opcontrol.

@@ -285,7 +285,7 @@ class Drive {
   void set_right_curve_buttons(pros::controller_digital_e_t decrease, pros::controller_digital_e_t increase);
 
   /**
-   * Outputs a curve from 5225A In the Zone.  This gives more control over the robot_impl at lower speeds.  https://www.desmos.com/calculator/rcfjjg83zx
+   * Outputs a curve from 5225A In the Zone.  This gives more control over the robot at lower speeds.  https://www.desmos.com/calculator/rcfjjg83zx
    *
    * \param x
    *        joystick input
@@ -293,7 +293,7 @@ class Drive {
   double left_curve_function(double x);
 
   /**
-   * Outputs a curve from 5225A In the Zone.  This gives more control over the robot_impl at lower speeds.  https://www.desmos.com/calculator/rcfjjg83zx
+   * Outputs a curve from 5225A In the Zone.  This gives more control over the robot at lower speeds.  https://www.desmos.com/calculator/rcfjjg83zx
    *
    * \param x
    *        joystick input
@@ -489,7 +489,7 @@ class Drive {
   /////
 
   /**
-   * Sets the robot_impl to move forward using PID.
+   * Sets the robot to move forward using PID.
    *
    * \param target
    *        target value in inches
@@ -503,7 +503,7 @@ class Drive {
   void set_drive_pid(double target, int speed, bool slew_on = false, bool toggle_heading = true);
 
   /**
-   * Sets the robot_impl to turn using PID.
+   * Sets the robot to turn using PID.
    *
    * \param target
    *        target value in degrees
@@ -535,7 +535,7 @@ class Drive {
   void set_angle(double angle);
 
   /**
-   * Lock the code in a while loop until the robot_impl has settled.
+   * Lock the code in a while loop until the robot has settled.
    */
   void wait_drive();
 

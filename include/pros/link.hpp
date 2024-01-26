@@ -1,7 +1,7 @@
 /**
  * \file pros/link.hpp
  *
- * Contains prototypes for functions related to robot_impl to robot_impl communications.
+ * Contains prototypes for functions related to robot to robot communications.
  *
  * Visit https://pros.cs.purdue.edu/v5/tutorials/topical/link.html to learn
  * more.

@@ -20,7 +20,7 @@ struct ProfilePoint {
    * Defines a state along a motion profiled path.
    *
    * @param ivector The pose and associated dynamics at this state in the path.
-   * @param iwheel_velocities The component of the robot_impl's velocity provided by
+   * @param iwheel_velocities The component of the robot's velocity provided by
    *                          each wheel in meters per second.
    * @param icurvature The degree to which the curve deviates from a straight
    *                   line at this point in 1 / meters.

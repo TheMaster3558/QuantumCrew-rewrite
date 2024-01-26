@@ -114,7 +114,7 @@ int32_t gps_set_offset(uint8_t port, double xOffset, double yOffset);
 int32_t gps_get_offset(uint8_t port, double* xOffset, double* yOffset);
 
 /**
- * Sets the robot_impl's location relative to the center of the field in meters.
+ * Sets the robot's location relative to the center of the field in meters.
  *
  * This function uses the following values of errno when an error state is
  * reached:

@@ -16,8 +16,8 @@ struct PathfinderPoint {
 };
 
 struct PathfinderLimits {
-  double maxVel;   // Maximum robot_impl velocity in m/s
-  double maxAccel; // Maximum robot_impl acceleration in m/s/s
-  double maxJerk;  // Maximum robot_impl jerk in m/s/s/s
+  double maxVel;   // Maximum robot velocity in m/s
+  double maxAccel; // Maximum robot acceleration in m/s/s
+  double maxJerk;  // Maximum robot jerk in m/s/s/s
 };
 } // namespace okapi

@@ -36,7 +36,7 @@ class ChassisControllerIntegrated : public ChassisController {
     std::shared_ptr<Logger> ilogger = Logger::getDefaultLogger());
 
   /**
-   * Drives the robot_impl straight for a distance (using closed-loop control).
+   * Drives the robot straight for a distance (using closed-loop control).
    *
    * ```cpp
    * // Drive forward 6 inches
@@ -51,7 +51,7 @@ class ChassisControllerIntegrated : public ChassisController {
   void moveDistance(QLength itarget) override;
 
   /**
-   * Drives the robot_impl straight for a distance (using closed-loop control).
+   * Drives the robot straight for a distance (using closed-loop control).
    *
    * ```cpp
    * // Drive forward by spinning the motors 400 degrees
@@ -63,21 +63,21 @@ class ChassisControllerIntegrated : public ChassisController {
   void moveRaw(double itarget) override;
 
   /**
-   * Sets the target distance for the robot_impl to drive straight (using closed-loop control).
+   * Sets the target distance for the robot to drive straight (using closed-loop control).
    *
    * @param itarget distance to travel
    */
   void moveDistanceAsync(QLength itarget) override;
 
   /**
-   * Sets the target distance for the robot_impl to drive straight (using closed-loop control).
+   * Sets the target distance for the robot to drive straight (using closed-loop control).
    *
    * @param itarget distance to travel in motor degrees
    */
   void moveRawAsync(double itarget) override;
 
   /**
-   * Turns the robot_impl clockwise in place (using closed-loop control).
+   * Turns the robot clockwise in place (using closed-loop control).
    *
    * ```cpp
    * // Turn 90 degrees clockwise
@@ -89,7 +89,7 @@ class ChassisControllerIntegrated : public ChassisController {
   void turnAngle(QAngle idegTarget) override;
 
   /**
-   * Turns the robot_impl clockwise in place (using closed-loop control).
+   * Turns the robot clockwise in place (using closed-loop control).
    *
    * ```cpp
    * // Turn clockwise by spinning the motors 200 degrees
@@ -101,14 +101,14 @@ class ChassisControllerIntegrated : public ChassisController {
   void turnRaw(double idegTarget) override;
 
   /**
-   * Sets the target angle for the robot_impl to turn clockwise in place (using closed-loop control).
+   * Sets the target angle for the robot to turn clockwise in place (using closed-loop control).
    *
    * @param idegTarget angle to turn for
    */
   void turnAngleAsync(QAngle idegTarget) override;
 
   /**
-   * Sets the target angle for the robot_impl to turn clockwise in place (using closed-loop control).
+   * Sets the target angle for the robot to turn clockwise in place (using closed-loop control).
    *
    * @param idegTarget angle to turn for in motor degrees
    */
@@ -134,7 +134,7 @@ class ChassisControllerIntegrated : public ChassisController {
   void waitUntilSettled() override;
 
   /**
-   * Interrupts the current movement to stop the robot_impl.
+   * Interrupts the current movement to stop the robot.
    */
   void stop() override;
 

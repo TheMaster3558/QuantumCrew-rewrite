@@ -100,10 +100,10 @@ struct Drivetrain {
          *
          * @param leftMotors pointer to the left motors
          * @param rightMotors pointer to the right motors
-         * @param trackWidth the track width of the robot_impl
+         * @param trackWidth the track width of the robot
          * @param wheelDiameter the diameter of the wheel used on the drivetrain
          * @param rpm the rpm of the wheels
-         * @param chasePower higher values make the robot_impl move faster but causes more overshoot on turns
+         * @param chasePower higher values make the robot move faster but causes more overshoot on turns
          */
         Drivetrain(pros::MotorGroup* leftMotors, pros::MotorGroup* rightMotors, float trackWidth, float wheelDiameter,
                    float rpm, float chasePower);
@@ -123,17 +123,17 @@ struct Drivetrain {
  * readability. By passing a struct to the function, we can have named
  * parameters, overcoming the c/c++ limitation
  *
- * @param forwards whether the robot_impl should move forwards or backwards. True by default
- * @param chasePower how fast the robot_impl will move around corners. Recommended value 2-15.
+ * @param forwards whether the robot should move forwards or backwards. True by default
+ * @param chasePower how fast the robot will move around corners. Recommended value 2-15.
  *  0 means use chasePower set in chassis class. 0 by default.
  * @param lead carrot point multiplier. value between 0 and 1. Higher values result in
  *  curvier movements. 0.6 by default
- * @param maxSpeed the maximum speed the robot_impl can travel at. Value between 0-127.
+ * @param maxSpeed the maximum speed the robot can travel at. Value between 0-127.
  *  127 by default
- * @param minSpeed the minimum speed the robot_impl can travel at. If set to a non-zero value,
+ * @param minSpeed the minimum speed the robot can travel at. If set to a non-zero value,
  *  the exit conditions will switch to less accurate but smoother ones. Value between 0-127.
  *  0 by default
- * @param earlyExitRange distance between the robot_impl and target point where the movement will
+ * @param earlyExitRange distance between the robot and target point where the movement will
  *  exit. Only has an effect if minSpeed is non-zero.
  */
 struct MoveToPoseParams {
@@ -211,15 +211,15 @@ class Chassis {
          */
         Pose getPose(bool radians = false, bool standardPos = false);
         /**
-         * @brief Wait until the robot_impl has traveled a certain distance along the path
+         * @brief Wait until the robot has traveled a certain distance along the path
          *
          * @note Units are in inches if current motion is moveTo or follow, degrees if using turnTo
          *
-         * @param dist the distance the robot_impl needs to travel before returning
+         * @param dist the distance the robot needs to travel before returning
          */
         void waitUntil(float dist);
         /**
-         * @brief Wait until the robot_impl has completed the path
+         * @brief Wait until the robot has completed the path
          *
          */
         void waitUntilDone();
@@ -230,10 +230,10 @@ class Chassis {
          *
          * @param x x location
          * @param y y location
-         * @param timeout longest time the robot_impl can spend moving
-         * @param forwards whether the robot_impl should turn to face the point with the front of the robot_impl. true by
+         * @param timeout longest time the robot can spend moving
+         * @param forwards whether the robot should turn to face the point with the front of the robot. true by
          * default
-         * @param maxSpeed the maximum speed the robot_impl can turn at. Default is 127
+         * @param maxSpeed the maximum speed the robot can turn at. Default is 127
          * @param async whether the function should be run asynchronously. true by default
          */
         void turnTo(float x, float y, int timeout, bool forwards = true, float maxSpeed = 127, bool async = true);
@@ -245,7 +245,7 @@ class Chassis {
          * @param x x location
          * @param y y location
          * @param theta target heading in degrees.
-         * @param timeout longest time the robot_impl can spend moving
+         * @param timeout longest time the robot can spend moving
          * @param params struct to simulate named parameters
          * @param async whether the function should be run asynchronously. true by default
          */
@@ -255,8 +255,8 @@ class Chassis {
          *
          * @param x x location
          * @param y y location
-         * @param timeout longest time the robot_impl can spend moving
-         * @param maxSpeed the maximum speed the robot_impl can move at. 127 by default
+         * @param timeout longest time the robot can spend moving
+         * @param maxSpeed the maximum speed the robot can move at. 127 by default
          * @param async whether the function should be run asynchronously. true by default
          */
         void moveToPoint(float x, float y, int timeout, bool forwards = true, float maxSpeed = 127, bool async = true);
@@ -264,16 +264,16 @@ class Chassis {
          * @brief Move the chassis along a path
          *
          * @param path the path asset to follow
-         * @param lookahead the lookahead distance. Units in inches. Larger values will make the robot_impl move
+         * @param lookahead the lookahead distance. Units in inches. Larger values will make the robot move
          * faster but will follow the path less accurately
-         * @param timeout the maximum time the robot_impl can spend moving
-         * @param forwards whether the robot_impl should follow the path going forwards. true by default
+         * @param timeout the maximum time the robot can spend moving
+         * @param forwards whether the robot should follow the path going forwards. true by default
          * @param async whether the function should be run asynchronously. true by default
          */
         void follow(const asset& path, float lookahead, int timeout, bool forwards = true, bool async = true);
         /**
-         * @brief Control the robot_impl during the driver control period using the tank drive control scheme. In
-         * this control scheme one joystick axis controls one half of the robot_impl, and another joystick axis
+         * @brief Control the robot during the driver control period using the tank drive control scheme. In
+         * this control scheme one joystick axis controls one half of the robot, and another joystick axis
          * controls another.
          * @param left speed of the left side of the drivetrain. Takes an input from -127 to 127.
          * @param right speed of the right side of the drivetrain. Takes an input from -127 to 127.
@@ -282,9 +282,9 @@ class Chassis {
          */
         void tank(int left, int right, float curveGain = 0.0);
         /**
-         * @brief Control the robot_impl during the driver using the arcade drive control scheme. In this control
-         * scheme one joystick axis controls the forwards and backwards movement of the robot_impl, while the other
-         * joystick axis controls  the robot_impl's turning
+         * @brief Control the robot during the driver using the arcade drive control scheme. In this control
+         * scheme one joystick axis controls the forwards and backwards movement of the robot, while the other
+         * joystick axis controls  the robot's turning
          * @param throttle speed to move forward or backward. Takes an input from -127 to 127.
          * @param turn speed to turn. Takes an input from -127 to 127.
          * @param curveGain the scale inputted into the drive curve function. If you are using the default drive
@@ -292,7 +292,7 @@ class Chassis {
          */
         void arcade(int throttle, int turn, float curveGain = 0.0);
         /**
-         * @brief Control the robot_impl during the driver using the curvature drive control scheme. This control
+         * @brief Control the robot during the driver using the curvature drive control scheme. This control
          * scheme is very similar to arcade drive, except the second joystick axis controls the radius of the
          * curve that the drivetrain makes, rather than the speed. This means that the driver can accelerate in
          * a turn without changing the radius of that turn. This control scheme defaults to arcade when forward

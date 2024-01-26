@@ -87,7 +87,7 @@ class OdomMath {
    *
    * @param xDiff The x-axis diff in meters.
    * @param yDiff The y-axis diff in meters.
-   * @param theta The current robot_impl's theta in radians.
+   * @param theta The current robot's theta in radians.
    * @return The angle in radians.
    */
   static double computeAngle(double xDiff, double yDiff, double theta);

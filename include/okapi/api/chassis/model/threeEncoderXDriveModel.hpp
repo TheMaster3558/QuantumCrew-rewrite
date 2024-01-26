@@ -12,7 +12,7 @@ class ThreeEncoderXDriveModel : public XDriveModel {
   public:
   /**
    * Model for an x drive (wheels at 45 deg from a skid steer drive). When all motors are powered
-   * +100%, the robot_impl should move forward in a straight line.
+   * +100%, the robot should move forward in a straight line.
    *
    * @param itopLeftMotor The top left motor.
    * @param itopRightMotor The top right motor.

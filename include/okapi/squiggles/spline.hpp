@@ -24,8 +24,8 @@ class SplineGenerator {
   /**
    * Generates curves that match the given motion constraints.
    *
-   * @param iconstraints The maximum allowable values for the robot_impl's motion.
-   * @param imodel The robot_impl's physical characteristics and constraints
+   * @param iconstraints The maximum allowable values for the robot's motion.
+   * @param imodel The robot's physical characteristics and constraints
    * @param idt The difference in time in seconds between each state for the
    *            generated paths.
    */
@@ -37,13 +37,13 @@ class SplineGenerator {
   /**
    * Creates a motion profiled path between the given waypoints.
    *
-   * @param iwaypoints The list of poses that the robot_impl should reach along the
+   * @param iwaypoints The list of poses that the robot should reach along the
    *                   path.
    * @param fast If true, the path optimization process will stop as soon as the
    *             constraints are met. If false, the optimizer will find the
    *             smoothest possible path between the points.
    *
-   * @return A series of robot_impl states defining a path between the poses.
+   * @return A series of robot states defining a path between the poses.
    */
   std::vector<ProfilePoint> generate(std::vector<Pose> iwaypoints,
                                      bool fast = false);
@@ -53,10 +53,10 @@ class SplineGenerator {
   /**
    * Creates a motion profiled path between the given waypoints.
    *
-   * @param iwaypoints The list of vectors that the robot_impl should reach along the
+   * @param iwaypoints The list of vectors that the robot should reach along the
    *                   path.
    *
-   * @return A series of robot_impl states defining a path between the vectors.
+   * @return A series of robot states defining a path between the vectors.
    */
   std::vector<ProfilePoint> generate(std::vector<ControlVector> iwaypoints);
   std::vector<ProfilePoint>
@@ -64,12 +64,12 @@ class SplineGenerator {
 
   protected:
   /**
-   * The maximum allowable values for the robot_impl's motion.
+   * The maximum allowable values for the robot's motion.
    */
   Constraints constraints;
 
   /**
-   * Defines the physical structure of the robot_impl and translates the linear
+   * Defines the physical structure of the robot and translates the linear
    * kinematics to wheel velocities.
    */
   std::shared_ptr<PhysicalModel> model;
@@ -223,7 +223,7 @@ class SplineGenerator {
   /**
    * Imposes a linear motion profile on the raw path.
    *
-   * This step creates the velocity and acceleration values to command the robot_impl
+   * This step creates the velocity and acceleration values to command the robot
    * at each point along the curve.
    */
   std::vector<ProfilePoint>

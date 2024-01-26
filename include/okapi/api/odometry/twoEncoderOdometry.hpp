@@ -18,7 +18,7 @@ namespace okapi {
 class TwoEncoderOdometry : public Odometry {
   public:
   /**
-   * TwoEncoderOdometry. Tracks the movement of the robot_impl and estimates its position in coordinates
+   * TwoEncoderOdometry. Tracks the movement of the robot and estimates its position in coordinates
    * relative to the start (assumed to be (0, 0, 0)).
    *
    * @param itimeUtil The TimeUtil.

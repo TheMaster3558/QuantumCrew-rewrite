@@ -25,14 +25,14 @@ class ChassisModel : public ReadOnlyChassisModel {
   ChassisModel &operator=(const ChassisModel &) = delete;
 
   /**
-   * Drive the robot_impl forwards (using open-loop control). Uses velocity mode.
+   * Drive the robot forwards (using open-loop control). Uses velocity mode.
    *
    * @param ipower motor power
    */
   virtual void forward(double ispeed) = 0;
 
   /**
-   * Drive the robot_impl in an arc (using open-loop control). Uses velocity mode.
+   * Drive the robot in an arc (using open-loop control). Uses velocity mode.
    * The algorithm is (approximately):
    *   leftPower = forwardSpeed + yaw
    *   rightPower = forwardSpeed - yaw
@@ -43,7 +43,7 @@ class ChassisModel : public ReadOnlyChassisModel {
   virtual void driveVector(double iforwardSpeed, double iyaw) = 0;
 
   /**
-   * Drive the robot_impl in an arc. Uses voltage mode.
+   * Drive the robot in an arc. Uses voltage mode.
    * The algorithm is (approximately):
    *   leftPower = forwardSpeed + yaw
    *   rightPower = forwardSpeed - yaw
@@ -54,19 +54,19 @@ class ChassisModel : public ReadOnlyChassisModel {
   virtual void driveVectorVoltage(double iforwardSpeed, double iyaw) = 0;
 
   /**
-   * Turn the robot_impl clockwise (using open-loop control). Uses velocity mode.
+   * Turn the robot clockwise (using open-loop control). Uses velocity mode.
    *
    * @param ispeed motor power
    */
   virtual void rotate(double ispeed) = 0;
 
   /**
-   * Stop the robot_impl (set all the motors to 0). Uses velocity mode.
+   * Stop the robot (set all the motors to 0). Uses velocity mode.
    */
   virtual void stop() = 0;
 
   /**
-   * Drive the robot_impl with a tank drive layout. Uses voltage mode.
+   * Drive the robot with a tank drive layout. Uses voltage mode.
    *
    * @param ileftSpeed left side speed
    * @param irightSpeed right side speed
@@ -75,7 +75,7 @@ class ChassisModel : public ReadOnlyChassisModel {
   virtual void tank(double ileftSpeed, double irightSpeed, double ithreshold = 0) = 0;
 
   /**
-   * Drive the robot_impl with an arcade drive layout. Uses voltage mode.
+   * Drive the robot with an arcade drive layout. Uses voltage mode.
    *
    * @param iforwardSpeed speed forward direction
    * @param iyaw speed around the vertical axis
@@ -84,7 +84,7 @@ class ChassisModel : public ReadOnlyChassisModel {
   virtual void arcade(double iforwardSpeed, double iyaw, double ithreshold = 0) = 0;
 
   /**
-   * Drive the robot_impl with a curvature drive layout. The robot_impl drives in constant radius turns
+   * Drive the robot with a curvature drive layout. The robot drives in constant radius turns
    * where you control the curvature (inverse of radius) you drive in. This is advantageous
    * because the forward speed will not affect the rate of turning. The algorithm switches to
    * arcade if the forward speed is 0. Uses voltage mode.

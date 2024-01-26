@@ -22,7 +22,7 @@ class EKFFilter : public Filter {
    *
    * Think of R as how noisy your sensor is. Its value can be found mathematically by computing the
    * standard deviation of your sensor reading vs. "truth" (of course, "truth" is still an estimate;
-   * try to calibrate your robot_impl in a controlled setting where you can minimize the error in what
+   * try to calibrate your robot in a controlled setting where you can minimize the error in what
    * "truth" is).
    *
    * Think of Q as how noisy your model is. It decides how much "smoothing" the filter does and how

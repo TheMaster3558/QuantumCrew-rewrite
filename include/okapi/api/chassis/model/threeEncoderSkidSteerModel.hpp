@@ -11,8 +11,8 @@ namespace okapi {
 class ThreeEncoderSkidSteerModel : public SkidSteerModel {
   public:
   /**
-   * Model for a skid steer drive (wheels parallel with robot_impl's direction of motion). When all
-   * motors are powered +127, the robot_impl should move forward in a straight line.
+   * Model for a skid steer drive (wheels parallel with robot's direction of motion). When all
+   * motors are powered +127, the robot should move forward in a straight line.
    *
    * @param ileftSideMotor left side motor
    * @param irightSideMotor right side motor

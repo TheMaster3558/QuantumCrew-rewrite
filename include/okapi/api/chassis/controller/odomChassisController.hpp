@@ -26,7 +26,7 @@ class OdomChassisController : public ChassisController {
    * which calls `Odometry::step` every `10ms`. The default StateMode is
    * `StateMode::FRAME_TRANSFORMATION`.
    *
-   * Moves the robot_impl around in the odom frame. Instead of telling the robot_impl to drive forward or
+   * Moves the robot around in the odom frame. Instead of telling the robot to drive forward or
    * turn some amount, you instead tell it to drive to a specific point on the field or turn to
    * a specific angle relative to its starting position.
    *
@@ -52,25 +52,25 @@ class OdomChassisController : public ChassisController {
   OdomChassisController &operator=(OdomChassisController &&other) = delete;
 
   /**
-   * Drives the robot_impl straight to a point in the odom frame.
+   * Drives the robot straight to a point in the odom frame.
    *
    * @param ipoint The target point to navigate to.
    * @param ibackwards Whether to drive to the target point backwards.
-   * @param ioffset An offset from the target point in the direction pointing towards the robot_impl. The
-   * robot_impl will stop this far away from the target point.
+   * @param ioffset An offset from the target point in the direction pointing towards the robot. The
+   * robot will stop this far away from the target point.
    */
   virtual void
   driveToPoint(const Point &ipoint, bool ibackwards = false, const QLength &ioffset = 0_mm) = 0;
 
   /**
-   * Turns the robot_impl to face a point in the odom frame.
+   * Turns the robot to face a point in the odom frame.
    *
    * @param ipoint The target point to turn to face.
    */
   virtual void turnToPoint(const Point &ipoint) = 0;
 
   /**
-   * Turns the robot_impl to face an angle in the odom frame.
+   * Turns the robot to face an angle in the odom frame.
    *
    * @param iangle The angle to turn to.
    */

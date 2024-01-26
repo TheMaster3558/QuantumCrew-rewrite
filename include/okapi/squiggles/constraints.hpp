@@ -15,16 +15,16 @@ struct Constraints {
   /**
    * Defines the motion constraints for a path.
    *
-   * @param imax_vel The maximum allowable velocity for the robot_impl in meters per
+   * @param imax_vel The maximum allowable velocity for the robot in meters per
    *                 second.
-   * @param imax_accel The maximum allowable acceleration for the robot_impl in
+   * @param imax_accel The maximum allowable acceleration for the robot in
    *                   meters per second per second.
-   * @param imax_jerk The maximum allowable jerk for the robot_impl in meters per
+   * @param imax_jerk The maximum allowable jerk for the robot in meters per
    *                  second per second per second (m/s^3).
    * @param imax_curvature The maximum allowable change in heading in radians
    *                       per second. This is not set to the numeric limits by
    *                       default as that will allow for wild paths.
-   * @param imin_accel The minimum allowable acceleration for the robot_impl in
+   * @param imin_accel The minimum allowable acceleration for the robot in
    *                   meters per second per second.
    */
   Constraints(double imax_vel,

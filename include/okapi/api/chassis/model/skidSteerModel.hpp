@@ -13,8 +13,8 @@ namespace okapi {
 class SkidSteerModel : public ChassisModel {
   public:
   /**
-   * Model for a skid steer drive (wheels parallel with robot_impl's direction of motion). When all
-   * motors are powered +100%, the robot_impl should move forward in a straight line.
+   * Model for a skid steer drive (wheels parallel with robot's direction of motion). When all
+   * motors are powered +100%, the robot should move forward in a straight line.
    *
    * @param ileftSideMotor The left side motor.
    * @param irightSideMotor The right side motor.
@@ -29,14 +29,14 @@ class SkidSteerModel : public ChassisModel {
                  double imaxVoltage);
 
   /**
-   * Drive the robot_impl forwards (using open-loop control). Uses velocity mode.
+   * Drive the robot forwards (using open-loop control). Uses velocity mode.
    *
    * @param ispeed motor power
    */
   void forward(double ispeed) override;
 
   /**
-   * Drive the robot_impl in an arc (using open-loop control). Uses velocity mode.
+   * Drive the robot in an arc (using open-loop control). Uses velocity mode.
    * The algorithm is (approximately):
    *   leftPower = ySpeed + zRotation
    *   rightPower = ySpeed - zRotation
@@ -47,7 +47,7 @@ class SkidSteerModel : public ChassisModel {
   void driveVector(double iySpeed, double izRotation) override;
 
   /**
-   * Drive the robot_impl in an arc. Uses voltage mode.
+   * Drive the robot in an arc. Uses voltage mode.
    * The algorithm is (approximately):
    *   leftPower = forwardSpeed + yaw
    *   rightPower = forwardSpeed - yaw
@@ -58,19 +58,19 @@ class SkidSteerModel : public ChassisModel {
   void driveVectorVoltage(double iforwardSpeed, double iyaw) override;
 
   /**
-   * Turn the robot_impl clockwise (using open-loop control). Uses velocity mode.
+   * Turn the robot clockwise (using open-loop control). Uses velocity mode.
    *
    * @param ispeed motor power
    */
   void rotate(double ispeed) override;
 
   /**
-   * Stop the robot_impl (set all the motors to 0). Uses velocity mode.
+   * Stop the robot (set all the motors to 0). Uses velocity mode.
    */
   void stop() override;
 
   /**
-   * Drive the robot_impl with a tank drive layout. Uses voltage mode.
+   * Drive the robot with a tank drive layout. Uses voltage mode.
    *
    * @param ileftSpeed left side speed
    * @param irightSpeed right side speed
@@ -79,7 +79,7 @@ class SkidSteerModel : public ChassisModel {
   void tank(double ileftSpeed, double irightSpeed, double ithreshold = 0) override;
 
   /**
-   * Drive the robot_impl with an arcade drive layout. Uses voltage mode.
+   * Drive the robot with an arcade drive layout. Uses voltage mode.
    *
    * @param iforwardSpeed speed in the forward direction
    * @param iyaw speed around the vertical axis
@@ -88,7 +88,7 @@ class SkidSteerModel : public ChassisModel {
   void arcade(double iforwardSpeed, double iyaw, double ithreshold = 0) override;
 
   /**
-   * Drive the robot_impl with a curvature drive layout. The robot_impl drives in constant radius turns
+   * Drive the robot with a curvature drive layout. The robot drives in constant radius turns
    * where you control the curvature (inverse of radius) you drive in. This is advantageous
    * because the forward speed will not affect the rate of turning. The algorithm switches to
    * arcade if the forward speed is 0. Uses voltage mode.

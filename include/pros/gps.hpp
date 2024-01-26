@@ -108,7 +108,7 @@ class Gps {
 	virtual std::int32_t get_offset(double* xOffset, double* yOffset) const;
 
 	/**
-	 * Sets the robot_impl's location relative to the center of the field in meters.
+	 * Sets the robot's location relative to the center of the field in meters.
 	 *
 	 * This function uses the following values of errno when an error state is
 	 * reached:

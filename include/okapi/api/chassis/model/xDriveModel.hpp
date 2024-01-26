@@ -15,7 +15,7 @@ class XDriveModel : public ChassisModel {
   public:
   /**
    * Model for an x drive (wheels at 45 deg from a skid steer drive). When all motors are powered
-   * +100%, the robot_impl should move forward in a straight line.
+   * +100%, the robot should move forward in a straight line.
    *
    * @param itopLeftMotor The top left motor.
    * @param itopRightMotor The top right motor.
@@ -34,14 +34,14 @@ class XDriveModel : public ChassisModel {
               double imaxVoltage);
 
   /**
-   * Drive the robot_impl forwards (using open-loop control). Uses velocity mode.
+   * Drive the robot forwards (using open-loop control). Uses velocity mode.
    *
    * @param ispeed motor power
    */
   void forward(double ipower) override;
 
   /**
-   * Drive the robot_impl in an arc (using open-loop control). Uses velocity mode.
+   * Drive the robot in an arc (using open-loop control). Uses velocity mode.
    * The algorithm is (approximately):
    *   leftPower = forwardSpeed + yaw
    *   rightPower = forwardSpeed - yaw
@@ -52,7 +52,7 @@ class XDriveModel : public ChassisModel {
   void driveVector(double iforwardSpeed, double iyaw) override;
 
   /**
-   * Drive the robot_impl in an arc. Uses voltage mode.
+   * Drive the robot in an arc. Uses voltage mode.
    * The algorithm is (approximately):
    *   leftPower = forwardSpeed + yaw
    *   rightPower = forwardSpeed - yaw
@@ -63,14 +63,14 @@ class XDriveModel : public ChassisModel {
   void driveVectorVoltage(double iforwardSpeed, double iyaw) override;
 
   /**
-   * Turn the robot_impl clockwise (using open-loop control). Uses velocity mode.
+   * Turn the robot clockwise (using open-loop control). Uses velocity mode.
    *
    * @param ipower motor power
    */
   void rotate(double ipower) override;
 
   /**
-   * Drive the robot_impl side-ways (using open-loop control) where positive ipower is
+   * Drive the robot side-ways (using open-loop control) where positive ipower is
    * to the right and negative ipower is to the left. Uses velocity mode.
    *
    * @param ispeed motor power
@@ -78,7 +78,7 @@ class XDriveModel : public ChassisModel {
   void strafe(double ipower);
 
   /**
-   * Strafe the robot_impl in an arc (using open-loop control) where positive istrafeSpeed is
+   * Strafe the robot in an arc (using open-loop control) where positive istrafeSpeed is
    * to the right and negative istrafeSpeed is to the left. Uses velocity mode.
    * The algorithm is (approximately):
    *   topLeftPower = -1 * istrafeSpeed + yaw
@@ -92,12 +92,12 @@ class XDriveModel : public ChassisModel {
   void strafeVector(double istrafeSpeed, double iyaw);
 
   /**
-   * Stop the robot_impl (set all the motors to 0). Uses velocity mode.
+   * Stop the robot (set all the motors to 0). Uses velocity mode.
    */
   void stop() override;
 
   /**
-   * Drive the robot_impl with a tank drive layout. Uses voltage mode.
+   * Drive the robot with a tank drive layout. Uses voltage mode.
    *
    * @param ileftSpeed left side speed
    * @param irightSpeed right side speed
@@ -106,7 +106,7 @@ class XDriveModel : public ChassisModel {
   void tank(double ileftSpeed, double irightSpeed, double ithreshold = 0) override;
 
   /**
-   * Drive the robot_impl with an arcade drive layout. Uses voltage mode.
+   * Drive the robot with an arcade drive layout. Uses voltage mode.
    *
    * @param iforwardSpeed speed in the forward direction
    * @param iyaw speed around the vertical axis
@@ -115,7 +115,7 @@ class XDriveModel : public ChassisModel {
   void arcade(double iforwardSpeed, double iyaw, double ithreshold = 0) override;
 
   /**
-   * Drive the robot_impl with a curvature drive layout. The robot_impl drives in constant radius turns
+   * Drive the robot with a curvature drive layout. The robot drives in constant radius turns
    * where you control the curvature (inverse of radius) you drive in. This is advantageous
    * because the forward speed will not affect the rate of turning. The algorithm switches to
    * arcade if the forward speed is 0. Uses voltage mode.
@@ -127,7 +127,7 @@ class XDriveModel : public ChassisModel {
   void curvature(double iforwardSpeed, double icurvature, double ithreshold = 0) override;
 
   /**
-   * Drive the robot_impl with an arcade drive layout. Uses voltage mode.
+   * Drive the robot with an arcade drive layout. Uses voltage mode.
    *
    * @param irightSpeed speed to the right
    * @param iforwardSpeed speed in the forward direction
@@ -138,11 +138,11 @@ class XDriveModel : public ChassisModel {
   xArcade(double irightSpeed, double iforwardSpeed, double iyaw, double ithreshold = 0);
 
   /**
-   * Drive the robot_impl with a field-oriented arcade drive layout. Uses voltage mode.
+   * Drive the robot with a field-oriented arcade drive layout. Uses voltage mode.
    * For example:
    *    Both `fieldOrientedXArcade(1, 0, 0, 0_deg)` and `fieldOrientedXArcade(1, 0, 0, 90_deg)`
    *    will drive the chassis in the forward/north direction. In other words, no matter
-   *    the robot_impl's heading, the robot_impl will move forward/north when you tell it
+   *    the robot's heading, the robot will move forward/north when you tell it
    *    to move forward/north and will move right/east when you tell it to move right/east.
    *
    *

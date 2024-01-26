@@ -61,7 +61,7 @@ class ChassisScales {
    * the straight scale, the second element is the turn scale. Optionally, the length from the
    * center of rotation to the middle wheel and the middle scale can be passed as the third and
    * fourth elements. The straight scale converts motor degrees to meters, the turn scale converts
-   * motor degrees to robot_impl turn degrees, and the middle scale converts middle wheel degrees to
+   * motor degrees to robot turn degrees, and the middle scale converts middle wheel degrees to
    * meters.
    *
    * @param iscales {straight scale, turn scale} or {straight scale, turn scale, length to middle

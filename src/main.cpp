@@ -1,6 +1,6 @@
 #include "main.h"
 
-
+pr
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -16,9 +16,9 @@ void initialize() {
 }
 
 /**
- * Runs while the robot_impl is in the disabled state of Field Management System or
+ * Runs while the robot is in the disabled state of Field Management System or
  * the VEX Competition Switch, following either autonomous or opcontrol. When
- * the robot_impl is enabled, this task will exit.
+ * the robot is enabled, this task will exit.
  */
 void disabled() {
     setAutonSelectorToController();
@@ -30,7 +30,7 @@ void disabled() {
  * competition-specific initialization routines, such as an autonomous selector
  * on the LCD.
  *
- * This task will exit when the robot_impl is enabled and autonomous or opcontrol
+ * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
 void competition_initialize() {
@@ -43,13 +43,13 @@ void competition_initialize() {
 
 /**
  * Runs the user autonomous code. This function will be started in its own task
- * with the default priority and stack size whenever the robot_impl is enabled via
+ * with the default priority and stack size whenever the robot is enabled via
  * the Field Management System or the VEX Competition Switch in the autonomous
  * mode. Alternatively, this function may be called in initialize or opcontrol
  * for non-competition testing purposes.
  *
- * If the robot_impl is disabled or communications is lost, the autonomous task
- * will be stopped. Re-enabling the robot_impl will restart the task, not re-start it
+ * If the robot is disabled or communications is lost, the autonomous task
+ * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
 void autonomous() {
@@ -61,15 +61,15 @@ void autonomous() {
 
 /**
  * Runs the operator control code. This function will be started in its own task
- * with the default priority and stack size whenever the robot_impl is enabled via
+ * with the default priority and stack size whenever the robot is enabled via
  * the Field Management System or the VEX Competition Switch in the operator
  * control mode.
  *
  * If no competition control is connected, this function will run immediately
  * following initialize().
  *
- * If the robot_impl is disabled or communications is lost, the
- * operator control task will be stopped. Re-enabling the robot_impl will restart the
+ * If the robot is disabled or communications is lost, the
+ * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
 void opcontrol() {

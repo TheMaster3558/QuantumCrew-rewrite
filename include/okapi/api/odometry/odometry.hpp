@@ -14,7 +14,7 @@ namespace okapi {
 class Odometry {
   public:
   /**
-   * Odometry. Tracks the movement of the robot_impl and estimates its position in coordinates
+   * Odometry. Tracks the movement of the robot and estimates its position in coordinates
    * relative to the start (assumed to be (0, 0, 0)).
    */
   explicit Odometry() = default;

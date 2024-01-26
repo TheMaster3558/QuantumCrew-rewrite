@@ -647,7 +647,7 @@ double adi_gyro_get(adi_gyro_t gyro);
  * calibration period.
  *
  * It is highly recommended that this function be called from initialize() when
- * the robot_impl is stationary to ensure proper calibration.
+ * the robot is stationary to ensure proper calibration.
  *
  * This function uses the following values of errno when an error state is
  * reached:

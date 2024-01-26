@@ -24,35 +24,35 @@ namespace lemlib {
  */
 void setSensors(lemlib::OdomSensors sensors, lemlib::Drivetrain drivetrain);
 /**
- * @brief Get the pose of the robot_impl
+ * @brief Get the pose of the robot
  *
  * @param radians true for theta in radians, false for degrees. False by default
  * @return Pose
  */
 Pose getPose(bool radians = false);
 /**
- * @brief Set the Pose of the robot_impl
+ * @brief Set the Pose of the robot
  *
  * @param pose the new pose
  * @param radians true if theta is in radians, false if in degrees. False by default
  */
 void setPose(Pose pose, bool radians = false);
 /**
- * @brief Get the speed of the robot_impl
+ * @brief Get the speed of the robot
  *
  * @param radians true for theta in radians, false for degrees. False by default
  * @return lemlib::Pose
  */
 Pose getSpeed(bool radians = false);
 /**
- * @brief Get the local speed of the robot_impl
+ * @brief Get the local speed of the robot
  *
  * @param radians true for theta in radians, false for degrees. False by default
  * @return lemlib::Pose
  */
 Pose getLocalSpeed(bool radians = false);
 /**
- * @brief Estimate the pose of the robot_impl after a certain amount of time
+ * @brief Estimate the pose of the robot after a certain amount of time
  *
  * @param time time in seconds
  * @param radians False for degrees, true for radians. False by default
@@ -60,7 +60,7 @@ Pose getLocalSpeed(bool radians = false);
  */
 Pose estimatePose(float time, bool radians = false);
 /**
- * @brief Update the pose of the robot_impl
+ * @brief Update the pose of the robot
  *
  */
 void update();
