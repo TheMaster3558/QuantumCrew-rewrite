@@ -1,6 +1,7 @@
 #include <cstdint>
 #include "pros/misc.hpp"
 #include "EZ-Template/auton_selector.hpp"
+#include "robot.hpp"
 
 
 // this class mimics pros::ADIDigitalIn
