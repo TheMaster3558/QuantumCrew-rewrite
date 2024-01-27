@@ -10,6 +10,7 @@
 #include "pros/llemu.hpp"
 #include "lemlib/api.hpp"
 #include "EZ-Template/api.hpp"
+#include "config.h"
 
 
 class Robot {

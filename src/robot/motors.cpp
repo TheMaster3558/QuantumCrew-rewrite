@@ -1,16 +1,16 @@
 #include "robot.hpp"
 
 
-pros::Motor leftFront(2, pros::E_MOTOR_GEAR_BLUE, true);
-pros::Motor leftMiddle(3, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor leftBack(7, pros::E_MOTOR_GEAR_BLUE, true);
+pros::Motor leftFront(LEFT_FRONT_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor leftMiddle(LEFT_MIDDLE_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor leftBack(LEFT_BACK_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
 
-pros::Motor rightFront(4, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor rightMiddle(5, pros::E_MOTOR_GEAR_BLUE, true);
-pros::Motor rightBack(6, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor rightFront(RIGHT_FRONT_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor rightMiddle(RIGHT_MIDDLE_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor rightBack(RIGHT_BACK_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
 
-pros::Motor Robot::Motors::intake(1, pros::E_MOTOR_GEAR_GREEN);
-pros::Motor Robot::Motors::catapult(8, pros::E_MOTOR_GEAR_RED);
+pros::Motor Robot::Motors::intake(INTAKE_PORT, pros::E_MOTOR_GEAR_GREEN);
+pros::Motor Robot::Motors::catapult(CATAPULT_PORT, pros::E_MOTOR_GEAR_RED);
 
 pros::MotorGroup Robot::Motors::leftDrive({leftFront, leftMiddle, leftBack});
 pros::MotorGroup Robot::Motors::rightDrive({rightFront, rightMiddle, rightBack});

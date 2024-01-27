@@ -44,3 +44,10 @@ You can access the chassis object with `Robot::chassis` and call methods on it w
 You can also find autons in the `src/autons` folder. The `src/utils.cpp` file has general utility stuff such as the 
 controller auton selector. The `src/handler.cpp` has the stuff that maps the controller buttons to certain functions 
 during operator control.
+
+### Changing the ports
+Ports can be found and set it `include/config.h`
+
+
+### Tuning other stuff
+You can tune other stuff (like the catapult hold angle) in `src/robot/tunables.cpp`
