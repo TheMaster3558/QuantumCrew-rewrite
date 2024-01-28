@@ -2,18 +2,18 @@
 
 
 pros::Motor leftFront(LEFT_FRONT_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor leftMiddle(LEFT_MIDDLE_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor leftBack(LEFT_BACK_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor leftBackBottom(LEFT_BACK_BOTTOM_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor leftBackTop(LEFT_BACK_TOP_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
 
 pros::Motor rightFront(RIGHT_FRONT_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor rightMiddle(RIGHT_MIDDLE_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor rightBack(RIGHT_BACK_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor rightBackBottom(RIGHT_BACK_BOTTOM_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor rightBackTop(RIGHT_BACK_TOP_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
 
 pros::Motor Robot::Motors::intake(INTAKE_PORT, pros::E_MOTOR_GEAR_GREEN);
 pros::Motor Robot::Motors::catapult(CATAPULT_PORT, pros::E_MOTOR_GEAR_RED);
 
-pros::MotorGroup Robot::Motors::leftDrive({leftFront, leftMiddle, leftBack});
-pros::MotorGroup Robot::Motors::rightDrive({rightFront, rightMiddle, rightBack});
+pros::MotorGroup Robot::Motors::leftDrive({leftFront, leftBackBottom, leftBackTop});
+pros::MotorGroup Robot::Motors::rightDrive({rightFront, rightBackBottom, rightBackTop});
 
 void Robot::Motors::setDriveBrake(pros::motor_brake_mode_e_t mode) {
     Robot::Motors::leftDrive.set_brake_modes(mode);
@@ -21,12 +21,8 @@ void Robot::Motors::setDriveBrake(pros::motor_brake_mode_e_t mode) {
 }
 
 
-void printOverheatingMotor(std::string name, pros::Motor motor, int& line, std::vector<int>& overheatingMotors) {
+void addOverheatingMotor(pros::Motor motor, std::vector<int>& overheatingMotors) {
     if (motor.is_over_temp()) {
-        std::ostringstream formattedString;
-        formattedString << name << " motor (port " << motor.get_port() << ") overheating: " << motor.get_temperature() << "C";
-        ez::print_to_screen(formattedString.str(), line++);
-
         overheatingMotors.push_back(motor.get_port());
     }
 }
@@ -44,25 +40,21 @@ const char* joinVector(std::vector<int> vector, std::string delim) {
 
 
 void Robot::Motors::printOverheatingMotors() {
-    pros::lcd::clear();
-    int line = 0;
     std::vector<int> overheatingMotors;
 
-    printOverheatingMotor("Intake", intake, line, overheatingMotors);
-    printOverheatingMotor("Catapult", catapult, line, overheatingMotors);
-    printOverheatingMotor("Left Front Drive", leftFront, line, overheatingMotors);
-    printOverheatingMotor("Left Middle Drive", leftMiddle, line, overheatingMotors);
-    printOverheatingMotor("Left Back Drive", leftBack, line, overheatingMotors);
-    printOverheatingMotor("Right Front Drive", rightFront, line, overheatingMotors);
-    printOverheatingMotor("Right Middle Drive", rightMiddle, line, overheatingMotors);
-    printOverheatingMotor("Right Back Drive", rightBack, line, overheatingMotors);
+    addOverheatingMotor(intake, overheatingMotors);
+    addOverheatingMotor(catapult, overheatingMotors);
+    addOverheatingMotor(leftFront, overheatingMotors);
+    addOverheatingMotor(leftBackBottom, overheatingMotors);
+    addOverheatingMotor(leftBackTop, overheatingMotors);
+    addOverheatingMotor(rightFront, overheatingMotors);
+    addOverheatingMotor(rightBackBottom, overheatingMotors);
+    addOverheatingMotor(rightBackTop, overheatingMotors);
 
-    // auton selector is on controller when robot is disabled
-    if (!pros::competition::is_disabled()) {
-        if (overheatingMotors.size() > 0) {
-            Robot::controller.print(0, 0, "Overheating Motors: %s", joinVector(overheatingMotors, ", "));
-        } else {
-            Robot::controller.print(0, 0, "");
-        }
+    if (overheatingMotors.size() > 0) {
+        Robot::controller.print(0, 0, joinVector(overheatingMotors, ", "));
+    } else {
+        Robot::controller.print(0, 0, "");
     }
+
 }

@@ -13,6 +13,11 @@ void initialize() {
     Robot::Motors::intake.tare_position();
     Robot::Motors::catapult.tare_position();
     Robot::Sensors::catapultRotationSensor.reset_position();
+
+    Robot::Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+
+    Autons::addAutons(ez::as::auton_selector);
+    ez::as::initialize();
 }
 
 /**
@@ -20,9 +25,8 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled() {
-    setAutonSelectorToController();
-}
+void disabled() {}
+
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -33,13 +37,7 @@ void disabled() {
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
-void competition_initialize() {
-    ControllerAutonSelector autonSelector((Robot::controller));
-    ez::as::auton_selector = autonSelector;
-    Autons::addAutons(ez::as::auton_selector);
-
-    ez::as::initialize();
-}
+void competition_initialize() {}
 
 /**
  * Runs the user autonomous code. This function will be started in its own task
@@ -53,8 +51,7 @@ void competition_initialize() {
  * from where it left off.
  */
 void autonomous() {
-    removeAutonSelectorButtons();
-
+    ez::print_to_screen(std::to_string(ez::as::auton_selector.current_auton_page));
     Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
     ez::as::auton_selector.call_selected_auton();
 }
@@ -73,8 +70,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    removeAutonSelectorButtons();
-
     Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
     Robot::Actions::Flaps::setFlaps(false, false);
 
