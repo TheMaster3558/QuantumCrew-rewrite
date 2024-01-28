@@ -6,14 +6,16 @@ auton_selector::Category::Category(std::string name, const std::vector <Auton>& 
 
 
 std::vector<auton_selector::Category> auton_categories;
+auton_selector::Auton* selected_auton = nullptr;
+
 void auton_selector::set_autons(const std::vector<auton_selector::Category> &categories) {
     auton_categories = categories;
+    selected_auton = &auton_categories[0].autons[0];
 }
 
 
-auton_selector::Auton selected_auton = auton_categories[0].autons[0];
 void auton_selector::call_selected_auton() {
-    selected_auton.callback();
+    selected_auton->callback();
 }
 
 
@@ -31,9 +33,9 @@ lv_res_t button_action(lv_obj_t *button_matrix, const char *text) {
 
         if (pair.category_button_matrix == button_matrix) {
             // auton is in this category
-            for (auton_selector::Auton auton : pair.category->autons) {
+            for (auton_selector::Auton& auton : pair.category->autons) {
                 if (strcmp(auton.name.c_str(), text) == 0) {
-                    selected_auton = auton;
+                    selected_auton = &auton;
                     should_break = true;
                     break;
                 }

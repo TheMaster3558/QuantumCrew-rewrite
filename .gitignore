@@ -15,6 +15,7 @@ temp.log
 temp.errors
 *.ini
 .d/
+.idea
 
 # astyle formatter
 # .\astyle --style=java --style=attach -A2 -n --recursive *.cpp,*.h
