@@ -32,8 +32,9 @@
 //#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 #include "lemlib/api.hpp"
+#include "autoSelect/selection.h"
 
-// EZ-Template's auton selector is used because it's good
+// we use their DELAY_TIME constant
 #include "EZ-Template/api.hpp"
 
 /**

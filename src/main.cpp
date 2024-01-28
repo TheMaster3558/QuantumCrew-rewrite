@@ -16,8 +16,7 @@ void initialize() {
 
     Robot::Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
-    Autons::addAutons(ez::as::auton_selector);
-    ez::as::initialize();
+    selector::init();
 }
 
 /**
@@ -51,9 +50,22 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-    ez::print_to_screen(std::to_string(ez::as::auton_selector.current_auton_page));
     Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
-    ez::as::auton_selector.call_selected_auton();
+    if (selector::auton == 1 || selector::auton == 2) {
+        Autons::offensive();
+    }
+    else if (selector::auton == -1) {
+        Autons::defensiveQual();
+    }
+    else if (selector::auton == -2) {
+        Autons::defensiveElims();
+    }
+    else if (selector::auton == -3) {
+        Autons::skills();
+    }
+    else {
+        Autons::doNothing();
+    }
 }
 
 /**

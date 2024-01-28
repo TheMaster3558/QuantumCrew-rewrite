@@ -1,5 +1,7 @@
 #pragma once
 
+#include "EZ-Template/api.hpp"
+
 
 class EventHandler {
 public:

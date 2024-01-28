@@ -43,8 +43,7 @@ void EventHandler::handleIntake() {
 void EventHandler::updateDisplay() {
     static int counter = 0;
     if (counter++ % (50 / ez::util::DELAY_TIME) == 0) {
-        ez::as::auton_selector.print_selected_auton();
-        //Robot::Motors::printOverheatingMotors();
+        Robot::Motors::printOverheatingMotors();
     }
 }
 
