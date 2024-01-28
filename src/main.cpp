@@ -16,7 +16,20 @@ void initialize() {
 
     Robot::Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
-    selector::init();
+    auton_selector::set_autons({
+        auton_selector::Category("Offensive", {
+            auton_selector::Auton("Nothing", Autons::doNothing),
+            auton_selector::Auton("6 ball", Autons::offensive)
+        }),
+        auton_selector::Category("Defensive", {
+            auton_selector::Auton("Qualifying", Autons::defensiveQual),
+            auton_selector::Auton("Eliminations", Autons::defensiveElims)
+        }),
+        auton_selector::Category("Skills", {
+            auton_selector::Auton("Skills", Autons::skills)
+        })
+    });
+    auton_selector::initialize();
 }
 
 /**
@@ -51,21 +64,7 @@ void competition_initialize() {}
  */
 void autonomous() {
     Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
-    if (selector::auton == 1 || selector::auton == 2) {
-        Autons::offensive();
-    }
-    else if (selector::auton == -1) {
-        Autons::defensiveQual();
-    }
-    else if (selector::auton == -2) {
-        Autons::defensiveElims();
-    }
-    else if (selector::auton == -3) {
-        Autons::skills();
-    }
-    else {
-        Autons::doNothing();
-    }
+    auton_selector::call_selected_auton();
 }
 
 /**

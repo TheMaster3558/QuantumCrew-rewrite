@@ -32,7 +32,7 @@
 //#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 #include "lemlib/api.hpp"
-#include "autoSelect/selection.h"
+#include "auton_selector.hpp"
 
 // we use their DELAY_TIME constant
 #include "EZ-Template/api.hpp"
