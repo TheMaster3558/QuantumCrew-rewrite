@@ -1,11 +1,12 @@
 #include "auton_selector.hpp"
+#include "robot.hpp"
 
 
 auton_selector::Auton::Auton(std::string name, const std::function<void()>& callback) : name(name), callback(callback) {}
 auton_selector::Category::Category(std::string name, const std::vector <Auton>& autons) : name(name), autons(autons) {}
 
 
-std::vector<auton_selector::Category> auton_categories;
+std::vector<auton_selector::Category> auton_categories = {};
 auton_selector::Auton* selected_auton = nullptr;
 
 void auton_selector::set_autons(const std::vector<auton_selector::Category> &categories) {
@@ -19,44 +20,59 @@ void auton_selector::call_selected_auton() {
 }
 
 
-typedef struct {
-    lv_obj_t *category_button_matrix;
-    auton_selector::Category *category;
-} CategoryButtonMatrixPair;
+lv_obj_t* tabview = nullptr;
+// Map the page number to the button matrix
+std::vector<lv_obj_t*> btnms = {};
 // Map the button matrix to the category so the category can be retrieved during the callback
-std::vector<CategoryButtonMatrixPair> button_matrix_to_category;
+std::map<lv_obj_t*, auton_selector::Category*> btnm_to_category;
 
 
-lv_res_t button_action(lv_obj_t *button_matrix, const char *text) {
-    for (CategoryButtonMatrixPair pair : button_matrix_to_category) {
-        bool should_break = false;
-
-        if (pair.category_button_matrix == button_matrix) {
-            // auton is in this category
-            for (auton_selector::Auton& auton : pair.category->autons) {
-                if (strcmp(auton.name.c_str(), text) == 0) {
-                    selected_auton = &auton;
-                    should_break = true;
-                    break;
-                }
-            }
+lv_res_t button_action(lv_obj_t *btnm, const char *txt) {
+    for (auton_selector::Auton& auton : btnm_to_category.at(btnm)->autons) {
+        if (strcmp(auton.name.c_str(), txt) == 0) {
+            selected_auton = &auton;
+            break;
         }
-
-        if (should_break) break;
     }
 
     return LV_RES_OK;
 }
 
 
+// reset the auton to the first auton on the page when tab is changed
+void handle_tab_change() {
+    int previous_tab = lv_tabview_get_tab_act(tabview);
+    while (true) {
+        int current_tab = lv_tabview_get_tab_act(tabview);
+
+        if (current_tab != previous_tab) {
+            selected_auton = &auton_categories.at(current_tab).autons.at(0);
+
+            lv_obj_t* btnm = btnms.at(previous_tab);
+            lv_btnm_set_toggle(btnm, true, 0);
+        }
+
+        previous_tab = current_tab;
+        pros::delay(20);
+    }
+}
+
+
 void auton_selector::initialize(int autons_per_row) {
-    button_matrix_to_category = {};
+    if (auton_categories.empty()) {
+        return;
+    }
 
-    lv_obj_t* tabview = lv_tabview_create(lv_scr_act(), NULL);
+    btnm_to_category = {};
 
-    for (auton_selector::Category category : auton_categories) {
+    lv_theme_t* theme = lv_theme_alien_init(360, NULL);
+    lv_theme_set_current(theme);
+
+    tabview = lv_tabview_create(lv_scr_act(), NULL);
+
+    for (auton_selector::Category& category : auton_categories) {
         lv_obj_t* category_tab = lv_tabview_add_tab(tabview, category.name.c_str());
-        lv_obj_t* category_button_matrix = lv_btnm_create(category_tab, NULL);
+        lv_obj_t* category_btnm = lv_btnm_create(category_tab, NULL);
 
         size_t num_autons = category.autons.size();
         size_t auton_buttons_size = num_autons + num_autons / autons_per_row + 1;
@@ -64,7 +80,7 @@ void auton_selector::initialize(int autons_per_row) {
 
         size_t i;
         int autonIndex = 0;
-        for (i = 0; i < auton_buttons_size; i++) {
+        for (i = 0; i < auton_buttons_size - 1; i++) {
             // i != 0 so there's no empty row at the start
             if (i != 0 && i % autons_per_row == 0) {
                 auton_buttons[i] = "\n";
@@ -73,15 +89,19 @@ void auton_selector::initialize(int autons_per_row) {
                 auton_buttons[i] = category.autons[autonIndex++].name.c_str();
             }
         }
-        auton_buttons[i] = "";  // empty string at end
 
-        lv_btnm_set_map(category_button_matrix, auton_buttons);
-        lv_btnm_set_action(category_button_matrix, *button_action);
-        lv_obj_set_pos(category_button_matrix, 0, 100);
-        lv_obj_align(category_button_matrix, NULL, LV_ALIGN_CENTER, 0, 0);
+        auton_buttons[auton_buttons_size - 1] = "";  // empty string at end
 
-        CategoryButtonMatrixPair pair;
-        pair.category_button_matrix = category_button_matrix;
-        pair.category = &category;
+        lv_btnm_set_map(category_btnm, auton_buttons);
+        lv_btnm_set_action(category_btnm, *button_action);
+        lv_btnm_set_toggle(category_btnm, true, 0);
+        lv_obj_set_size(category_btnm, 450, 50);
+        lv_obj_set_pos(category_btnm, 0, 100);
+        lv_obj_align(category_btnm, NULL, LV_ALIGN_CENTER, 0, 0);
+
+        btnms.push_back(category_btnm);
+        btnm_to_category.emplace(category_btnm, &category);
     }
+
+    pros::Task(handle_tab_change) handle_tab_change_task;
 }
