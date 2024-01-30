@@ -103,5 +103,5 @@ void auton_selector::initialize(int autons_per_row) {
         btnm_to_category.emplace(category_btnm, &category);
     }
 
-    pros::Task(handle_tab_change) handle_tab_change_task;
+    pros::Task handle_tab_change_task(handle_tab_change);
 }
