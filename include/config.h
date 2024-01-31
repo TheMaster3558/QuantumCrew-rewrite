@@ -20,3 +20,7 @@
 // Sensors
 #define IMU_PORT 9
 #define CATAPULT_ROTATION_SENSOR_PORT 10
+
+// Catapult Tunables
+#define CATAPULT_VELOCITY -65
+#define CATAPULT_HOLD_ANGLE 20

@@ -28,5 +28,5 @@ lemlib::ControllerSettings Robot::Tunables::angularController(
 );
 
 const float Robot::Tunables::chasePower = 100.0;
-int Robot::Tunables::catapultVelocity = 65;
-int Robot::Tunables::catapultHoldAngle = 45;
+int Robot::Tunables::catapultVelocity = CATAPULT_VELOCITY;
+int Robot::Tunables::catapultHoldAngle = CATAPULT_HOLD_ANGLE;
