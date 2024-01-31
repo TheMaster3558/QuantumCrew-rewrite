@@ -23,7 +23,7 @@ void EventHandler::handleCatapult() {
     if (Robot::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
         Robot::Tunables::catapultVelocity--;
     }
-    if (Robot::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+    if (Robot::controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
         Robot::Tunables::catapultVelocity++;
     }
 }

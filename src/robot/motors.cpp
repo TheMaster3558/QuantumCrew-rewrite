@@ -51,10 +51,6 @@ void Robot::Motors::printOverheatingMotors() {
     addOverheatingMotor(rightBackBottom, overheatingMotors);
     addOverheatingMotor(rightBackTop, overheatingMotors);
 
-    if (overheatingMotors.size() > 0) {
-        Robot::controller.print(0, 0, joinVector(overheatingMotors, ", "));
-    } else {
-        Robot::controller.print(0, 0, "");
-    }
+    Robot::controller.print(0, 0, joinVector(overheatingMotors, ", "));
 
 }

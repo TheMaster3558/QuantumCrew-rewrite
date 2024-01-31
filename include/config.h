@@ -11,7 +11,7 @@
 
 // Motors: misc
 #define INTAKE_PORT 1
-#define CATAPULT_PORT 8
+#define CATAPULT_PORT -8
 
 // Pistons: flaps
 #define LEFT_FLAP_PORT 'A'
@@ -22,5 +22,5 @@
 #define CATAPULT_ROTATION_SENSOR_PORT 10
 
 // Catapult Tunables
-#define CATAPULT_VELOCITY -65
-#define CATAPULT_HOLD_ANGLE 30
+#define CATAPULT_VELOCITY 65
+#define CATAPULT_HOLD_ANGLE 35
