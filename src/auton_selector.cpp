@@ -28,7 +28,7 @@ std::map<lv_obj_t*, auton_selector::Category*> btnm_to_category;
 
 
 lv_res_t button_action(lv_obj_t *btnm, const char *txt) {
-    for (auton_selector::Auton& auton : btnm_to_category.at(btnm)->autons) {
+    for (auton_selector::Auton& auton : btnm_to_category[btnm]->autons) {
         if (strcmp(auton.name.c_str(), txt) == 0) {
             selected_auton = &auton;
             break;
@@ -46,9 +46,9 @@ void handle_tab_change() {
         int current_tab = lv_tabview_get_tab_act(tabview);
 
         if (current_tab != previous_tab) {
-            selected_auton = &auton_categories.at(current_tab).autons.at(0);
+            selected_auton = &auton_categories[current_tab].autons[0];
 
-            lv_obj_t* btnm = btnms.at(previous_tab);
+            lv_obj_t* btnm = btnms[previous_tab];
             lv_btnm_set_toggle(btnm, true, 0);
         }
 
