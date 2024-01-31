@@ -13,6 +13,8 @@ void initialize() {
     Robot::Motors::intake.tare_position();
     Robot::Motors::catapult.tare_position();
     Robot::Sensors::catapultRotationSensor.reset_position();
+    // reset_position is currently bugged and doesn't work
+    Robot::Tunables::catapultHoldAngle = (Robot::Tunables::catapultHoldAngle + Robot::Sensors::getCatapultAngle());
 
     Robot::Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
