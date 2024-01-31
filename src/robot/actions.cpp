@@ -34,7 +34,7 @@ void Robot::Actions::Intake::brake() {
 }
 
 
-lemlib::PID Robot::Actions::Catapult::catapultPID(0.5, 0, 0);
+lemlib::PID Robot::Actions::Catapult::catapultPID(5, 0, 0);
 
 
 void Robot::Actions::Catapult::lower() {
@@ -46,7 +46,7 @@ void Robot::Actions::Catapult::stepToHoldAngle() {
     Robot::Motors::catapult.move(
             ez::util::sgn(Robot::Tunables::catapultVelocity) *
             Robot::Actions::Catapult::catapultPID.update(
-                        Robot::Sensors::getCatapultAngle() - Robot::Tunables::catapultHoldAngle
+                        Robot::Tunables::catapultHoldAngle - Robot::Sensors::getCatapultAngle()
                     )
     );
 }
