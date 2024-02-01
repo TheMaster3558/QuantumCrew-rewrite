@@ -38,6 +38,7 @@ void initialize() {
     });
     //auton_selector::initialize();
 
+    pros::lcd::initialize();
     pros::Task screenTask([&]() {
         lemlib::Pose pose(0, 0, 0);
         while (true) {
