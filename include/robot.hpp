@@ -12,82 +12,65 @@
 #include "config.h"
 
 
-class Robot {
-public:
-    class Motors {
-    public:
-        static pros::MotorGroup leftDrive;
-        static pros::MotorGroup rightDrive;
+namespace Motors {
+    extern pros::MotorGroup leftDrive;
+    extern pros::MotorGroup rightDrive;
 
-        static void setDriveBrake(pros::motor_brake_mode_e_t mode);
+    void setDriveBrake(pros::motor_brake_mode_e_t mode);
 
-        static pros::Motor intake;
-        static pros::Motor catapult;
+    extern pros::Motor intake;
+    extern pros::Motor catapult;
 
-        static void printOverheatingMotors();
-    };
+    void printOverheatingMotors();
+}
 
-    class Pistons {
-    public:
-        static pros::ADIDigitalOut leftFlap;
-        static pros::ADIDigitalOut rightFlap;
-    };
+namespace Pistons {
+    extern pros::ADIDigitalOut leftFlap;
+    extern pros::ADIDigitalOut rightFlap;
+}
 
-    class Sensors {
-    public:
-        static pros::Imu imuSensor;
-        static pros::Rotation catapultRotationSensor;
+namespace Sensors {
+    extern pros::Imu imuSensor;
+    extern pros::Rotation catapultRotationSensor;
 
-        static int getCatapultAngle();
-    };
+    int getCatapultAngle();
+}
 
-    class DrivetrainInfo {
-    public:
-        static constexpr float drivetrainWidth = 13.5;
-        static constexpr float wheelDiameter = lemlib::Omniwheel::NEW_325;
-        static constexpr int drivetrainRpm = 360;
-    };
+namespace DrivetrainInfo {
+    extern const float drivetrainWidth;
+    extern const float wheelDiameter;
+    extern const int drivetrainRpm;
+}
 
-    class Tunables {
-    public:
-        static lemlib::ControllerSettings linearController;
-        static lemlib::ControllerSettings angularController;
-        static const int chasePower;
+namespace Tunables {
+    extern lemlib::ControllerSettings linearController;
+    extern lemlib::ControllerSettings angularController;
+    extern const int chasePower;
 
-        static int catapultVelocity;
-        static int catapultHoldAngle;
-    };
+    extern int catapultVelocity;
+    extern int catapultHoldAngle;
+}
 
-    class Actions {
-    public:
-        class Flaps {
-        public:
-            static bool leftFlapState;
-            static bool rightFlapState;
+namespace Actions {
+    namespace Flaps {
+        void setFlaps(bool, bool);
+        void reverseFlaps();
+    }
 
-            static void setFlaps(bool, bool);
-            static void reverseFlaps();
-        };
+    namespace Intake {
+        void intake();
+        void outtake();
+        void brake();
+    }
 
-        class Intake {
-        public:
-            static void intake();
-            static void outtake();
-            static void brake();
-        };
+    namespace Catapult {
+        void lower();
+        void stepToHoldAngle();
+        void moveToHoldAngle();
+        void brake();
+    }
 
-        class Catapult {
-        public:
-            static lemlib::PID catapultPID;
+}
 
-            static void lower();
-            static void stepToHoldAngle();
-            static void moveToHoldAngle();
-            static void brake();
-        };
-    };
-
-
-    static pros::Controller controller;
-    static lemlib::Chassis chassis;
-};
+extern pros::Controller controller;
+extern lemlib::Chassis chassis;

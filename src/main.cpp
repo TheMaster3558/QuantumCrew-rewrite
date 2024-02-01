@@ -8,16 +8,16 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-    Robot::chassis.calibrate();
+    chassis.calibrate();
 
-    Robot::Motors::intake.tare_position();
-    Robot::Motors::catapult.tare_position();
-    Robot::Sensors::catapultRotationSensor.reset_position();
+    Motors::intake.tare_position();
+    Motors::catapult.tare_position();
+    Sensors::catapultRotationSensor.reset_position();
     // reset_position is currently bugged and doesn't work
     pros::delay(500);
-    Robot::Tunables::catapultHoldAngle += Robot::Sensors::getCatapultAngle();
+    Tunables::catapultHoldAngle += Sensors::getCatapultAngle();
 
-    Robot::Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
     auton_selector::set_autons({
         auton_selector::Category("Tuning", {
@@ -43,11 +43,11 @@ void initialize() {
         lemlib::Pose pose(0, 0, 0);
         while (true) {
             // print robot location to the brain screen
-            pros::lcd::print(0, "X: %f", Robot::chassis.getPose().x); // x
-            pros::lcd::print(1, "Y: %f", Robot::chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", Robot::chassis.getPose().theta); // heading
+            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
             // log position telemetry
-            lemlib::telemetrySink()->info("Chassis pose: {}", Robot::chassis.getPose());
+            lemlib::telemetrySink()->info("Chassis pose: {}", chassis.getPose());
             // delay to save resources
             pros::delay(50);
         }
@@ -85,7 +85,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-    Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
+    Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
     //auton_selector::call_selected_auton();
     Autons::tuneDrive();
 }
@@ -104,13 +104,13 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
-    Robot::Actions::Flaps::setFlaps(false, false);
+    Motors::setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
+    Actions::Flaps::setFlaps(false, false);
 
     while (true) {
-        int leftY = Robot::controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightX = Robot::controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
-        Robot::chassis.arcade(leftY, rightX, 10.0);
+        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+        chassis.arcade(leftY, rightX, 10.0);
 
         EventHandler::handleAll();
 

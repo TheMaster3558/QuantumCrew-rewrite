@@ -3,12 +3,11 @@
 #include "EZ-Template/api.hpp"
 
 
-class EventHandler {
-public:
-    static void handleFlaps();
-    static void handleCatapult();
-    static void handleIntake();
-    static void updateDisplay();
-    static void updateCalibration();
-    static void handleAll();
-};
+namespace EventHandler {
+    void handleFlaps();
+    void handleCatapult();
+    void handleIntake();
+    void updateDisplay();
+    void updateCalibration();
+    void handleAll();
+}

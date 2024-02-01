@@ -1,3 +1,5 @@
+#include "pros/rotation.hpp"
+#include "pros/adi.hpp"
 #include "robot.hpp"
 
 
@@ -9,15 +11,16 @@ pros::Motor rightFront(RIGHT_FRONT_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
 pros::Motor rightBackBottom(RIGHT_BACK_BOTTOM_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
 pros::Motor rightBackTop(RIGHT_BACK_TOP_DRIVE_PORT, pros::E_MOTOR_GEAR_BLUE);
 
-pros::Motor Robot::Motors::intake(INTAKE_PORT, pros::E_MOTOR_GEAR_GREEN);
-pros::Motor Robot::Motors::catapult(CATAPULT_PORT, pros::E_MOTOR_GEAR_RED);
+pros::Motor Motors::intake(INTAKE_PORT, pros::E_MOTOR_GEAR_GREEN);
+pros::Motor Motors::catapult(CATAPULT_PORT, pros::E_MOTOR_GEAR_RED);
 
-pros::MotorGroup Robot::Motors::leftDrive({leftFront, leftBackBottom, leftBackTop});
-pros::MotorGroup Robot::Motors::rightDrive({rightFront, rightBackBottom, rightBackTop});
+pros::MotorGroup Motors::leftDrive({leftFront, leftBackBottom, leftBackTop});
+pros::MotorGroup Motors::rightDrive({rightFront, rightBackBottom, rightBackTop});
 
-void Robot::Motors::setDriveBrake(pros::motor_brake_mode_e_t mode) {
-    Robot::Motors::leftDrive.set_brake_modes(mode);
-    Robot::Motors::rightDrive.set_brake_modes(mode);
+
+void Motors::setDriveBrake(pros::motor_brake_mode_e_t mode) {
+    Motors::leftDrive.set_brake_modes(mode);
+    Motors::rightDrive.set_brake_modes(mode);
 }
 
 
@@ -39,7 +42,7 @@ const char* joinVector(std::vector<int> vector, std::string delim) {
 }
 
 
-void Robot::Motors::printOverheatingMotors() {
+void Motors::printOverheatingMotors() {
     std::vector<int> overheatingMotors;
 
     addOverheatingMotor(intake, overheatingMotors);
@@ -51,6 +54,20 @@ void Robot::Motors::printOverheatingMotors() {
     addOverheatingMotor(rightBackBottom, overheatingMotors);
     addOverheatingMotor(rightBackTop, overheatingMotors);
 
-    Robot::controller.print(0, 0, joinVector(overheatingMotors, ", "));
+    controller.print(0, 0, joinVector(overheatingMotors, ", "));
 
 }
+
+
+pros::ADIDigitalOut Pistons::leftFlap(LEFT_FLAP_PORT);
+pros::ADIDigitalOut Pistons::rightFlap(RIGHT_FLAP_PORT);
+
+
+pros::Imu Sensors::imuSensor(IMU_PORT);
+pros::Rotation Sensors::catapultRotationSensor(CATAPULT_ROTATION_SENSOR_PORT);
+
+
+int Sensors::getCatapultAngle() {
+    return Sensors::catapultRotationSensor.get_angle() / 100;
+}
+

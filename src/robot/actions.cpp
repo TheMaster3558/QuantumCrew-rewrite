@@ -1,64 +1,64 @@
 #include "robot.hpp"
 
 
-bool Robot::Actions::Flaps::leftFlapState = false;
-bool Robot::Actions::Flaps::rightFlapState = false;
+bool leftFlapState = false;
+bool rightFlapState = false;
 
 
-void Robot::Actions::Flaps::setFlaps(bool left, bool right) {
-    Robot::Actions::Flaps::leftFlapState = left;
-    Robot::Actions::Flaps::rightFlapState = right;
+void Actions::Flaps::setFlaps(bool left, bool right) {
+    leftFlapState = left;
+    rightFlapState = right;
 
-    Robot::Pistons::leftFlap.set_value(left);
-    Robot::Pistons::rightFlap.set_value(right);
+    Pistons::leftFlap.set_value(left);
+    Pistons::rightFlap.set_value(right);
 };
 
 
-void Robot::Actions::Flaps::reverseFlaps() {
-    Robot::Actions::Flaps::setFlaps(!Robot::Actions::Flaps::leftFlapState, !Robot::Actions::Flaps::rightFlapState);
+void Actions::Flaps::reverseFlaps() {
+    Actions::Flaps::setFlaps(!leftFlapState, !rightFlapState);
 }
 
 
-void Robot::Actions::Intake::intake() {
-    Robot::Motors::intake.move(127);
+void Actions::Intake::intake() {
+    Motors::intake.move(127);
 }
 
 
-void Robot::Actions::Intake::outtake() {
-    Robot::Motors::intake.move(-127);
+void Actions::Intake::outtake() {
+    Motors::intake.move(-127);
 }
 
 
-void Robot::Actions::Intake::brake() {
-    Robot::Motors::intake.brake();
+void Actions::Intake::brake() {
+    Motors::intake.brake();
 }
 
 
-lemlib::PID Robot::Actions::Catapult::catapultPID(5, 0, 0);
+lemlib::PID catapultPID(5, 0, 0);
 
 
-void Robot::Actions::Catapult::lower() {
-    Robot::Motors::catapult.move_velocity(Robot::Tunables::catapultVelocity);
+void Actions::Catapult::lower() {
+    Motors::catapult.move_velocity(Tunables::catapultVelocity);
 }
 
 
-void Robot::Actions::Catapult::stepToHoldAngle() {
-    Robot::Motors::catapult.move(
-            Robot::Actions::Catapult::catapultPID.update(
-                    Robot::Tunables::catapultHoldAngle - Robot::Sensors::getCatapultAngle()
+void Actions::Catapult::stepToHoldAngle() {
+    Motors::catapult.move(
+            catapultPID.update(
+                    Tunables::catapultHoldAngle - Sensors::getCatapultAngle()
             )
     );
 }
 
 
-void Robot::Actions::Catapult::moveToHoldAngle() {
-    while (abs(Robot::Sensors::getCatapultAngle() - Robot::Tunables::catapultHoldAngle) > 1.0) {
+void Actions::Catapult::moveToHoldAngle() {
+    while (abs(Sensors::getCatapultAngle() - Tunables::catapultHoldAngle) > 1.0) {
         stepToHoldAngle();
     }
-    Robot::Actions::Catapult::brake();
+    Actions::Catapult::brake();
 }
 
 
-void Robot::Actions::Catapult::brake() {
-    Robot::Motors::catapult.brake();
+void Actions::Catapult::brake() {
+    Motors::catapult.brake();
 }

@@ -1,13 +1,50 @@
 #include "robot.hpp"
 
 
+const int Tunables::chasePower = 8;
+int Tunables::catapultVelocity = CATAPULT_VELOCITY;
+int Tunables::catapultHoldAngle = CATAPULT_HOLD_ANGLE;
+
+
+const float DrivetrainInfo::drivetrainWidth = 12.0;
+const float DrivetrainInfo::wheelDiameter = lemlib::Omniwheel::NEW_325;
+const int DrivetrainInfo::drivetrainRpm = 360;
+
+
+// forward/backward PID
+lemlib::ControllerSettings Tunables::linearController(
+        10, // proportional gain (kP),
+        0, // integral gain (kI)
+        30, // derivative gain (kD)
+        0, // windup range
+        1, // small error range, in inches
+        100, // small error range timeout, in milliseconds
+        3, // large error range, in inches
+        500, // large error range timeout, in milliseconds
+        20 // maximum acceleration (slew)
+);
+
+// turning PID
+lemlib::ControllerSettings Tunables::angularController(
+        2, // proportional gain (kP)
+        0, // integral gain (kI)
+        10, // derivative gain (kD)
+        0, // windup range
+        1, // small error range, in degrees
+        100, // small error range timeout, in milliseconds
+        3, // large error range, in degrees
+        500, // large error range timeout, in milliseconds
+        0 // maximum acceleration (slew). 0 means no limit
+);
+
+
 lemlib::Drivetrain drivetrain {
-    &Robot::Motors::leftDrive,
-    &Robot::Motors::rightDrive,
-    Robot::DrivetrainInfo::drivetrainWidth,
-    Robot::DrivetrainInfo::wheelDiameter,
-    Robot::DrivetrainInfo::drivetrainRpm,
-    Robot::Tunables::chasePower
+    &Motors::leftDrive,
+    &Motors::rightDrive,
+    DrivetrainInfo::drivetrainWidth,
+    DrivetrainInfo::wheelDiameter,
+    DrivetrainInfo::drivetrainRpm,
+    Tunables::chasePower
 };
 
 
@@ -16,15 +53,15 @@ lemlib::OdomSensors sensors {
     nullptr,
     nullptr,
     nullptr,
-    &Robot::Sensors::imuSensor
+    &Sensors::imuSensor
 };
 
 
-lemlib::Chassis Robot::chassis {
+lemlib::Chassis chassis {
     drivetrain,
-    Robot::Tunables::linearController,
-    Robot::Tunables::angularController,
+    Tunables::linearController,
+    Tunables::angularController,
     sensors
 };
 
-pros::Controller Robot::controller(pros::E_CONTROLLER_MASTER);
+pros::Controller controller(pros::E_CONTROLLER_MASTER);
