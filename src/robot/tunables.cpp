@@ -27,6 +27,6 @@ lemlib::ControllerSettings Robot::Tunables::angularController(
     0 // maximum acceleration (slew). 0 means no limit
 );
 
-const float Robot::Tunables::chasePower = 100.0;
+const int Robot::Tunables::chasePower = 8;
 int Robot::Tunables::catapultVelocity = CATAPULT_VELOCITY;
 int Robot::Tunables::catapultHoldAngle = CATAPULT_HOLD_ANGLE;

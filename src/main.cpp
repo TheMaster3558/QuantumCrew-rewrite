@@ -20,6 +20,10 @@ void initialize() {
     Robot::Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
     auton_selector::set_autons({
+        auton_selector::Category("Tuning", {
+            auton_selector::Auton("Drive", Autons::tuneDrive),
+            auton_selector::Auton("Turn", Autons::tuneTurn)
+        }),
         auton_selector::Category("Offensive", {
             auton_selector::Auton("Nothing", Autons::doNothing),
             auton_selector::Auton("6 ball", Autons::offensive)
@@ -65,8 +69,16 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+void print() {
+    while (true) {
+        lemlib::Pose p = Robot::chassis.getPose();
+        Robot::controller.print(0, 0, "%d %d %d", p.x, p.y, p.theta);
+        pros::delay(1000);
+    }
+}
 void autonomous() {
     Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
+    pros::Task t(print);
     auton_selector::call_selected_auton();
 }
 

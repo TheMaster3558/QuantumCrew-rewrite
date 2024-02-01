@@ -9,5 +9,6 @@ public:
     static void handleCatapult();
     static void handleIntake();
     static void updateDisplay();
+    static void updateCalibration();
     static void handleAll();
 };

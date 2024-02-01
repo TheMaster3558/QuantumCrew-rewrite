@@ -23,4 +23,4 @@
 
 // Catapult Tunables
 #define CATAPULT_VELOCITY 65
-#define CATAPULT_HOLD_ANGLE 35
+#define CATAPULT_HOLD_ANGLE 40

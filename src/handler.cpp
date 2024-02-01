@@ -43,7 +43,17 @@ void EventHandler::handleIntake() {
 void EventHandler::updateDisplay() {
     static int counter = 0;
     if (counter++ % (50 / ez::util::DELAY_TIME) == 0) {
-        Robot::Motors::printOverheatingMotors();
+        //Robot::Motors::printOverheatingMotors();
+    }
+}
+
+
+void EventHandler::updateCalibration() {
+    if (Robot::controller.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
+        Robot::controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
+        Robot::controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)
+    ) {
+        Robot::chassis.calibrate();
     }
 }
 
@@ -53,6 +63,7 @@ void EventHandler::handleAll() {
     EventHandler::handleCatapult();
     EventHandler::handleIntake();
     EventHandler::updateDisplay();
+    EventHandler::updateCalibration();
 }
 
 

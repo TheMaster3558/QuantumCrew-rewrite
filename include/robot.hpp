@@ -44,7 +44,7 @@ public:
     class DrivetrainInfo {
     public:
         static constexpr float drivetrainWidth = 13.5;
-        static constexpr float wheelDiameter = 3.25;
+        static constexpr float wheelDiameter = lemlib::Omniwheel::NEW_325;
         static constexpr int drivetrainRpm = 360;
     };
 
@@ -52,7 +52,7 @@ public:
     public:
         static lemlib::ControllerSettings linearController;
         static lemlib::ControllerSettings angularController;
-        static const float chasePower;
+        static const int chasePower;
 
         static int catapultVelocity;
         static int catapultHoldAngle;
