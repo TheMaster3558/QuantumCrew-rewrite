@@ -36,7 +36,21 @@ void initialize() {
             auton_selector::Auton("Skills", Autons::skills)
         })
     });
-    auton_selector::initialize();
+    //auton_selector::initialize();
+
+    pros::Task screenTask([&]() {
+        lemlib::Pose pose(0, 0, 0);
+        while (true) {
+            // print robot location to the brain screen
+            pros::lcd::print(0, "X: %f", Robot::chassis.getPose().x); // x
+            pros::lcd::print(1, "Y: %f", Robot::chassis.getPose().y); // y
+            pros::lcd::print(2, "Theta: %f", Robot::chassis.getPose().theta); // heading
+            // log position telemetry
+            lemlib::telemetrySink()->info("Chassis pose: {}", Robot::chassis.getPose());
+            // delay to save resources
+            pros::delay(50);
+        }
+    });
 }
 
 /**
@@ -69,17 +83,10 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void print() {
-    while (true) {
-        lemlib::Pose p = Robot::chassis.getPose();
-        Robot::controller.print(0, 0, "%d %d %d", p.x, p.y, p.theta);
-        pros::delay(1000);
-    }
-}
 void autonomous() {
     Robot::Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
-    pros::Task t(print);
-    auton_selector::call_selected_auton();
+    //auton_selector::call_selected_auton();
+    Autons::tuneDrive();
 }
 
 /**
