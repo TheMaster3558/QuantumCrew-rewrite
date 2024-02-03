@@ -13,7 +13,7 @@ const int DrivetrainInfo::drivetrainRpm = 360;
 
 // forward/backward PID
 lemlib::ControllerSettings Tunables::linearController(
-        10, // proportional gain (kP),
+        15, // proportional gain (kP),
         0, // integral gain (kI)
         30, // derivative gain (kD)
         0, // windup range
@@ -21,14 +21,14 @@ lemlib::ControllerSettings Tunables::linearController(
         100, // small error range timeout, in milliseconds
         3, // large error range, in inches
         500, // large error range timeout, in milliseconds
-        20 // maximum acceleration (slew)
+        5 // maximum acceleration (slew)
 );
 
 // turning PID
 lemlib::ControllerSettings Tunables::angularController(
-        2, // proportional gain (kP)
+        5, // proportional gain (kP)
         0, // integral gain (kI)
-        10, // derivative gain (kD)
+        40, // derivative gain (kD)
         0, // windup range
         1, // small error range, in degrees
         100, // small error range timeout, in milliseconds

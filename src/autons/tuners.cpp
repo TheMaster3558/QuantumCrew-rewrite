@@ -2,7 +2,7 @@
 
 
 void Autons::tuneDrive() {
-    chassis.moveToPose(0, 10, 0, 30000);
+    chassis.moveToPoint(0, 10, 3000);
     chassis.waitUntilDone();
 }
 

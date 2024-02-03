@@ -6,6 +6,12 @@ void EventHandler::handleFlaps() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
         Actions::Flaps::reverseFlaps();
     }
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
+        Actions::Flaps::setFlaps(true, false);
+    }
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+        Actions::Flaps::setFlaps(false, true);
+    }
 }
 
 

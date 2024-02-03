@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+#include "EZ-Template/api.hpp"
 #include "robot.hpp"
 
 

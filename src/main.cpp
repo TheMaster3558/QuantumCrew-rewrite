@@ -17,7 +17,7 @@ void initialize() {
     pros::delay(500);
     Tunables::catapultHoldAngle += Sensors::getCatapultAngle();
 
-    Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    //Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
     auton_selector::set_autons({
         auton_selector::Category("Tuning", {
@@ -36,22 +36,7 @@ void initialize() {
             auton_selector::Auton("Skills", Autons::skills)
         })
     });
-    //auton_selector::initialize();
-
-    pros::lcd::initialize();
-    pros::Task screenTask([&]() {
-        lemlib::Pose pose(0, 0, 0);
-        while (true) {
-            // print robot location to the brain screen
-            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
-            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
-            // log position telemetry
-            lemlib::telemetrySink()->info("Chassis pose: {}", chassis.getPose());
-            // delay to save resources
-            pros::delay(50);
-        }
-    });
+    auton_selector::initialize();
 }
 
 /**
@@ -86,8 +71,7 @@ void competition_initialize() {}
  */
 void autonomous() {
     Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
-    //auton_selector::call_selected_auton();
-    Autons::tuneDrive();
+    auton_selector::call_selected_auton();
 }
 
 /**
