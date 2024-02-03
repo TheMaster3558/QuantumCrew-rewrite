@@ -62,11 +62,11 @@ void Autons::Autons::skills() {
     chassis.setPose(42, -10, 270);
 
     chassis.moveToPoint(18, -8, 2000);
+    chassis.waitUntil(4);
+    Actions::Flaps::setFlaps(false, false);
     chassis.waitUntilDone();
 
     chassis.moveToPoint(20, 8, 2000);
-    chassis.waitUntil(4);
-    Actions::Flaps::setFlaps(false, false);
     chassis.waitUntilDone();
 
     chassis.turnTo(50, 8, 1000, false);
