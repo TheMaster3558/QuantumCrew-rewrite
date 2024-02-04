@@ -46,7 +46,7 @@ void Autons::Autons::defensiveQual() {
 
 
 void Autons::Autons::defensiveElims() {
-    chassis.setPose(35, 63, 180);
+    chassis.setPose(35, 60, 180);
 
     chassis.moveToPoint(35, 10, 3000);
     chassis.waitUntilDone();
