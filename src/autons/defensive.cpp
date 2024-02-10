@@ -11,14 +11,14 @@ void Autons::Autons::defensiveQual() {
     chassis.moveToPoint(52, 52, 1000);
     chassis.waitUntilDone();
 
-    Actions::Flaps::setFlaps(true, false);
+    Actions::Flaps::setFlaps(BACK, makeFlapState(true, false));
 
     chassis.moveToPoint(42, 57, 1000, false);
     chassis.waitUntilDone();
 
     chassis.moveToPoint(55, 40, 3000);
     chassis.waitUntil(5);
-    Actions::Flaps::setFlaps(false, false);
+    Actions::Flaps::setFlaps(BACK, makeFlapState(false, false));
     chassis.waitUntilDone();
 
     chassis.turnTo(55, 29, 1000);
@@ -54,7 +54,7 @@ void Autons::Autons::defensiveElims() {
     chassis.turnTo(45, 10, 1000);
     chassis.waitUntilDone();
 
-    Actions::Flaps::setFlaps(true, true);
+    Actions::Flaps::setFlaps(BACK, makeFlapState(true, true));
 
     chassis.moveToPose(5, 10, 90, 2000, {
         .forwards = false,
@@ -62,7 +62,7 @@ void Autons::Autons::defensiveElims() {
     });
     chassis.waitUntilDone();
 
-    Actions::Flaps::setFlaps(false, false);
+    Actions::Flaps::setFlaps(BACK, makeFlapState(false, false));
 
     chassis.moveToPose(45, 10, 90, 2000, {
         .minSpeed = 110

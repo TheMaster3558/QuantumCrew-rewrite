@@ -59,8 +59,10 @@ void Motors::printOverheatingMotors() {
 }
 
 
-pros::ADIDigitalOut Pistons::leftFlap(LEFT_FLAP_PORT);
-pros::ADIDigitalOut Pistons::rightFlap(RIGHT_FLAP_PORT);
+pros::ADIDigitalOut Pistons::frontLeftFlap(FRONT_LEFT_FLAP_PORT);
+pros::ADIDigitalOut Pistons::frontRightFlap(FRONT_RIGHT_FLAP_PORT);
+pros::ADIDigitalOut Pistons::backLeftFlap(BACK_LEFT_FLAP_PORT);
+pros::ADIDigitalOut Pistons::backRightFlap(BACK_RIGHT_FLAP_PORT);
 
 
 pros::Imu Sensors::imuSensor(IMU_PORT);

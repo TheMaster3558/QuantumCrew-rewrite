@@ -3,14 +3,11 @@
 
 
 void EventHandler::handleFlaps() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
-        Actions::Flaps::reverseFlaps();
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
+        Actions::Flaps::reverseFlaps(FRONT);
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
-        Actions::Flaps::setFlaps(true, false);
-    }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
-        Actions::Flaps::setFlaps(false, true);
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+        Actions::Flaps::reverseFlaps(BACK);
     }
 }
 
@@ -54,22 +51,11 @@ void EventHandler::updateDisplay() {
 }
 
 
-void EventHandler::updateCalibration() {
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
-        controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-        controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)
-    ) {
-        chassis.calibrate();
-    }
-}
-
-
 void EventHandler::handleAll() {
     EventHandler::handleFlaps();
     EventHandler::handleCatapult();
     EventHandler::handleIntake();
     EventHandler::updateDisplay();
-    EventHandler::updateCalibration();
 }
 
 

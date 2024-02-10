@@ -2,6 +2,7 @@
 
 #include <sstream>
 #include <vector>
+#include <utility>
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
 #include "pros/adi.hpp"
@@ -25,8 +26,10 @@ namespace Motors {
 }
 
 namespace Pistons {
-    extern pros::ADIDigitalOut leftFlap;
-    extern pros::ADIDigitalOut rightFlap;
+    extern pros::ADIDigitalOut frontLeftFlap;
+    extern pros::ADIDigitalOut frontRightFlap;
+    extern pros::ADIDigitalOut backLeftFlap;
+    extern pros::ADIDigitalOut backRightFlap;
 }
 
 namespace Sensors {
@@ -51,10 +54,15 @@ namespace Tunables {
     extern int catapultHoldAngle;
 }
 
+enum Flap { FRONT, BACK };
+
+typedef std::pair<bool, bool> FlapState;
+#define makeFlapState(left, right) (std::make_pair(left, right))
+
 namespace Actions {
     namespace Flaps {
-        void setFlaps(bool, bool);
-        void reverseFlaps();
+        void setFlaps(Flap, FlapState);
+        void reverseFlaps(Flap);
     }
 
     namespace Intake {

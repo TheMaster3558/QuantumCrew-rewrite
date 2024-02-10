@@ -8,6 +8,5 @@ namespace EventHandler {
     void handleCatapult();
     void handleIntake();
     void updateDisplay();
-    void updateCalibration();
     void handleAll();
 }

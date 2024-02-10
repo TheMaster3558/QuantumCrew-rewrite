@@ -1,21 +1,37 @@
 #include "robot.hpp"
 
 
-bool leftFlapState = false;
-bool rightFlapState = false;
+void Actions::Flaps::setFlaps(Flap flap, FlapState state) {
+    std::unique_ptr<pros::ADIDigitalOut> leftFlap;
+    std::unique_ptr<pros::ADIDigitalOut> rightFlap;
+
+    if (flap == FRONT) {
+        leftFlap = std::make_unique<pros::ADIDigitalOut>(Pistons::frontLeftFlap);
+        rightFlap = std::make_unique<pros::ADIDigitalOut>(Pistons::frontRightFlap);
+    }
+    else {
+        leftFlap = std::make_unique<pros::ADIDigitalOut>(Pistons::backLeftFlap);
+        rightFlap = std::make_unique<pros::ADIDigitalOut>(Pistons::backRightFlap);
+    }
+
+    leftFlap->set_value(state.first);
+    rightFlap->set_value(state.second);
+}
 
 
-void Actions::Flaps::setFlaps(bool left, bool right) {
-    leftFlapState = left;
-    rightFlapState = right;
-
-    Pistons::leftFlap.set_value(left);
-    Pistons::rightFlap.set_value(right);
-};
+FlapState reverseState(FlapState state) {
+    state.first = !state.first;
+    state.second = !state.second;
+    return state;
+}
 
 
-void Actions::Flaps::reverseFlaps() {
-    Actions::Flaps::setFlaps(!leftFlapState, !rightFlapState);
+void Actions::Flaps::reverseFlaps(Flap flap) {
+    static FlapState frontFlapStates = makeFlapState(false, false);
+    static FlapState backFlapStates = makeFlapState(false, false);
+
+    FlapState state = (flap == FRONT) ? frontFlapStates : backFlapStates;
+    Actions::Flaps::setFlaps(flap, reverseState(state));
 }
 
 

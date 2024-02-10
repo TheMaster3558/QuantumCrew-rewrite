@@ -19,24 +19,24 @@ void initialize() {
 
     //Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
-    auton_selector::set_autons({
-        auton_selector::Category("Tuning", {
-            auton_selector::Auton("Drive", Autons::tuneDrive),
-            auton_selector::Auton("Turn", Autons::tuneTurn)
+    ms::set_autons({
+        ms::Category("Tuning", {
+            ms::Auton("Drive", Autons::tuneDrive),
+            ms::Auton("Turn", Autons::tuneTurn)
         }),
-        auton_selector::Category("Offensive", {
-            auton_selector::Auton("Nothing", Autons::doNothing),
-            auton_selector::Auton("6 ball", Autons::offensive)
+        ms::Category("Offensive", {
+            ms::Auton("Nothing", Autons::doNothing),
+            ms::Auton("6 ball", Autons::offensive)
         }),
-        auton_selector::Category("Defensive", {
-            auton_selector::Auton("Qualifying", Autons::defensiveQual),
-            auton_selector::Auton("Eliminations", Autons::defensiveElims)
+        ms::Category("Defensive", {
+            ms::Auton("Qualifying", Autons::defensiveQual),
+            ms::Auton("Eliminations", Autons::defensiveElims)
         }),
-        auton_selector::Category("Skills", {
-            auton_selector::Auton("Skills", Autons::skills)
+        ms::Category("Skills", {
+            ms::Auton("Skills", Autons::skills)
         })
     });
-    auton_selector::initialize();
+    ms::initialize();
 }
 
 /**
@@ -71,7 +71,7 @@ void competition_initialize() {}
  */
 void autonomous() {
     Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
-    auton_selector::call_selected_auton();
+    ms::call_selected_auton();
 }
 
 /**
@@ -89,7 +89,8 @@ void autonomous() {
  */
 void opcontrol() {
     Motors::setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
-    Actions::Flaps::setFlaps(false, false);
+    Actions::Flaps::setFlaps(FRONT, makeFlapState(false, false));
+    Actions::Flaps::setFlaps(BACK, makeFlapState(false, false));
 
     while (true) {
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);

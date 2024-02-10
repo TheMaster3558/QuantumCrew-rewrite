@@ -5,19 +5,8 @@ ASSET(skills_prepare_for_first_ram_txt)
 ASSET(skills_first_ram_to_second_txt)
 
 
-float inline distance(float x1, float x2, float y1, float y2) {
-    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
-}
-
-
-void waitUntilDistance(float distanceFromTarget, float x, float y) {
-    while (distance(x, y, chassis.getPose().x, chassis.getPose().y) > distanceFromTarget) {
-        pros::delay(ez::util::DELAY_TIME);
-    }
-}
-
-
 void Autons::Autons::skills() {
+    /*
     chassis.setPose(-50, -55, 240);
 
     Actions::Catapult::lower();
@@ -80,4 +69,5 @@ void Autons::Autons::skills() {
     });
 
     Motors::catapult.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+     */
 }

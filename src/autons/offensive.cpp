@@ -56,17 +56,12 @@ void Autons::Autons::offensive() {
     chassis.turnTo(-50, 8, 500);
     chassis.waitUntilDone();
 
-    Actions::Intake::outtake();
-    pros::delay(500);
-    Actions::Intake::brake();
-
-    chassis.turnTo(-50, 8, 500, false);
-    chassis.waitUntilDone();
-
-    Actions::setFlaps(true, true);
+    Actions::Flaps::setFlaps(FRONT, makeFlapState(true, true));
 
     chassis.moveToPose(-50, 8, 90, 2000, {
-        .forwards = false,
         .minSpeed = 110
     });
+    Actions::Intake::outtake();
+    chassis.waitUntilDone();
+    Actions::Intake::brake();
 }
