@@ -6,6 +6,7 @@ ASSET(offensive_center_outtake_txt)
 
 
 void Autons::Autons::offensive() {
+    /*
     chassis.setPose(-13, 59, 0);
 
     Actions::Intake::intake();
@@ -64,4 +65,5 @@ void Autons::Autons::offensive() {
     Actions::Intake::outtake();
     chassis.waitUntilDone();
     Actions::Intake::brake();
+    */
 }

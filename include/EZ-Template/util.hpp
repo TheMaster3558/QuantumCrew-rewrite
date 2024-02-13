@@ -6,23 +6,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 #pragma once
 
-#ifdef __GNUC__
-    #include <bits/stdc++.h>
-#else
-    #include <iostream>
-    #include <algorithm>
-    #include <vector>
-    #include <queue>
-    #include <stack>
-    #include <map>
-    #include <set>
-    #include <cmath>
-    #include <cstring>
-    #include <cstdlib>
-    #include <cstdio>
-    #include <ctime>
-#endif
-
+#include <bits/stdc++.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -38,7 +22,7 @@ namespace ez {
 /**
  * Prints our branding all over your pros terminal
  */
-void print_ez_template();
+void ez_template_print();
 
 /**
  * Prints to the brain screen in one string.  Splits input between lines with
@@ -49,7 +33,7 @@ void print_ez_template();
  * @param line
  *        Starting line to print on, defaults to 0
  */
-void print_to_screen(std::string text, int line = 0);
+void screen_print(std::string text, int line = 0);
 
 /////
 //
@@ -103,17 +87,17 @@ int sgn(double input);
 /**
  * Returns true if the input is < 0
  */
-bool is_reversed(double input);
+bool reversed_active(double input);
 
 /**
  * Returns input restricted to min-max threshold
  */
-double clip_num(double input, double max, double min);
+double clamp(double input, double max, double min);
 
 /**
  * Is the SD card plugged in?
  */
-const bool IS_SD_CARD = pros::usd::is_installed();
+const bool SD_CARD_ACTIVE = pros::usd::is_installed();
 
 /**
  * Delay time for tasks

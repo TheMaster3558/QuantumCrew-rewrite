@@ -10,6 +10,7 @@
 #include "pros/imu.hpp"
 #include "pros/llemu.hpp"
 #include "lemlib/api.hpp"
+#include "EZ-Template/api.hpp"
 #include "config.h"
 
 
@@ -26,10 +27,8 @@ namespace Motors {
 }
 
 namespace Pistons {
-    extern pros::ADIDigitalOut frontLeftFlap;
-    extern pros::ADIDigitalOut frontRightFlap;
-    extern pros::ADIDigitalOut backLeftFlap;
-    extern pros::ADIDigitalOut backRightFlap;
+    extern ez::Piston frontWings;
+    extern ez::Piston backWings;
 }
 
 namespace Sensors {
@@ -54,17 +53,7 @@ namespace Tunables {
     extern int catapultHoldAngle;
 }
 
-enum Flap { FRONT, BACK };
-
-typedef std::pair<bool, bool> FlapState;
-#define makeFlapState(left, right) (std::make_pair(left, right))
-
 namespace Actions {
-    namespace Flaps {
-        void setFlaps(Flap, FlapState);
-        void reverseFlaps(Flap);
-    }
-
     namespace Intake {
         void intake();
         void outtake();

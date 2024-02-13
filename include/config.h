@@ -14,10 +14,8 @@
 #define CATAPULT_PORT -8
 
 // Pistons: flaps
-#define FRONT_LEFT_FLAP_PORT 'C'
-#define FRONT_RIGHT_FLAP_PORT 'D'
-#define BACK_LEFT_FLAP_PORT 'A'
-#define BACK_RIGHT_FLAP_PORT 'B'
+#define FRONT_WING_PORT 'A'
+#define BACK_WING_PORT 'B'
 
 // Sensors
 #define IMU_PORT 9

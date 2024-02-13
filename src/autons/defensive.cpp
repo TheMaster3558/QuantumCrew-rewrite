@@ -11,14 +11,14 @@ void Autons::Autons::defensiveQual() {
     chassis.moveToPoint(52, 52, 1000);
     chassis.waitUntilDone();
 
-    Actions::Flaps::setFlaps(BACK, makeFlapState(true, false));
+    Pistons::backWings.set(true);
 
     chassis.moveToPoint(42, 57, 1000, false);
     chassis.waitUntilDone();
 
     chassis.moveToPoint(55, 40, 3000);
     chassis.waitUntil(5);
-    Actions::Flaps::setFlaps(BACK, makeFlapState(false, false));
+    Pistons::backWings.set(false);
     chassis.waitUntilDone();
 
     chassis.turnTo(55, 29, 1000);
@@ -64,26 +64,29 @@ void Autons::Autons::defensiveElims() {
     chassis.turnTo(0, 10, 1000);
     chassis.waitUntilDone();
 
-    Actions::Flaps::setFlaps(FRONT, makeFlapState(true, true));
+    Pistons::frontWings.set(true);
 
     chassis.moveToPose(5, 10, 90, 2000, {
         .minSpeed = 110
     });
     chassis.waitUntilDone();
 
-    Actions::Flaps::setFlaps(FRONT, makeFlapState(false, false));
-    Actions::Flaps::setFlaps(BACK, makeFlapState(true, true));
+    Pistons::frontWings.set(false);
 
     chassis.moveToPose(45, 10, 270, 2000, {
         .forwards = false,
         .minSpeed = 110
     });
+    chassis.waitUntil(26);
+    Pistons::backWings.set(true);
     chassis.waitUntilDone();
 
     chassis.setPose(45, 10, 270);
 
     chassis.moveToPose(33, 45, 0, 3000);
     chassis.waitUntilDone();
+
+    Pistons::backWings.set(false);
 
     chassis.follow(defensive_elims_move_from_goal_to_bar_txt, 13, 7000);
     chassis.waitUntilDone();

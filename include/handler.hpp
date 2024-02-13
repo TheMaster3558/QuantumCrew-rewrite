@@ -4,7 +4,7 @@
 
 
 namespace EventHandler {
-    void handleFlaps();
+    void handleWings();
     void handleCatapult();
     void handleIntake();
     void updateDisplay();

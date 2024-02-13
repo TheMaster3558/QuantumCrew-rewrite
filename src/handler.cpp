@@ -2,13 +2,9 @@
 #include "robot.hpp"
 
 
-void EventHandler::handleFlaps() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
-        Actions::Flaps::reverseFlaps(FRONT);
-    }
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-        Actions::Flaps::reverseFlaps(BACK);
-    }
+void EventHandler::handleWings() {
+    Pistons::frontWings.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X));
+    Pistons::backWings.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B));
 }
 
 
@@ -52,7 +48,7 @@ void EventHandler::updateDisplay() {
 
 
 void EventHandler::handleAll() {
-    EventHandler::handleFlaps();
+    EventHandler::handleWings();
     EventHandler::handleCatapult();
     EventHandler::handleIntake();
     EventHandler::updateDisplay();
