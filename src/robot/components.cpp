@@ -59,7 +59,8 @@ void Motors::printOverheatingMotors() {
 }
 
 
-ez::Piston Pistons::frontWings(FRONT_WING_PORT);
+ez::Piston Pistons::frontLeftWing(FRONT_LEFT_WING_PORT);
+ez::Piston Pistons::frontRightWing(FRONT_RIGHT_WING_PORT);
 ez::Piston Pistons::backWings(BACK_WING_PORT);
 
 

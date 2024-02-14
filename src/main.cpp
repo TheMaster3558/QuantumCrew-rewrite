@@ -89,8 +89,8 @@ void autonomous() {
  */
 void opcontrol() {
     Motors::setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
-    Pistons::frontWings.set(false);
-    Pistons::backWings.set(false);
+    Actions::Wings::setFront(false, false);
+    Actions::Wings::setBack(false);
 
     while (true) {
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);

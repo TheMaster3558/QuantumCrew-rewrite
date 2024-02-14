@@ -44,3 +44,14 @@ void Actions::Catapult::moveToHoldAngle() {
 void Actions::Catapult::brake() {
     Motors::catapult.brake();
 }
+
+
+void Actions::Wings::setFront(bool leftState, bool rightState) {
+    Pistons::frontLeftWing.set(leftState);
+    Pistons::frontRightWing.set(rightState);
+}
+
+
+void Actions::Wings::setBack(bool state) {
+    Pistons::backWings.set(state);
+}

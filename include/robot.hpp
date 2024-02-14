@@ -27,7 +27,8 @@ namespace Motors {
 }
 
 namespace Pistons {
-    extern ez::Piston frontWings;
+    extern ez::Piston frontLeftWing;
+    extern ez::Piston frontRightWing;
     extern ez::Piston backWings;
 }
 
@@ -67,6 +68,10 @@ namespace Actions {
         void brake();
     }
 
+    namespace Wings {
+        void setFront(bool, bool);
+        void setBack(bool);
+    }
 }
 
 extern pros::Controller controller;

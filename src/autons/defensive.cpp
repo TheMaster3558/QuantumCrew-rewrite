@@ -11,14 +11,14 @@ void Autons::Autons::defensiveQual() {
     chassis.moveToPoint(52, 52, 1000);
     chassis.waitUntilDone();
 
-    Pistons::backWings.set(true);
+    Actions::Wings::setBack(true);
 
     chassis.moveToPoint(42, 57, 1000, false);
     chassis.waitUntilDone();
 
     chassis.moveToPoint(55, 40, 3000);
     chassis.waitUntil(5);
-    Pistons::backWings.set(false);
+    Actions::Wings::setBack(false);
     chassis.waitUntilDone();
 
     chassis.turnTo(55, 29, 1000);
@@ -64,21 +64,21 @@ void Autons::Autons::defensiveElims() {
     chassis.turnTo(0, 10, 1000);
     chassis.waitUntilDone();
 
-    Pistons::frontWings.set(true);
+    Actions::Wings::setFront(true, true);
 
     chassis.moveToPose(5, 10, 90, 2000, {
         .minSpeed = 110
     });
     chassis.waitUntilDone();
 
-    Pistons::frontWings.set(false);
+    Actions::Wings::setFront(false, false);
 
     chassis.moveToPose(45, 10, 270, 2000, {
         .forwards = false,
         .minSpeed = 110
     });
     chassis.waitUntil(26);
-    Pistons::backWings.set(true);
+    Actions::Wings::setBack(true);
     chassis.waitUntilDone();
 
     chassis.setPose(45, 10, 270);
@@ -86,7 +86,7 @@ void Autons::Autons::defensiveElims() {
     chassis.moveToPose(33, 45, 0, 3000);
     chassis.waitUntilDone();
 
-    Pistons::backWings.set(false);
+    Actions::Wings::setBack(false);
 
     chassis.follow(defensive_elims_move_from_goal_to_bar_txt, 13, 7000);
     chassis.waitUntilDone();

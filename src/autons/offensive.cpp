@@ -6,7 +6,6 @@ ASSET(offensive_center_outtake_txt)
 
 
 void Autons::Autons::offensive() {
-    /*
     chassis.setPose(-13, 59, 0);
 
     Actions::Intake::intake();
@@ -15,6 +14,10 @@ void Autons::Autons::offensive() {
     Actions::Intake::brake();
 
     chassis.follow(offensive_prepare_for_first_ram_txt, 15, 3000, false);
+    chassis.waitUntil(45);
+    Actions::Wings::setBack(true);
+    chassis.waitUntil(50);
+    Actions::Wings::setBack(false);
     chassis.waitUntil(60);
     chassis.cancelMotion();
     chassis.moveToPose(-60, 20, 0, 1000, {
@@ -57,7 +60,7 @@ void Autons::Autons::offensive() {
     chassis.turnTo(-50, 8, 500);
     chassis.waitUntilDone();
 
-    Actions::Flaps::setFlaps(FRONT, makeFlapState(true, true));
+    Actions::Wings::setFront(true, true);
 
     chassis.moveToPose(-50, 8, 90, 2000, {
         .minSpeed = 110
@@ -65,5 +68,7 @@ void Autons::Autons::offensive() {
     Actions::Intake::outtake();
     chassis.waitUntilDone();
     Actions::Intake::brake();
-    */
+
+    chassis.moveToPoint(-40, 8, 1000);
+    chassis.waitUntilDone();
 }

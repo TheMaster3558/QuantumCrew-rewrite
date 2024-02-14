@@ -3,7 +3,8 @@
 
 
 void EventHandler::handleWings() {
-    Pistons::frontWings.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X));
+    Pistons::frontLeftWing.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X));
+    Pistons::frontRightWing.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X));
     Pistons::backWings.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B));
 }
 
