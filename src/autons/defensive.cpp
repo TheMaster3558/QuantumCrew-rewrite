@@ -1,7 +1,7 @@
 #include "autons.hpp"
 
 
-ASSET(defensive_qual_move_to_center_txt);
+ASSET(defensive_qual_move_to_center_txt)
 ASSET(defensive_elims_move_from_goal_to_bar_txt)
 
 
