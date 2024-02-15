@@ -12,11 +12,18 @@ void EventHandler::handleWings() {
 void EventHandler::handleCatapult() {
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
         Actions::Catapult::lower();
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-        Motors::catapult.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-        Actions::Catapult::stepToHoldAngle();
-    } else {
-        Motors::catapult.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+    }
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        if (Sensors::getCatapultAngle() - Tunables::catapultHoldAngle > 3) {
+            Actions::Catapult::lower();
+        }
+        else if (
+                Sensors::getCatapultAngle() < Tunables::catapultHoldAngle &&
+                Tunables::catapultHoldAngle - Sensors::getCatapultAngle() > 3) {
+            Actions::Catapult::stepToHoldAngle();
+        }
+    }
+    else {
         Actions::Catapult::brake();
     }
 
