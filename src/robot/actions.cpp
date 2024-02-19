@@ -25,11 +25,7 @@ void Actions::Catapult::lower() {
 
 
 void Actions::Catapult::stepToHoldAngle() {
-    Motors::catapult.move(
-            catapultPID.update(
-                    Tunables::catapultHoldAngle - Sensors::getCatapultAngle()
-            )
-    );
+    Motors::catapult.move(catapultPID.update(Tunables::catapultHoldAngle - Sensors::getCatapultAngle()));
 }
 
 
@@ -52,6 +48,7 @@ void Actions::Wings::setFront(bool leftState, bool rightState) {
 }
 
 
-void Actions::Wings::setBack(bool state) {
-    Pistons::backWings.set(state);
+void Actions::Wings::setRear(bool leftState, bool rightState) {
+    Pistons::rearLeftWing.set(leftState);
+    Pistons::rearRightWing.set(rightState);
 }

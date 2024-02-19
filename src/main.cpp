@@ -15,9 +15,9 @@ void initialize() {
     Sensors::catapultRotationSensor.reset_position();
     // reset_position is currently bugged and doesn't work
     pros::delay(500);
-    Tunables::catapultHoldAngle += Sensors::getCatapultAngle();
+    //Tunables::catapultHoldAngle += Sensors::getCatapultAngle();
 
-    //Motors::intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    Motors::catapult.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 
     ms::set_autons({
         ms::Category("Tuning", {
@@ -90,15 +90,10 @@ void autonomous() {
 void opcontrol() {
     Motors::setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
     Actions::Wings::setFront(false, false);
-    Actions::Wings::setBack(false);
+    Actions::Wings::setRear(false, false);
 
     while (true) {
-        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
-        chassis.arcade(leftY, rightX, 10.0);
-
         EventHandler::handleAll();
-
         pros::delay(ez::util::DELAY_TIME);
     }
 }

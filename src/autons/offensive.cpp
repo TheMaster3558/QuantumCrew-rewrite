@@ -1,16 +1,17 @@
 #include "autons.hpp"
 
 
-ASSET(offensive_center_to_border_ball_txt)
+ASSET(offensive_second_half_txt)
 
 
 void Autons::Autons::offensive() {
     int startX = -43;
-    int startY = 57;
+    int startY = 59;
 
-    int firstTriballX = -9;
-    int firstTriballY = 5;
-    chassis.setPose(startX, startY, M_PI_2, std::abs(std::atan((double)(startY - firstTriballY) / (startX - firstTriballX))), true);
+    int firstTriballX = -25;
+    int firstTriballY = 6;
+    chassis.setPose(startX, startY,
+                    M_PI_2 + std::abs(std::atan((double) (startY - firstTriballY) / (startX - firstTriballX))), true);
     //                                      force into q1
 
     Actions::Wings::setFront(false, true);
@@ -22,50 +23,39 @@ void Autons::Autons::offensive() {
     chassis.waitUntilDone();
     Actions::Intake::brake();
 
-    chassis.turnTo(-45, 5, 2000);
-    chassis.waitUntil(80);
-    chassis.cancelMotion();
+    chassis.turnToPoint(-30, 10, 1000);
+    chassis.waitUntilDone();
 
-    Actions::Wings::setFront(true, true);
-    chassis.moveToPose(-40, 5, 270, 2000, {
+    Actions::Intake::outtake();
+    pros::delay(500);
+    Actions::Intake::brake();
+
+    chassis.moveToPoint(0, -8, 1000);
+    Actions::Intake::intake();
+    chassis.waitUntilDone();
+    Actions::Intake::brake();
+
+    chassis.turnTo(-30, 10, 1000);
+    chassis.waitUntilDone();
+
+    chassis.moveToPoint(-7, 18, 1000);
+    chassis.waitUntilDone();
+
+    chassis.moveToPose(-60, 10, 270, 3000, {
         .minSpeed = 110
     });
-
-    chassis.setPose(-40, 5, 270);
-
-    chassis.moveToPoint(0, 5, 1000, false);
-    chassis.waitUntil(10);
-    chassis.cancelMotion();
-
+    chassis.waitUntil(20);
+    Actions::Wings::setFront(true, true);
+    chassis.waitUntilDone();
     Actions::Wings::setFront(false, false);
 
-    chassis.moveToPose(-11, 20, 60, 2000);
+    chassis.setPose(-42, 0, chassis.getPose().theta);
+
+    chassis.follow(offensive_second_half_txt, 15, 3000, false);
+    chassis.waitUntilDone();
+
+    chassis.moveToPoint(-10, 58, 2000);
     Actions::Intake::intake();
     chassis.waitUntilDone();
     Actions::Intake::brake();
-
-    chassis.follow(offensive_center_to_border_ball_txt, 12, 7000);
-    chassis.waitUntil(30);
-    Actions::Intake::outtake();
-    pros::delay(1000);
-    Actions::Intake::brake();
-
-    chassis.waitUntil(50);
-    Actions::Intake::intake();
-    pros::delay(1000);
-    Actions::Intake::brake();
-
-    chassis.moveToPose(-45, 55, 75, 2000, {
-        .forwards = false
-    });
-    chassis.waitUntilDone();
-
-    chassis.turnTo(-60, 50, 100);
-    chassis.waitUntilDone();
-
-    Actions::Wings::setFront(true, true);
-
-    chassis.moveToPose(-60, 30, 180, 2000, {
-        .minSpeed = 110
-    });
-    chassis.waitUntilDone();
+}

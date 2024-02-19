@@ -1,0 +1,36 @@
+-42, 10, 100
+-40.471, 11.289, 100
+-38.995, 12.638, 100
+-37.586, 14.056, 100
+-36.26, 15.552, 100
+-35.037, 17.133, 100
+-33.937, 18.802, 97.67
+-32.986, 20.56, 95.036
+-32.211, 22.402, 92.327
+-31.664, 24.324, 89.535
+-31.33, 26.294, 86.655
+-31.232, 28.29, 83.675
+-31.368, 30.284, 80.585
+-31.702, 32.254, 77.371
+-32.225, 34.184, 74.016
+-32.887, 36.071, 70.502
+-33.673, 37.909, 66.803
+-34.543, 39.71, 62.887
+-35.479, 41.477, 58.709
+-36.451, 43.225, 54.21
+-37.436, 44.966, 49.303
+-38.401, 46.718, 43.85
+-39.305, 48.501, 37.615
+-40.082, 50.343, 30.119
+-40.607, 52.269, 20
+-40.677, 54.259, 20
+-40.052, 56.142, 16.306
+-39.458, 57.005, 0
+-39.458, 57.005, 0
+-28.117, 73.478, 0
+endData
+127
+100
+200
+-42, 10, -15.462, 31.253, -47.281, 47.752, -39.458, 57.005
+#PATH.JERRYIO-DATA {"appVersion":"0.5.1","format":"LemLib v0.4.x (inch, byte-voltage)","gc":{"robotWidth":12,"robotHeight":12,"robotIsHolonomic":false,"showRobot":false,"uol":2.54,"pointDensity":2,"controlMagnetDistance":1.968503937007874,"fieldImage":{"displayName":"VRC 2024 - Over Under","signature":"VRC 2024 - Over Under","origin":{"__type":"built-in"}}},"paths":[{"segments":[{"controls":[{"uid":"QHhWhb1Q5e","x":-42,"y":10,"lock":false,"visible":true,"heading":270,"__type":"end-point"},{"uid":"akixVT9nNu","x":-15.461638491547468,"y":31.25325097529259,"lock":false,"visible":true,"__type":"control"},{"uid":"qalJBes1XF","x":-47.280559167750326,"y":47.75195058517556,"lock":false,"visible":true,"__type":"control"},{"uid":"eT53tXGmI4","x":-39.458448579331154,"y":57.0046517475484,"lock":false,"visible":true,"heading":200.2,"__type":"end-point"}],"speedProfiles":[],"lookaheadKeyframes":[],"uid":"IlGBgGtCiG"}],"pc":{"speedLimit":{"minLimit":{"value":0,"label":"0"},"maxLimit":{"value":127,"label":"127"},"step":1,"from":20,"to":100},"bentRateApplicableRange":{"minLimit":{"value":0,"label":"0"},"maxLimit":{"value":4,"label":"4"},"step":0.01,"from":1.4,"to":1.8},"maxDecelerationRate":127},"name":"Path","uid":"XMC7YfdxIF","lock":false,"visible":true}]}

@@ -3,25 +3,41 @@
 
 
 void EventHandler::handleWings() {
-    Pistons::frontLeftWing.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X));
-    Pistons::frontRightWing.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X));
-    Pistons::backWings.button_toggle(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B));
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        Pistons::frontLeftWing.set(true);
+        Pistons::frontRightWing.set(true);
+    }
+    else {
+        Pistons::frontLeftWing.set(false);
+        Pistons::frontRightWing.set(false);
+    }
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        Pistons::rearLeftWing.set(true);
+        Pistons::rearRightWing.set(true);
+    }
+    else {
+        Pistons::rearLeftWing.set(false);
+        Pistons::rearRightWing.set(false);
+    }
 }
 
 
 void EventHandler::handleCatapult() {
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+    static bool autoLaunch = false;
+    static bool autoHold = false;
+
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+        autoLaunch = !autoLaunch;
+    }
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
+        autoHold = !autoHold;
+    }
+
+    if (autoLaunch || controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
         Actions::Catapult::lower();
     }
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-        if (Sensors::getCatapultAngle() - Tunables::catapultHoldAngle > 3) {
-            Actions::Catapult::lower();
-        }
-        else if (
-                Sensors::getCatapultAngle() < Tunables::catapultHoldAngle &&
-                Tunables::catapultHoldAngle - Sensors::getCatapultAngle() > 3) {
-            Actions::Catapult::stepToHoldAngle();
-        }
+    else if (autoHold) {
+        Actions::Catapult::stepToHoldAngle();
     }
     else {
         Actions::Catapult::brake();
@@ -50,8 +66,20 @@ void EventHandler::handleIntake() {
 void EventHandler::updateDisplay() {
     static int counter = 0;
     if (counter++ % (50 / ez::util::DELAY_TIME) == 0) {
-        Motors::printOverheatingMotors();
+        //Motors::printOverheatingMotors();
     }
+}
+
+
+void EventHandler::handleDrive() {
+    int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+        rightX += 30;
+    }
+
+    chassis.arcade(leftY, rightX, 12.0);
 }
 
 
@@ -60,6 +88,7 @@ void EventHandler::handleAll() {
     EventHandler::handleCatapult();
     EventHandler::handleIntake();
     EventHandler::updateDisplay();
+    EventHandler::handleDrive();
 }
 
 

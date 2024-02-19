@@ -2,72 +2,68 @@
 
 
 ASSET(skills_prepare_for_first_ram_txt)
-ASSET(skills_first_ram_to_second_txt)
+ASSET(skills_second_ram_txt)
 
 
 void Autons::Autons::skills() {
-    /*
-    chassis.setPose(-50, -55, 240);
+    chassis.setPose(-47, -60, 220);
+
+    Actions::Wings::setFront(false, true);
 
     Actions::Catapult::lower();
-    pros::delay(42000);
+    pros::delay(500);
+    Actions::Wings::setFront(false, false);
+    pros::delay(40000);
     Actions::Catapult::brake();
 
-    Motors::catapult.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    pros::Task moveCatapultDown(Actions::Catapult::moveToHoldAngle);
-
-    chassis.moveToPoint(30, -55, 3000, false);
-    chassis.waitUntil(85);
-    chassis.cancelMotion();
-
-    chassis.moveToPoint(58, -25, 3000, false);
-    chassis.waitUntil(35);
-    chassis.cancelMotion();
-
-    chassis.moveToPoint(50, -15, 1000, false);
-    chassis.waitUntilDone();
-
-    chassis.setPose(55, -30, 180);
-
-    chassis.follow(skills_first_ram_to_second_txt, 10, 4000);
-    chassis.waitUntilDone();
-
-    chassis.turnTo(50, -10, 1000, false);
-    chassis.waitUntilDone();
-
-    Actions::Flaps::setFlaps(true, true);
-
-    chassis.moveToPoint(50, -8, 3000, false);
-    chassis.waitUntilDone();
-
-    chassis.setPose(42, -10, 270);
-
-    chassis.moveToPoint(37, -10, 3000, false);
-    chassis.waitUntilDone();
-
-    chassis.moveToPoint(50, -10, 3000, false);
-    chassis.waitUntilDone();
-
-    chassis.setPose(42, -10, 270);
-
-    chassis.moveToPoint(18, -8, 2000);
-    chassis.waitUntil(4);
-    Actions::Flaps::setFlaps(false, false);
-    chassis.waitUntilDone();
-
-    chassis.moveToPoint(20, 8, 2000);
-    chassis.waitUntilDone();
-
-    chassis.turnTo(50, 8, 1000, false);
-    chassis.waitUntilDone();
-
-    Actions::Flaps::setFlaps(true, true);
-
-    chassis.moveToPose(55, 8, 270, 5000, {
+    chassis.moveToPose(-68, -27, 180, 2000, {
             .forwards = false,
-            .minSpeed= 110
+            .minSpeed = 110,
     });
+    chassis.waitUntilDone();
 
-    Motors::catapult.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-     */
+    chassis.setPose(-68, -32, chassis.getPose().thetha);
+
+    chassis.moveToPose(-30, -57, 90, 3000);
+    chassis.waitUntil(40);
+    chassis.cancelMotion();
+
+    chassis.moveToPoint(40, -57, 3000);
+    chassis.waitUntil(70);
+    chassis.cancelMotion();
+
+    chassis.moveToPoint(65, -10, 2000);
+    chassis.waitUntil(5);
+    Actions::Wings::setFront(false, true);
+    chassis.waitUntil(16);
+    chassis.cancelMotion();
+
+    chassis.turnTo(55, 0, 1000);
+    chassis.waitUntilDone();
+
+    Actions::Wings::setFront(true, true);
+
+    chassis.tank(100, 127);
+    pros::delay(1000);
+    Actions::Wings::setFront(false, false);
+    chassis.tank(-75, -75);
+    pros::delay(500);
+    chassis.tank(127, 127);
+    pros::delay(1000);
+
+    chassis.setPose(62, -28, chassis.getPose().theta);
+
+    chassis.follow(skills_prepare_for_first_ram_txt, 10, 4000, false);
+    chassis.waitUntil(60);
+    chassis.cancelMotion();
+
+    Actions::Wings::setRear(true, true);
+
+    chassis.moveToPose(60, -8, 270, 1000, {
+        .forwards = false,
+        .minSpeed = 110
+    });
+    chassis.waitUntilDone();
+
+    chassis.setPose(45, 8, chassis.getPose().theta);
 }

@@ -29,7 +29,8 @@ namespace Motors {
 namespace Pistons {
     extern ez::Piston frontLeftWing;
     extern ez::Piston frontRightWing;
-    extern ez::Piston backWings;
+    extern ez::Piston rearLeftWing;
+    extern ez::Piston rearRightWing;
 }
 
 namespace Sensors {
@@ -70,7 +71,7 @@ namespace Actions {
 
     namespace Wings {
         void setFront(bool, bool);
-        void setBack(bool);
+        void setRear(bool, bool);
     }
 }
 

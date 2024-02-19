@@ -61,7 +61,8 @@ void Motors::printOverheatingMotors() {
 
 ez::Piston Pistons::frontLeftWing(FRONT_LEFT_WING_PORT);
 ez::Piston Pistons::frontRightWing(FRONT_RIGHT_WING_PORT);
-ez::Piston Pistons::backWings(BACK_WING_PORT);
+ez::Piston Pistons::rearLeftWing(REAR_LEFT_WING_PORT);
+ez::Piston Pistons::rearRightWing(REAR_RIGHT_WING_PORT);
 
 
 pros::Imu Sensors::imuSensor(IMU_PORT);
