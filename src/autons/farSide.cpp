@@ -39,7 +39,9 @@ void Autons::sixBall() {
     chassis.waitUntilDone();
 
     chassis.moveToPoint(-7, 18, 1000);
+    Actions::Intake::intake();
     chassis.waitUntilDone();
+    Actions::Intake::brake();
 
     chassis.moveToPose(-60, 10, 270, 2000, {
         .minSpeed = 110
