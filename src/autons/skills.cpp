@@ -2,10 +2,11 @@
 
 
 ASSET(skills_prepare_for_first_ram_txt)
-ASSET(skills_second_ram_txt)
+ASSET(skills_move_across_field_txt)
 
 
 void Autons::Autons::skills() {
+    /*
     chassis.setPose(-47, -60, 220);
 
     Actions::Wings::setFront(false, true);
@@ -66,4 +67,39 @@ void Autons::Autons::skills() {
     chassis.waitUntilDone();
 
     chassis.setPose(45, 8, chassis.getPose().theta);
+     */
+
+    chassis.setPose(-60, 32, 180);
+
+    chassis.follow(skills_move_across_field_txt, 13, 4000);
+    chassis.waitUntilDone();
+
+    chassis.turnTo(58, -42, 1000);
+    chassis.waitUntilDone();
+
+    Actions::Wings::setFront(true, true);
+
+    chassis.moveToPose(60, -32, 0, 2000, {
+        .minSpeed = 110
+    });
+    chassis.waitUntilDone();
+
+    chassis.tank(-75, -75);
+    pros::delay(500);
+
+    Actions::Wings::setFront(false, false);
+
+    chassis.tank(127, 127);
+    pros::delay(100);
+
+    chassis.setPose(60, -32, chassis.getPose().theta);
+
+    chassis.moveToPoint(60, -37, 1000, false);
+    chassis.waitUntilDone();
+
+    chassis.moveToPoint(10, -25, 1500);
+    chassis.waitUntilDone();
+
+    chassis.turnTo(42, -10, 1000);
+    chassis.waitUntilDone();
 }

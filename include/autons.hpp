@@ -11,7 +11,8 @@ public:
     static void tuneTurn();
     static void doNothing();
     static void skills();
-    static void offensive();
-    static void defensiveQual();
-    static void defensiveElims();
+    static void sixBall();
+    static void nearSideSafeAWP();
+    static void nearSideAggressiveAWP();
+    static void nearSideDisrupt();
 };

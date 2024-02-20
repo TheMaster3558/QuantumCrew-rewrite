@@ -24,13 +24,14 @@ void initialize() {
             ms::Auton("Drive", Autons::tuneDrive),
             ms::Auton("Turn", Autons::tuneTurn)
         }),
-        ms::Category("Offensive", {
+        ms::Category("Far Side", {
             ms::Auton("Nothing", Autons::doNothing),
-            ms::Auton("6 ball", Autons::offensive)
+            ms::Auton("6 ball", Autons::sixBall)
         }),
-        ms::Category("Defensive", {
-            ms::Auton("Qualifying", Autons::defensiveQual),
-            ms::Auton("Eliminations", Autons::defensiveElims)
+        ms::Category("Near Side", {
+            ms::Auton("Safe AWP", Autons::nearSideSafeAWP),
+            ms::Auton("Aggressive AWP", Autons::nearSideAggressiveAWP),
+            ms::Auton("Disrupt", Autons::nearSideDisrupt)
         }),
         ms::Category("Skills", {
             ms::Auton("Skills", Autons::skills)

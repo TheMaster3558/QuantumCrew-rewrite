@@ -4,7 +4,7 @@
 ASSET(offensive_second_half_txt)
 
 
-void Autons::Autons::offensive() {
+void Autons::sixBall() {
     int startX = -43;
     int startY = 59;
 
@@ -23,14 +23,14 @@ void Autons::Autons::offensive() {
     chassis.waitUntilDone();
     Actions::Intake::brake();
 
-    chassis.turnToPoint(-30, 10, 1000);
+    chassis.turnTo(-30, 10, 1000);
     chassis.waitUntilDone();
 
     Actions::Intake::outtake();
     pros::delay(500);
     Actions::Intake::brake();
 
-    chassis.moveToPoint(0, -8, 1000);
+    chassis.moveToPoint(-8, 0, 1000);
     Actions::Intake::intake();
     chassis.waitUntilDone();
     Actions::Intake::brake();
@@ -41,7 +41,7 @@ void Autons::Autons::offensive() {
     chassis.moveToPoint(-7, 18, 1000);
     chassis.waitUntilDone();
 
-    chassis.moveToPose(-60, 10, 270, 3000, {
+    chassis.moveToPose(-60, 10, 270, 2000, {
         .minSpeed = 110
     });
     chassis.waitUntil(20);
@@ -49,13 +49,31 @@ void Autons::Autons::offensive() {
     chassis.waitUntilDone();
     Actions::Wings::setFront(false, false);
 
-    chassis.setPose(-42, 0, chassis.getPose().theta);
+    chassis.setPose(-42, 10, chassis.getPose().theta);
 
     chassis.follow(offensive_second_half_txt, 15, 3000, false);
     chassis.waitUntilDone();
 
-    chassis.moveToPoint(-10, 58, 2000);
+    chassis.moveToPoint(-10, 58, 1500);
     Actions::Intake::intake();
     chassis.waitUntilDone();
     Actions::Intake::brake();
+
+    chassis.moveToPoint(-42, 58, 1500);
+    chassis.waitUntilDone();
+
+    Actions::Wings::setRear(true, false);
+
+    chassis.moveToPose(-60, 32, 180, 1500, {
+        .forwards = false,
+        .minSpeed = 110
+    });
+    chassis.waitUntilDone();
+
+    chassis.turnTo(-60, 32, 1000);
+    chassis.waitUntilDone();
+
+    chassis.tank(127, 127);
+    pros::delay(1000);
+    chassis.tank(127, 127);
 }

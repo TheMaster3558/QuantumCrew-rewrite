@@ -1,11 +1,28 @@
 #include "autons.hpp"
 
 
-ASSET(defensive_qual_move_to_center_txt)
 ASSET(defensive_elims_move_from_goal_to_bar_txt)
 
 
-void Autons::Autons::defensiveQual() {
+void Autons::nearSideSafeAWP() {
+    chassis.setPose(42, 57, 135);
+
+    chassis.moveToPoint(54, 47, 1000);
+    chassis.waitUntilDone();
+
+    Actions::Wings::setRear(true, false);
+
+    chassis.moveToPoint(42, 57, 1000, false);
+    chassis.waitUntilDone();
+
+    Actions::Wings::setRear(false, false);
+
+    chassis.moveToPose(3, 58, 270, 5000);
+    chassis.waitUntilDone();
+}
+
+
+void Autons::nearSideAggressiveAWP() {
     chassis.setPose(42, 57, 135);
 
     chassis.moveToPoint(54, 47, 1000);
@@ -46,7 +63,7 @@ void Autons::Autons::defensiveQual() {
 }
 
 
-void Autons::Autons::defensiveElims() {
+void Autons::nearSideDisrupt() {
     chassis.setPose(35, 60, 180);
 
     chassis.moveToPoint(35, 10, 3000);
