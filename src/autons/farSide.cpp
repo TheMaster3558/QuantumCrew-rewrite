@@ -56,9 +56,8 @@ void Autons::sixBall() {
     chassis.follow(offensive_second_half_txt, 15, 3000, false);
     chassis.waitUntilDone();
 
-    chassis.moveToPoint(-10, 58, 1500);
     Actions::Intake::intake();
-    chassis.waitUntilDone();
+    pros::delay(500);
     Actions::Intake::brake();
 
     chassis.moveToPoint(-42, 58, 1500);
@@ -66,16 +65,17 @@ void Autons::sixBall() {
 
     Actions::Wings::setRear(true, false);
 
-    chassis.moveToPose(-60, 32, 180, 1500, {
+    chassis.moveToPose(-60, 34, 180, 1500, {
         .forwards = false,
         .minSpeed = 110
     });
     chassis.waitUntilDone();
 
-    chassis.turnTo(-60, 32, 1000);
+    Actions::Wings::setRear(false, false);
+
+    chassis.turnTo(-60, 0, 1000);
     chassis.waitUntilDone();
 
-    chassis.tank(127, 127);
-    pros::delay(1000);
-    chassis.tank(127, 127);
+    chassis.moveToPoint(-60, 0, 1000);
+    chassis.waitUntilDone();
 }

@@ -1,105 +1,87 @@
 #include "autons.hpp"
 
 
-ASSET(skills_prepare_for_first_ram_txt)
 ASSET(skills_move_across_field_txt)
+ASSET(skills_move_to_front)
 
 
 void Autons::Autons::skills() {
-    /*
-    chassis.setPose(-47, -60, 220);
+    chassis.setPose(-45, -56, 135);
 
-    Actions::Wings::setFront(false, true);
+    moveRelative(-10, 1500, false);
+    chassis.waitUntilDone();
+
+    chassis.turnTo(70, -8, 2000, false);
+    chassis.waitUntilDone();
+
+    Actions::Wings::setFront(true, false);
 
     Actions::Catapult::lower();
-    pros::delay(500);
-    Actions::Wings::setFront(false, false);
-    pros::delay(40000);
+    pros::delay(30000);
     Actions::Catapult::brake();
 
-    chassis.moveToPose(-68, -27, 180, 2000, {
-            .forwards = false,
-            .minSpeed = 110,
-    });
-    chassis.waitUntilDone();
-
-    chassis.setPose(-68, -32, chassis.getPose().thetha);
-
-    chassis.moveToPose(-30, -57, 90, 3000);
-    chassis.waitUntil(40);
-    chassis.cancelMotion();
-
-    chassis.moveToPoint(40, -57, 3000);
-    chassis.waitUntil(70);
-    chassis.cancelMotion();
-
-    chassis.moveToPoint(65, -10, 2000);
-    chassis.waitUntil(5);
-    Actions::Wings::setFront(false, true);
-    chassis.waitUntil(16);
-    chassis.cancelMotion();
-
-    chassis.turnTo(55, 0, 1000);
-    chassis.waitUntilDone();
-
-    Actions::Wings::setFront(true, true);
-
-    chassis.tank(100, 127);
-    pros::delay(1000);
     Actions::Wings::setFront(false, false);
-    chassis.tank(-75, -75);
+
+    chassis.setPose(-55, -44, 255);
+
     pros::delay(500);
-    chassis.tank(127, 127);
-    pros::delay(1000);
 
-    chassis.setPose(62, -28, chassis.getPose().theta);
-
-    chassis.follow(skills_prepare_for_first_ram_txt, 10, 4000, false);
-    chassis.waitUntil(60);
-    chassis.cancelMotion();
-
-    Actions::Wings::setRear(true, true);
-
-    chassis.moveToPose(60, -8, 270, 1000, {
-        .forwards = false,
-        .minSpeed = 110
-    });
+    chassis.turnTo(-55, 0, 2000, false);
     chassis.waitUntilDone();
 
-    chassis.setPose(45, 8, chassis.getPose().theta);
-     */
+    chassis.tank(-127, -127);
+    pros::delay(1000);
+    chassis.tank(0, 0);
+    pros::delay(200);
 
-    chassis.setPose(-60, 32, 180);
+    chassis.setPose(-60, -33, 180);
 
     chassis.follow(skills_move_across_field_txt, 13, 4000);
-    chassis.waitUntilDone();
-
-    chassis.turnTo(58, -42, 1000);
-    chassis.waitUntilDone();
-
+    chassis.waitUntil(110);
     Actions::Wings::setFront(true, true);
-
-    chassis.moveToPose(60, -32, 0, 2000, {
-        .minSpeed = 110
-    });
     chassis.waitUntilDone();
+
 
     chassis.tank(-75, -75);
-    pros::delay(500);
+    pros::delay(300);
 
     Actions::Wings::setFront(false, false);
 
-    chassis.tank(127, 127);
-    pros::delay(100);
+    chassis.moveToPoint(60, -20, 1000, false);
+    chassis.waitUntilDone();
 
     chassis.setPose(60, -32, chassis.getPose().theta);
 
-    chassis.moveToPoint(60, -37, 1000, false);
+    chassis.follow(skills_move_to_front, 10, 4000);
     chassis.waitUntilDone();
 
-    chassis.moveToPoint(10, -25, 1500);
+    chassis.moveToPose(60, -7, 90, 3000, {
+        .lead = 0.7,
+        .minSpeed = 110,
+    });
+    chassis.waitUntil(7);
+    Actions::Wings::setFront(true, true);
     chassis.waitUntilDone();
 
-    chassis.turnTo(42, -10, 1000);
+    chassis.setPose(45, -10, chassis.getPose().theta);
+
+    Actions::Wings::setFront(false, false);
+
+    chassis.moveToPose(14, 15, 0, 3000, {
+        .lead = 1.0
+    });
     chassis.waitUntilDone();
+
+    Actions::Wings::setRear(true, true);
+
+    chassis.moveToPose(60, 6, 270, 4000, {
+        .forwards = false,
+        .lead = 0.8,
+        .minSpeed = 110
+    });
+    chassis.waitUntilDone();
+
+    chassis.setPose(45, 10, chassis.getPose().theta);
+
+    Actions::Wings::setRear(false, false);
 }

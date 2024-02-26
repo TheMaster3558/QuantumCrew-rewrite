@@ -7,7 +7,7 @@ namespace EventHandler {
     void handleWings();
     void handleCatapult();
     void handleIntake();
+    void handleCurve();
     void updateDisplay();
-    void handleDrive();
     void handleAll();
 }

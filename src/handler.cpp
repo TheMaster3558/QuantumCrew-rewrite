@@ -3,7 +3,7 @@
 
 
 void EventHandler::handleWings() {
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         Pistons::frontLeftWing.set(true);
         Pistons::frontRightWing.set(true);
     }
@@ -11,7 +11,7 @@ void EventHandler::handleWings() {
         Pistons::frontLeftWing.set(false);
         Pistons::frontRightWing.set(false);
     }
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
         Pistons::rearLeftWing.set(true);
         Pistons::rearRightWing.set(true);
     }
@@ -37,7 +37,7 @@ void EventHandler::handleCatapult() {
         Actions::Catapult::lower();
     }
     else if (autoHold) {
-        Actions::Catapult::stepToHoldAngle();
+        //Actions::Catapult::stepToHoldAngle();
     }
     else {
         Actions::Catapult::brake();
@@ -53,9 +53,9 @@ void EventHandler::handleCatapult() {
 
 
 void EventHandler::handleIntake() {
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
         Actions::Intake::outtake();
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
         Actions::Intake::intake();
     } else {
         Actions::Intake::brake();
@@ -63,23 +63,21 @@ void EventHandler::handleIntake() {
 }
 
 
-void EventHandler::updateDisplay() {
-    static int counter = 0;
-    if (counter++ % (50 / ez::util::DELAY_TIME) == 0) {
-        //Motors::printOverheatingMotors();
+void EventHandler::handleCurve() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+        Tunables::driveCurve++;
+    }
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        Tunables::driveCurve--;
     }
 }
 
 
-void EventHandler::handleDrive() {
-    int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-    int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
-
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-        rightX += 30;
+void EventHandler::updateDisplay() {
+    static int counter = 0;
+    if (counter++ % (50 / ez::util::DELAY_TIME) == 0) {
+        controller.print(0, 0, "Curve: %d", Tunables::driveCurve);
     }
-
-    chassis.arcade(leftY, rightX, 12.0);
 }
 
 
@@ -88,7 +86,6 @@ void EventHandler::handleAll() {
     EventHandler::handleCatapult();
     EventHandler::handleIntake();
     EventHandler::updateDisplay();
-    EventHandler::handleDrive();
 }
 
 

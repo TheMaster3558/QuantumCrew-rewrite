@@ -2,33 +2,34 @@
 
 
 const int Tunables::chasePower = 8;
-int Tunables::catapultVelocity = CATAPULT_VELOCITY;
-int Tunables::catapultHoldAngle = CATAPULT_HOLD_ANGLE;
+int Tunables::driveCurve = 5;
+int Tunables::catapultVelocity = 45;
+int Tunables::catapultHoldAngle = 47;
 
 
-const float DrivetrainInfo::drivetrainWidth = 12.0;
+const float DrivetrainInfo::drivetrainWidth = 11.0;
 const float DrivetrainInfo::wheelDiameter = lemlib::Omniwheel::NEW_325;
 const int DrivetrainInfo::drivetrainRpm = 360;
 
 
 // forward/backward PID
 lemlib::ControllerSettings Tunables::linearController(
-        15, // proportional gain (kP),
+        30, // proportional gain (kP),
         0, // integral gain (kI)
-        30, // derivative gain (kD)
+        70, // derivative gain (kD)
         0, // windup range
         1, // small error range, in inches
         100, // small error range timeout, in milliseconds
         3, // large error range, in inches
         500, // large error range timeout, in milliseconds
-        5 // maximum acceleration (slew)
+        40 // maximum acceleration (slew)
 );
 
 // turning PID
 lemlib::ControllerSettings Tunables::angularController(
-        5, // proportional gain (kP)
+        4, // proportional gain (kP)
         0, // integral gain (kI)
-        40, // derivative gain (kD)
+        36, // derivative gain (kD)
         0, // windup range
         1, // small error range, in degrees
         100, // small error range timeout, in milliseconds

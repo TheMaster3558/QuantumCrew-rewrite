@@ -10,14 +10,13 @@
 void initialize() {
     chassis.calibrate();
 
-    Motors::intake.tare_position();
-    Motors::catapult.tare_position();
-    Sensors::catapultRotationSensor.reset_position();
+    //Sensors::catapultRotationSensor.set_position(30);
     // reset_position is currently bugged and doesn't work
-    pros::delay(500);
-    //Tunables::catapultHoldAngle += Sensors::getCatapultAngle();
+    //pros::delay(500);
+    Tunables::catapultHoldAngle += Sensors::getCatapultAngle();
 
-    Motors::catapult.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+    Actions::Wings::setFront(false, false);
+    Actions::Wings::setRear(false, false);
 
     ms::set_autons({
         ms::Category("Tuning", {
@@ -29,15 +28,30 @@ void initialize() {
             ms::Auton("6 ball", Autons::sixBall)
         }),
         ms::Category("Near Side", {
-            ms::Auton("Safe AWP", Autons::nearSideSafeAWP),
             ms::Auton("Aggressive AWP", Autons::nearSideAggressiveAWP),
-            ms::Auton("Disrupt", Autons::nearSideDisrupt)
+            ms::Auton("Disrupt AWP", Autons::nearSideDisruptAWP)
         }),
         ms::Category("Skills", {
             ms::Auton("Skills", Autons::skills)
         })
     });
     ms::initialize();
+    /*
+    pros::lcd::initialize();
+    pros::Task screenTask([&]() {
+        lemlib::Pose pose(0, 0, 0);
+        while (true) {
+            // print robot location to the brain screen
+            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
+            // log position telemetry
+            lemlib::telemetrySink()->info("Chassis pose: {}", chassis.getPose());
+            // delay to save resources
+            pros::delay(50);
+        }
+    });
+     */
 }
 
 /**
@@ -71,7 +85,6 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-    Motors::setDriveBrake(pros::E_MOTOR_BRAKE_HOLD);
     ms::call_selected_auton();
 }
 
@@ -89,11 +102,14 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    Motors::setDriveBrake(pros::E_MOTOR_BRAKE_COAST);
     Actions::Wings::setFront(false, false);
     Actions::Wings::setRear(false, false);
 
     while (true) {
+        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+        chassis.curvature(leftY, rightX, Tunables::driveCurve);
+
         EventHandler::handleAll();
         pros::delay(ez::util::DELAY_TIME);
     }

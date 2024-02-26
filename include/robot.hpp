@@ -51,6 +51,7 @@ namespace Tunables {
     extern lemlib::ControllerSettings angularController;
     extern const int chasePower;
 
+    extern int driveCurve;
     extern int catapultVelocity;
     extern int catapultHoldAngle;
 }

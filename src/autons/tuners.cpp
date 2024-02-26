@@ -1,8 +1,7 @@
 #include "autons.hpp"
 
-
 void Autons::tuneDrive() {
-    chassis.moveToPoint(0, 10, 3000);
+    chassis.moveToPoint(0, 10, 10000);
     chassis.waitUntilDone();
 }
 

@@ -5,6 +5,9 @@
 #include "robot.hpp"
 
 
+#define Tiles(x) (24 * x)
+
+
 class Autons {
 public:
     static void tuneDrive();
@@ -14,5 +17,8 @@ public:
     static void sixBall();
     static void nearSideSafeAWP();
     static void nearSideAggressiveAWP();
-    static void nearSideDisrupt();
+    static void nearSideDisruptAWP();
 };
+
+
+void moveRelative(double distance, int timeout, bool backwards = false);

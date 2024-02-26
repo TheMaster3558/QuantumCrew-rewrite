@@ -4,41 +4,31 @@
 ASSET(defensive_elims_move_from_goal_to_bar_txt)
 
 
-void Autons::nearSideSafeAWP() {
-    chassis.setPose(42, 57, 135);
-
-    chassis.moveToPoint(54, 47, 1000);
-    chassis.waitUntilDone();
-
-    Actions::Wings::setRear(true, false);
-
-    chassis.moveToPoint(42, 57, 1000, false);
-    chassis.waitUntilDone();
-
-    Actions::Wings::setRear(false, false);
-
-    chassis.moveToPose(3, 58, 270, 5000);
-    chassis.waitUntilDone();
+void moveRelative(double distance, int timeout, bool backwards) {
+    lemlib::Pose pose = chassis.getPose(true);
+    double angle = -pose.theta + M_PI_2;
+    double x = std::cos(angle) * distance;
+    double y = std::sin(angle) * distance;
+    chassis.moveToPoint(pose.x + x, pose.y + y, timeout, backwards);
 }
 
 
 void Autons::nearSideAggressiveAWP() {
-    chassis.setPose(42, 57, 135);
-
-    chassis.moveToPoint(54, 47, 1000);
+    chassis.setPose(-48, -57, 315);
+    moveRelative(10, 1000);
     chassis.waitUntilDone();
 
     Actions::Wings::setRear(true, false);
 
-    chassis.moveToPoint(42, 57, 1000, false);
+    moveRelative(-8, 1000, true);
     chassis.waitUntilDone();
 
-    chassis.moveToPoint(55, 40, 3000);
+    chassis.moveToPoint(-59, -40, 3000);
     chassis.waitUntil(5);
     Actions::Wings::setRear(false, false);
     chassis.waitUntilDone();
 
-    chassis.turnTo(55, 29, 1000);
+    chassis.turnTo(-59, -29, 1000);
     chassis.waitUntilDone();
 
     Actions::Intake::outtake();
@@ -46,67 +36,57 @@ void Autons::nearSideAggressiveAWP() {
     pros::delay(500);
     Actions::Intake::brake();
 
-    chassis.turnTo(55, 28, 1000, false);
+    chassis.turnTo(-59, -28, 1000, false);
     chassis.waitUntilDone();
 
-    chassis.moveToPose(55, 28, 0, 1000, {
+    chassis.moveToPose(-59, -28, 0, 1000, {
             .forwards = false,
             .maxSpeed = 80,
             .minSpeed = 60
     });
     chassis.waitUntilDone();
 
-    chassis.setPose(55, 34, chassis.getPose().theta);
+    chassis.setPose(-59, -34, chassis.getPose().theta);
 
-    chassis.moveToPose(3, 58, 270, 7000);
+    chassis.moveToPose(-3, -58, 90, 7000);
     chassis.waitUntilDone();
 }
 
 
-void Autons::nearSideDisrupt() {
-    chassis.setPose(35, 60, 180);
+void Autons::nearSideDisruptAWP() {
+    chassis.setPose(Tiles(-2) - 5, Tiles(-2) - 14, 0);
 
-    chassis.moveToPoint(35, 10, 3000);
-    chassis.waitUntilDone();
-
-    chassis.turnTo(45, 10, 1000);
-    chassis.waitUntilDone();
-
-    Actions::Intake::outtake();
-    pros::delay(1000);
-    Actions::Intake::brake();
-
-    chassis.moveToPoint(30, 10, 2000);
-    chassis.waitUntilDone();
-
-    chassis.turnTo(5, 10, 1000);
-    chassis.waitUntilDone();
-
-    Actions::Wings::setFront(true, true);
-
-    chassis.moveToPose(5, 10, 90, 2000, {
-        .minSpeed = 110
+    chassis.moveToPose(-15, -10, 90, 3000, {
+        .lead = 0.8
     });
+    while (std::abs(chassis.getPose().theta - 90) > 20) {
+        pros::delay(ez::util::DELAY_TIME);
+    }
+    chassis.cancelMotion();
+
+    chassis.moveToPoint(10000, -5, 3000);
+    while (chassis.getPose().distance(lemlib::Pose(0, -5)) > 5) {
+        pros::delay(ez::util::DELAY_TIME);
+    }
+    chassis.cancelMotion();
+
+    chassis.moveToPoint(-53, -53, 3000);
     chassis.waitUntilDone();
 
-    Actions::Wings::setFront(false, false);
-
-    chassis.moveToPose(45, 10, 270, 2000, {
-        .forwards = false,
-        .maxSpeed = 80,
-        .minSpeed = 60
-    });
-    chassis.waitUntil(5);
-    Actions::Wings::setRear(true, true);
+    chassis.turnTo(-35, Tiles(-3), 1000);
     chassis.waitUntilDone();
 
-    chassis.setPose(45, 10, chassis.getPose().theta);
+    Actions::Wings::setRear(false, true);
 
-    chassis.moveToPose(33, 45, 0, 3000);
-    chassis.waitUntilDone();
+    chassis.tank(35, 127);
+    while (std::abs(chassis.getPose().theta) - 90 > 10) {
+        pros::delay(ez::util::DELAY_TIME);
+    }
+    chassis.cancelMotion();
 
     Actions::Wings::setRear(false, false);
+    pros::delay(1000);
 
-    chassis.follow(defensive_elims_move_from_goal_to_bar_txt, 13, 7000);
+    chassis.moveToPose(-3, -58, 90, 7000);
     chassis.waitUntilDone();
 }
