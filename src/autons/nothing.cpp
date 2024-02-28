@@ -1,6 +1,6 @@
 #include "autons.hpp"
 
 
-void Autons::Autons::doNothing() {
+void Autons::doNothing() {
     // do nothing
 }

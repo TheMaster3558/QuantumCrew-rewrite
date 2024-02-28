@@ -8,17 +8,21 @@
 #define Tiles(x) (24 * x)
 
 
-class Autons {
-public:
-    static void tuneDrive();
-    static void tuneTurn();
-    static void doNothing();
-    static void skills();
-    static void sixBall();
-    static void nearSideSafeAWP();
-    static void nearSideAggressiveAWP();
-    static void nearSideDisruptAWP();
-};
+namespace Autons {
 
+void tuneDrive();
+void tuneTurn();
+void doNothing();
+void skills();
+void sixBall();
+void nearSideSafeAWP();
+void nearSideAggressiveAWP();
+void nearSideDisruptAWP();
 
-void moveRelative(double distance, int timeout, bool backwards = false);
+namespace utils {
+    void moveRelative(double distance, int timeout, bool forwards = false);
+    void waitUntilBelowBar();
+}
+
+}  // namespace Autons
+

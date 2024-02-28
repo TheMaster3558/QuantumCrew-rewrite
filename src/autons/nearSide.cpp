@@ -4,23 +4,14 @@
 ASSET(defensive_elims_move_from_goal_to_bar_txt)
 
 
-void moveRelative(double distance, int timeout, bool backwards) {
-    lemlib::Pose pose = chassis.getPose(true);
-    double angle = -pose.theta + M_PI_2;
-    double x = std::cos(angle) * distance;
-    double y = std::sin(angle) * distance;
-    chassis.moveToPoint(pose.x + x, pose.y + y, timeout, backwards);
-}
-
-
 void Autons::nearSideAggressiveAWP() {
     chassis.setPose(-48, -57, 315);
-    moveRelative(10, 1000);
+    Autons::utils::moveRelative(10, 1000);
     chassis.waitUntilDone();
 
     Actions::Wings::setRear(true, false);
 
-    moveRelative(-8, 1000, true);
+    Autons::utils::moveRelative(-8, 1000, false);
     chassis.waitUntilDone();
 
     chassis.moveToPoint(-59, -40, 3000);
@@ -48,8 +39,9 @@ void Autons::nearSideAggressiveAWP() {
 
     chassis.setPose(-59, -34, chassis.getPose().theta);
 
-    chassis.moveToPose(-3, -58, 90, 7000);
-    chassis.waitUntilDone();
+    chassis.moveToPose(0, -58, 90, 7000);
+    Autons::utils::waitUntilBelowBar();
+    chassis.cancelMotion();
 }
 
 
@@ -88,5 +80,6 @@ void Autons::nearSideDisruptAWP() {
     pros::delay(1000);
 
     chassis.moveToPose(-3, -58, 90, 7000);
-    chassis.waitUntilDone();
+    Autons::utils::waitUntilBelowBar();
+    chassis.cancelMotion();
 }

@@ -24,20 +24,13 @@ void EventHandler::handleWings() {
 
 void EventHandler::handleCatapult() {
     static bool autoLaunch = false;
-    static bool autoHold = false;
 
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
         autoLaunch = !autoLaunch;
     }
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
-        autoHold = !autoHold;
-    }
 
     if (autoLaunch || controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
         Actions::Catapult::lower();
-    }
-    else if (autoHold) {
-        //Actions::Catapult::stepToHoldAngle();
     }
     else {
         Actions::Catapult::brake();
