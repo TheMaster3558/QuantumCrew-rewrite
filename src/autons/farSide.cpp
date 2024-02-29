@@ -29,7 +29,7 @@ void Autons::sixBall() {
     chassis.moveToPoint(3, -58, 2000);
     chassis.waitUntil(10);
     Actions::Intake::intake();
-    chassis.waitUntilDone();
+    Autons::utils::waitUntilBelowBar();
     Actions::Intake::brake();
 
     chassis.moveToPoint(46, -58, 1000, false);

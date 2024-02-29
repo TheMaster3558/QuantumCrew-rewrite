@@ -10,7 +10,7 @@ void Autons::skills() {
     Autons::utils::moveRelative(-10, 1500, false);
     chassis.waitUntilDone();
 
-    chassis.turnTo(70, -8, 2000, false);
+    chassis.turnTo(60, -8, 2000, false);
     chassis.waitUntilDone();
 
     Actions::Wings::setFront(true, false);
@@ -48,7 +48,7 @@ void Autons::skills() {
     chassis.moveToPoint(60, -35, 1000);
     chassis.waitUntilDone();
 
-    chassis.moveToPoint(14, -33, 3000);
+    chassis.moveToPoint(14, -32, 3000);
     chassis.waitUntilDone();
 
     chassis.moveToPose(60, -7, 90, 3000, {
@@ -83,7 +83,9 @@ void Autons::skills() {
 
     chassis.setPose(42, 6, chassis.getPose().theta);
 
-    chassis.moveToPose(33, 58, 0, 2000);
+    chassis.moveToPose(33, 58, 0, 2000, {
+        .lead = 1.0
+    });
     chassis.waitUntilDone();
 
     chassis.moveToPose(60, 0, 180, 3000);
@@ -100,4 +102,7 @@ void Autons::skills() {
     chassis.waitUntilDone();
 
     chassis.setPose(60, 30, chassis.getPose().theta);
+
+    chassis.moveToPoint(60, 35, 1000);
+    chassis.waitUntilDone();
 }

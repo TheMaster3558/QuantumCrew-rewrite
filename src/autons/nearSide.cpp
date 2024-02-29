@@ -65,10 +65,10 @@ void Autons::nearSideDisruptAWP() {
     chassis.moveToPoint(-53, -53, 3000);
     chassis.waitUntilDone();
 
-    chassis.turnTo(-35, Tiles(-3), 1000);
+    chassis.turnTo(-35, -75, 1000);
     chassis.waitUntilDone();
 
-    Actions::Wings::setRear(false, true);
+    Actions::Wings::setRear(true, false);
 
     chassis.tank(35, 127);
     while (std::abs(chassis.getPose().theta) - 90 > 10) {
@@ -79,7 +79,7 @@ void Autons::nearSideDisruptAWP() {
     Actions::Wings::setRear(false, false);
     pros::delay(1000);
 
-    chassis.moveToPose(-3, -58, 90, 7000);
+    chassis.moveToPose(0, -58, 90, 7000);
     Autons::utils::waitUntilBelowBar();
     chassis.cancelMotion();
 }
