@@ -10,8 +10,8 @@
 #define RIGHT_BACK_BOTTOM_DRIVE_PORT 6
 
 // Motors: misc
-#define INTAKE_PORT -1
-#define CATAPULT_PORT -8
+#define INTAKE_PORTS -1
+#define CATAPULT_PORTS -8, 11
 
 // Pistons: flaps
 #define FRONT_LEFT_WING_PORT 'A'
@@ -21,5 +21,4 @@
 
 // Sensors
 #define IMU_PORT 9
-#define CATAPULT_ROTATION_SENSOR_PORT -11
 #define INTAKE_DISTANCE_SENSOR_PORT 10

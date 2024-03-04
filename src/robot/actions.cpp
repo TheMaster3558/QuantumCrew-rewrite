@@ -24,19 +24,6 @@ void Actions::Catapult::lower() {
 }
 
 
-void Actions::Catapult::stepToHoldAngle() {
-    Motors::catapult.move(catapultPID.update(Tunables::catapultHoldAngle - Sensors::getCatapultAngle()));
-}
-
-
-void Actions::Catapult::moveToHoldAngle() {
-    while (abs(Sensors::getCatapultAngle() - Tunables::catapultHoldAngle) > 1.0) {
-        stepToHoldAngle();
-    }
-    Actions::Catapult::brake();
-}
-
-
 void Actions::Catapult::brake() {
     Motors::catapult.brake();
 }

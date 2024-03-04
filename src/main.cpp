@@ -10,11 +10,6 @@
 void initialize() {
     chassis.calibrate();
 
-    //Sensors::catapultRotationSensor.set_position(30);
-    // reset_position is currently bugged and doesn't work
-    //pros::delay(500);
-    Tunables::catapultHoldAngle += Sensors::getCatapultAngle();
-
     Actions::Wings::setFront(false, false);
     Actions::Wings::setRear(false, false);
 

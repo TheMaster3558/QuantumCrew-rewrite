@@ -18,12 +18,8 @@ namespace Motors {
     extern pros::MotorGroup leftDrive;
     extern pros::MotorGroup rightDrive;
 
-    void setDriveBrake(pros::motor_brake_mode_e_t mode);
-
-    extern pros::Motor intake;
-    extern pros::Motor catapult;
-
-    void printOverheatingMotors();
+    extern pros::MotorGroup intake;
+    extern pros::MotorGroup catapult;
 }
 
 namespace Pistons {
@@ -35,10 +31,8 @@ namespace Pistons {
 
 namespace Sensors {
     extern pros::Imu imuSensor;
-    extern pros::Rotation catapultRotationSensor;
     extern pros::Distance intakeDistanceSensor;
 
-    int getCatapultAngle();
     float getIntakeUpInches();
 }
 
@@ -55,7 +49,6 @@ namespace Tunables {
 
     extern int driveCurve;
     extern int catapultVelocity;
-    extern int catapultHoldAngle;
 }
 
 namespace Actions {
