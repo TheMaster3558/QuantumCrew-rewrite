@@ -102,13 +102,10 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    Actions::Wings::setFront(false, false);
-    Actions::Wings::setRear(false, false);
-
     while (true) {
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
-        chassis.curvature(leftY, rightX, Tunables::driveCurve);
+        chassis.arcade(leftY, rightX, Tunables::driveCurve);
 
         EventHandler::handleAll();
         pros::delay(ez::util::DELAY_TIME);

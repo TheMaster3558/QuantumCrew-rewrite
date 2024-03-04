@@ -12,6 +12,6 @@ void Autons::utils::moveRelative(double distance, int timeout, bool forwards) {
 
 void Autons::utils::waitUntilBelowBar() {
     while (Sensors::getIntakeUpInches() > 3 && chassis.isInMotion()) {
-        pros::delay(ez::util::DELAY_TIME);
+        pros::delay(ODOM_UPDATE_DELAY);
     }
 }

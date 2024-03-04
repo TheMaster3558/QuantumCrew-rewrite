@@ -5,6 +5,7 @@
 #include "robot.hpp"
 
 
+#define ODOM_UPDATE_DELAY 10
 #define Tiles(x) (24 * x)
 
 

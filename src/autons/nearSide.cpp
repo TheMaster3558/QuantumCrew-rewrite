@@ -52,13 +52,13 @@ void Autons::nearSideDisruptAWP() {
         .lead = 0.8
     });
     while (std::abs(chassis.getPose().theta - 90) > 20) {
-        pros::delay(ez::util::DELAY_TIME);
+        pros::delay(ODOM_UPDATE_DELAY);
     }
     chassis.cancelMotion();
 
     chassis.moveToPoint(10000, -5, 3000);
     while (chassis.getPose().distance(lemlib::Pose(0, -5)) > 5) {
-        pros::delay(ez::util::DELAY_TIME);
+        pros::delay(ODOM_UPDATE_DELAY);
     }
     chassis.cancelMotion();
 
@@ -72,7 +72,7 @@ void Autons::nearSideDisruptAWP() {
 
     chassis.tank(35, 127);
     while (std::abs(chassis.getPose().theta) - 90 > 10) {
-        pros::delay(ez::util::DELAY_TIME);
+        pros::delay(ODOM_UPDATE_DELAY);
     }
     chassis.cancelMotion();
 
