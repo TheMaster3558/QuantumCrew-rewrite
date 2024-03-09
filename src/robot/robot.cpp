@@ -2,8 +2,8 @@
 
 
 const int Tunables::chasePower = 8;
-int Tunables::driveCurve = 5;
-int Tunables::catapultVelocity = 45;
+int Tunables::driveCurve = 4;
+int Tunables::catapultVelocity = 90;
 
 
 const float DrivetrainInfo::drivetrainWidth = 11.0;
@@ -15,7 +15,7 @@ const int DrivetrainInfo::drivetrainRpm = 360;
 lemlib::ControllerSettings Tunables::linearController(
         30, // proportional gain (kP),
         0, // integral gain (kI)
-        70, // derivative gain (kD)
+        60, // derivative gain (kD)
         0, // windup range
         1, // small error range, in inches
         100, // small error range timeout, in milliseconds

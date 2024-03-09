@@ -4,14 +4,14 @@
 // Motors: drivetrain
 #define LEFT_FRONT_DRIVE_PORT -2
 #define LEFT_BACK_TOP_DRIVE_PORT 3
-#define LEFT_BACK_BOTTOM_DRIVE_PORT -7
+#define LEFT_BACK_BOTTOM_DRIVE_PORT -17
 #define RIGHT_FRONT_DRIVE_PORT 4
 #define RIGHT_BACK_TOP_DRIVE_PORT -5
 #define RIGHT_BACK_BOTTOM_DRIVE_PORT 6
 
 // Motors: misc
 #define INTAKE_PORTS -1
-#define CATAPULT_PORTS -8, 11
+#define CATAPULT_PORTS -8, -11
 
 // Pistons: flaps
 #define FRONT_LEFT_WING_PORT 'A'

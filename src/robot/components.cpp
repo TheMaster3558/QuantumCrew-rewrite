@@ -25,9 +25,3 @@ ez::Piston Pistons::rearRightWing(REAR_RIGHT_WING_PORT);
 
 pros::Imu Sensors::imuSensor(IMU_PORT);
 pros::Distance Sensors::intakeDistanceSensor(INTAKE_DISTANCE_SENSOR_PORT);
-
-
-float Sensors::getIntakeUpInches() {
-    return Sensors::intakeDistanceSensor.get() * 0.0393701;
-}
-

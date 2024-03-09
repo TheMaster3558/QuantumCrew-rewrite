@@ -32,8 +32,6 @@ namespace Pistons {
 namespace Sensors {
     extern pros::Imu imuSensor;
     extern pros::Distance intakeDistanceSensor;
-
-    float getIntakeUpInches();
 }
 
 namespace DrivetrainInfo {

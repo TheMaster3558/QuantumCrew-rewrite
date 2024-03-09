@@ -5,7 +5,6 @@
 #include "robot.hpp"
 
 
-#define ODOM_UPDATE_DELAY 10
 #define Tiles(x) (24 * x)
 
 
@@ -23,6 +22,7 @@ void nearSideDisruptAWP();
 namespace utils {
     void moveRelative(double distance, int timeout, bool forwards = false);
     void waitUntilBelowBar();
+    void skillsPushBalls();
 }
 
 }  // namespace Autons

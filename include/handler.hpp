@@ -1,6 +1,7 @@
 #pragma once
 
 #include "EZ-Template/api.hpp"
+#include "autons.hpp"
 
 
 namespace EventHandler {

@@ -25,6 +25,10 @@ void EventHandler::handleWings() {
 void EventHandler::handleCatapult() {
     static bool autoLaunch = false;
 
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
+        Autons::utils::skillsPushBalls();
+    }
+
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
         autoLaunch = !autoLaunch;
     }
@@ -79,6 +83,7 @@ void EventHandler::handleAll() {
     EventHandler::handleCatapult();
     EventHandler::handleIntake();
     EventHandler::updateDisplay();
+    EventHandler::handleCurve();
 }
 
 
