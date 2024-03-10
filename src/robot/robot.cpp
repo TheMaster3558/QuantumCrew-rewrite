@@ -3,7 +3,7 @@
 
 const int Tunables::chasePower = 8;
 int Tunables::driveCurve = 4;
-int Tunables::catapultVelocity = 90;
+int Tunables::catapultVelocity = 115;
 
 
 const float DrivetrainInfo::drivetrainWidth = 11.0;

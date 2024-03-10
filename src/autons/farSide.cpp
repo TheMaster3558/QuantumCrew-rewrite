@@ -5,12 +5,12 @@ ASSET(far_side_match_load_txt)
 
 
 void Autons::sixBall() {
+    /*
     chassis.setPose(5, Tiles(-2.5), 270);
 
     chassis.moveToPoint(2, Tiles(-2.5), 1000);
     Actions::Intake::intake();
     chassis.waitUntilDone();
-    pros::delay(1000);
     Actions::Intake::brake();
 
     chassis.moveToPoint(30, Tiles(-2.5), 1000, false);
@@ -25,7 +25,7 @@ void Autons::sixBall() {
     Actions::Wings::setRear(false, false);
     chassis.waitUntilDone();
 
-    pros::delay(500);
+    pros::delay(1000);
 
     chassis.moveToPoint(58, -20, 1000, false);
     chassis.waitUntilDone();
@@ -36,9 +36,12 @@ void Autons::sixBall() {
     chassis.waitUntilDone();
 
     chassis.moveToPoint(58, -20, 2000);
+    chassis.waitUntil(6);
+    Actions::Intake::outtake();
     chassis.waitUntilDone();
+    Actions::Intake::brake();
 
-    chassis.setPose(60, -29, chassis.getPose().theta);
+    chassis.setPose(60, -32, chassis.getPose().theta);
 
     chassis.moveToPoint(60, -50, 5000, false);
     chassis.waitUntilDone();
@@ -67,8 +70,14 @@ void Autons::sixBall() {
         .minSpeed = 110,
     });
     chassis.waitUntil(5);
+    Actions::Intake::outtake();
     Actions::Wings::setFront(true, true);
     chassis.waitUntilDone();
+    Actions::Intake::brake();
 
     Actions::Wings::setFront(false, false);
+     */
+    chassis.tank(-127, -127);
+    pros::delay(6000);
+    chassis.tank(0, 0);
 }

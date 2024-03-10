@@ -31,7 +31,7 @@ void initialize() {
         })
     });
     ms::initialize();
-/*
+    /*
     pros::lcd::initialize();
 
     pros::Task screenTask([&]() {
@@ -47,7 +47,8 @@ void initialize() {
             pros::delay(50);
         }
     });
-*/
+     */
+
 }
 
 /**

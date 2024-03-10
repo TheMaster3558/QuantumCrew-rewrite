@@ -20,9 +20,10 @@ void nearSideAggressiveAWP();
 void nearSideDisruptAWP();
 
 namespace utils {
-    void moveRelative(double distance, int timeout, bool forwards = false);
+    void runIntake();
     void waitUntilBelowBar();
     void skillsPushBalls();
+    void skillsBarrierBalls();
 }
 
 }  // namespace Autons

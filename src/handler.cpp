@@ -28,6 +28,9 @@ void EventHandler::handleCatapult() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
         Autons::utils::skillsPushBalls();
     }
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+        Autons::utils::skillsBarrierBalls();
+    }
 
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
         autoLaunch = !autoLaunch;
@@ -73,7 +76,7 @@ void EventHandler::handleCurve() {
 void EventHandler::updateDisplay() {
     static int counter = 0;
     if (counter++ % (50 / ez::util::DELAY_TIME) == 0) {
-        controller.print(0, 0, "Curve: %d", Tunables::driveCurve);
+        controller.print(0, 0, "Cata RPM: %d", Tunables::catapultVelocity);
     }
 }
 
